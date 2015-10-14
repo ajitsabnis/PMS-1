@@ -2,16 +2,18 @@
 
 /**
  * @ngdoc overview
- * @name mytodoApp
+ * @name pmsappApp
  * @description
- * # mytodoApp
+ * # pmsappApp
  *
  * Main module of the application.
  */
 angular
-  .module('mytodoApp', [
+  .module('pmsappApp', [
     'ngAnimate',
+    'ngAria',
     'ngCookies',
+    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
@@ -28,11 +30,6 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-      })
-	  .when('/directive', {
-        templateUrl: 'views/rightside_directive.html',
-        controller: 'DirectiveCtrl',
-        controllerAs: 'sampledir'
       })
       .otherwise({
         redirectTo: '/'

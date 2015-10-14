@@ -12,10 +12,9 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/custom.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="mytodoApp">
+  <body ng-app="pmsappApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -33,7 +32,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">mytodo</a>
+            <a class="navbar-brand" href="#/">pmsapp</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -42,7 +41,6 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
-			  <li><a ng-href="#/directive">Directive Example</a></li>
             </ul>
           </div>
         </div>
@@ -77,7 +75,9 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -89,11 +89,6 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/directive.js"></script>
-        <script src="scripts/directives/sampledir.js"></script>
-		<script src="scripts/directives/restrictalpha.js"></script>
-		<script src="scripts/directives/addbutton.js"></script>
-		<script src="scripts/directives/validationtext.js"></script>
         <!-- endbuild -->
 </body>
 </html>
