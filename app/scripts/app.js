@@ -34,5 +34,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+    .state('genric', {
+        url: '/genric',
+        templateUrl: 'views/genric.html',
+        controller: 'GenricCtrl'
+      })
   }]);
   
