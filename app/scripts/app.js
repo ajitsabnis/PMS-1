@@ -59,5 +59,40 @@ angular
         templateUrl: 'views/testmaster.html',
         controller: 'MainCtrl'
       })
+    .state('/addcontactcategory', {
+        url: '/addcontactcategory',
+        templateUrl: 'views/addcontactcategory.html',
+        controller: 'MainCtrl'
+      })
+    .state('/addexamtype', {
+        url: '/addexamtype',
+        templateUrl: 'views/addexamtype.html',
+        controller: 'MainCtrl'
+      })
+    .state('/addsnippet', {
+        url: '/addsnippet',
+        templateUrl: 'views/addsnippet.html',
+        controller: 'MainCtrl'
+      })
+    .state('/addflag', {
+        url: '/addflag',
+        templateUrl: 'views/addflag.html',
+        controller: 'MainCtrl'
+      })
+    .state('/addsample', {
+        url: '/addsample',
+        templateUrl: 'views/addsample.html',
+        controller: 'MainCtrl'      
+      })
+    .state('/addinstrument', {
+        url: '/addinstrument',
+        templateUrl: 'views/addinstrument.html',
+        controller: 'MainCtrl'
+      })
+    .state('/addmethod', {
+        url: '/addmethod',
+        templateUrl: 'views/addmethod.html',
+        controller: 'MainCtrl'
+      })
   }]);
   
