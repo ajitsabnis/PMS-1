@@ -17,170 +17,169 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-	'ui.router'
+    'ui.router'
   ])
   .config(['$stateProvider','$urlRouterProvider',
      function ($stateProvider, $urlRouterProvider) {
 
 	$urlRouterProvider.otherwise("/");
     $stateProvider
-	  .state('main', {
+	   .state('main', {
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-	  .state('about', {
+    .state('about', {
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-<<<<<<< HEAD
     .state('genric', {
         url: '/genric',
         templateUrl: 'views/genric.html',
         controller: 'GenricCtrl'
-=======
+      })
     .state('/descriptive test', {
         url: '/descriptive test',
         templateUrl: 'views/descriptive test.html',
         controller: 'MainCtrl'
       })
-	.state('link-master', {
+    .state('link-master', {
         url: '/link-master',
         templateUrl: 'views/link-master.html',
         controller: 'linkMasterCtrl'
       })
-	.state('flag-master', {
+    .state('flag-master', {
         url: '/flag-master',
         templateUrl: 'views/flag-master.html',
         controller: 'flagMasterCtrl'
       })
-	.state('patient-master', {
+    .state('patient-master', {
         url: '/patient-master',
         templateUrl: 'views/patient-master.html',
         controller: 'patientMasterCtrl'
       })
-	.state('hospital-master', {
+    .state('hospital-master', {
         url: '/hospital-master',
         templateUrl: 'views/hospital-master.html',
         controller: 'HospitalMasterCtrl'
       })
-	.state('staff-master', {
+    .state('staff-master', {
         url: '/staff-master',
         templateUrl: 'views/staff-master.html',
         controller: 'staffMasterCtrl'
       })
-	.state('descriptive-test', {
+    .state('descriptive-test', {
         url: '/descriptive-test',
         templateUrl: 'views/descriptive-test.html',
         controller: 'DescriptiveTestCtrl'
       })
-	.state('user-account', {
+    .state('user-account', {
         url: '/user-account',
         templateUrl: 'views/user-account.html',
         controller: 'UserAccountCtrl'
       })
-	.state('test-calculator', {
+    .state('test-calculator', {
         url: '/test-calculator',
         templateUrl: 'views/test-calculator.html',
         controller: 'TestCalculatorCtrl'
       })
-	.state('snippet-master', {
+    .state('snippet-master', {
         url: '/snippet-master',
         templateUrl: 'views/snippet-master.html',
         controller: 'SnippetMasterCtrl'
       })
-	.state('profile-master', {
+    .state('profile-master', {
         url: '/profile-master',
         templateUrl: 'views/profile-master.html',
         controller: 'ProfileMasterCtrl'
       })
-	.state('patient-registration', {
+    .state('patient-registration', {
         url: '/patient-registration',
         templateUrl: 'views/patient-registration.html',
         controller: 'PatientRegistrationCtrl'
       })
-	.state('test-master-details', {
+    .state('test-master-details', {
         url: '/test-master-details',
         templateUrl: 'views/test-master-details.html',
         controller: 'TestMasterDetailsCtrl'
       })
-	.state('bill-master-detail-view', {
+    .state('bill-master-detail-view', {
         url: '/bill-master-detail-view',
         templateUrl: 'views/bill-master-detail-view.html',
         controller: 'BillMasterDetailViewCtrl'
       })
-	.state('pms-administration', {
+    .state('pms-administration', {
         url: '/pms-administration',
         templateUrl: 'views/pms-administration.html',
         controller: 'PmsAdministrationCtrl'
       })
-	.state('pms-concise', {
+    .state('pms-concise', {
         url: '/pms-concise',
         templateUrl: 'views/pms-concise.html',
         controller: 'PmsConciseCtrl'
       })
-	.state('visit-request-authentication', {
+    .state('visit-request-authentication', {
         url: '/visit-request-authentication',
         templateUrl: 'views/visit-request-authentication.html',
         controller: 'VisitRequestAuthenticationCtrl'
       })
-	.state('pms-receipt', {
+    .state('pms-receipt', {
         url: '/pms-receipt',
         templateUrl: 'views/pms-receipt.html',
         controller: 'PmsReceiptCtrl'
       })
-	.state('pms-privilliges', {
+    .state('pms-privilliges', {
         url: '/pms-privilliges',
         templateUrl: 'views/pms-privilliges.html',
         controller: 'PmsPrivilligesCtrl'
       })
-	.state('id-management', {
+    .state('id-management', {
         url: '/id-management',
         templateUrl: 'views/id-management.html',
         controller: 'IdManagementCtrl'
       })
-	.state('todays-patient', {
+    .state('todays-patient', {
         url: '/todays-patient',
         templateUrl: 'views/todays-patient.html',
         controller: 'TodaysPatientCtrl'
       })
-	.state('sample-collection', {
+    .state('sample-collection', {
         url: '/sample-collection',
         templateUrl: 'views/sample-collection.html',
         controller: 'SampleCollectionCtrl'
       })
-	.state('cc-charges', {
+    .state('cc-charges', {
         url: '/cc-charges',
         templateUrl: 'views/cc-charges.html',
         controller: 'CcChargesCtrl'
       })
-	.state('branch-management', {
+    .state('branch-management', {
         url: '/branch-management',
         templateUrl: 'views/branch-management.html',
         controller: 'BranchManagementCtrl'
       })
-	.state('sample-received', {
+    .state('sample-received', {
         url: '/sample-received',
         templateUrl: 'views/sample-received.html',
         controller: 'SampleReceivedCtrl'
       })
-	.state('concise-print', {
+    .state('concise-print', {
         url: '/concise-print',
         templateUrl: 'views/concise-print.html',
         controller: 'ConcisePrintCtrl'
       })
-	.state('pms-reports', {
+    .state('pms-reports', {
         url: '/pms-reports',
         templateUrl: 'views/pms-reports.html',
         controller: 'PmsReportsCtrl'
       })
-	.state('change-pin', {
+    .state('change-pin', {
         url: '/change-pin',
         templateUrl: 'views/change-pin.html',
         controller: 'ChangePinCtrl'
       })
-	.state('entire-test', {
+    .state('entire-test', {
         url: '/entire-test',
         templateUrl: 'views/entire-test.html',
         controller: 'EntireTestCtrl'
@@ -239,7 +238,5 @@ angular
         url: '/addmethod',
         templateUrl: 'views/addmethod.html',
         controller: 'MainCtrl'
->>>>>>> ba11aa4ab1ce1177c9ec13af62f914886498aed8
       })
   }]);
-  
