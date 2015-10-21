@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc service
- * @name pmsappApp.generic
+ * @name pmsApp.generic
  * @description
  * # generic
- * Service in the pmsappApp.
+ * Service in the pmsApp.
  */
 
-angular.module('pmsappApp').service('generic',['$resource', function ($resource) {
-    return $resource('http://localhost:9000/#/genric.json', {}, {
+angular.module('pmsApp').service('generic', ['$resource', function ($resource) {
+    /*return $resource('http://w3schools.com/', {}, {
       query: {method:'POST', isArray:false}
-    });
+    });*/
 
-  }]);
+}]);

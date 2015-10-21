@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name pmsappApp.controller:AboutCtrl
+ * @name pmsApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the pmsappApp
+ * Controller of the pmsApp
  */
-angular.module('pmsappApp')
+angular.module('pmsApp')
   .controller('AboutCtrl', function ($scope, $http) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
@@ -15,5 +15,4 @@ angular.module('pmsappApp')
       'Karma'
     ];
 	$scope.users = [];
-	$http.get('<?php echo site_url('Welcome/getCourse'); ?>').success(function($data){ $scope.users=$data; });
   });

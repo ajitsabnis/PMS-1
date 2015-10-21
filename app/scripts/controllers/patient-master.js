@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name pmsappApp.controller:PatientMasterCtrl
+ * @name pmsApp.controller:PatientMasterCtrl
  * @description
  * # PatientMasterCtrl
- * Controller of the pmsappApp
+ * Controller of the pmsApp
  */
-angular.module('pmsappApp')
+angular.module('pmsApp')
   .controller('PatientMasterCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name pmsappApp.apiUrl
+ * @name pmsApp.apiUrl
  * @description
  * # apiUrl
- * Service in the pmsappApp.
+ * Service in the pmsApp.
  */
-angular.module('pmsappApp')
+angular.module('pmsApp')
   .constant('apiUrl', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
 	var BASE_URL = 'services/index.php/',
