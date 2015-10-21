@@ -44,32 +44,32 @@ angular
         templateUrl: 'views/descriptive test.html',
         controller: 'MainCtrl'
       })
-	.state('link-master', {
+    .state('link-master', {
         url: '/link-master',
         templateUrl: 'views/link-master.html',
         controller: 'linkMasterCtrl'
       })
-	.state('flag-master', {
+    .state('flag-master', {
         url: '/flag-master',
         templateUrl: 'views/flag-master.html',
         controller: 'flagMasterCtrl'
       })
-	.state('patient-master', {
+    .state('patient-master', {
         url: '/patient-master',
         templateUrl: 'views/patient-master.html',
         controller: 'patientMasterCtrl'
       })
-	.state('hospital-master', {
+    .state('hospital-master', {
         url: '/hospital-master',
         templateUrl: 'views/hospital-master.html',
         controller: 'HospitalMasterCtrl'
       })
-	.state('staff-master', {
+    .state('staff-master', {
         url: '/staff-master',
         templateUrl: 'views/staff-master.html',
         controller: 'staffMasterCtrl'
       })
-	.state('descriptive-test', {
+    .state('descriptive-test', {
         url: '/descriptive-test',
         templateUrl: 'views/descriptive-test.html',
         controller: 'DescriptiveTestCtrl'
