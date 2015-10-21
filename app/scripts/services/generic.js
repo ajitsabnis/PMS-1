@@ -9,7 +9,7 @@
  */
 
 angular.module('pmsappApp').service('generic',['$resource', function ($resource) {
-    return $resource('http://http://localhost:9000/#/genric.json', {}, {
+    return $resource('http://localhost:9000/#/genric.json', {}, {
       query: {method:'POST', isArray:false}
     });
 
