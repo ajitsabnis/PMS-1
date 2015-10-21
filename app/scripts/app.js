@@ -174,6 +174,12 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+<<<<<<< HEAD
+    .state('genric', {
+        url: '/genric',
+        templateUrl: 'views/genric.html',
+        controller: 'GenricCtrl'
+=======
     .state('/descriptive test', {
         url: '/descriptive test',
         templateUrl: 'views/descriptive test.html',
@@ -233,6 +239,7 @@ angular
         url: '/addmethod',
         templateUrl: 'views/addmethod.html',
         controller: 'MainCtrl'
+>>>>>>> ba11aa4ab1ce1177c9ec13af62f914886498aed8
       })
   }]);
   
