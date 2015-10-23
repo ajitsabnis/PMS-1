@@ -5,18 +5,11 @@ class Districts extends CosRestController
 {
   public function index_get()
   {
-    // $this->load->database();
-    // $this->response( $this->db->get('district')->result() );
-    // $data = array('returned: '. $this->get('id'));
-    // $this->response($data);
-    $this->load->database();
-    // $this->db->select('districtID, districtName');
-    // $sql = $this->db->get_compiled_select( 'districts' );
-    // $this->response( $sql );
-    $this->db->select('district AS name, district AS value');
+	$this->load->database();
+    $this->db->select('course_id AS id, course_name AS name');
     $this->db->distinct();
-    $this->db->order_by("district", "asc");
-    $this->response(array("data" => $this->db->get('cosColleges')->result()));
+    $this->db->order_by("id", "asc");
+    $this->response(array("data" => $this->db->get('course')->result()));
   }
 }
 ?>
