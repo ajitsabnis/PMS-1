@@ -41,9 +41,7 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
-
               <li><a ng-href="#/genric">genric</a></li>
-
               <li><a ng-href="#/descriptive test">descriptive test</a></li>
               <li><a ng-href="#/addgroup">addgroup</a></li>
               <li><a ng-href="#/addemployeecategory">addemployeecategory</a></li>
@@ -56,7 +54,7 @@
               <li><a ng-href="#/addsample">addsample</a></li>
               <li><a ng-href="#/addinstrument">addinstrument</a></li>
               <li><a ng-href="#/addmethod">addmethod</a></li>
-              <li><a ng-href="#/patient-master">patient master</a></li>
+			  <li><a ng-href="#/patient-master">patient master</a></li>
               <li><a ng-href="#/patient-registration">patient registration</a></li>
             </ul>
           </div>
@@ -105,15 +103,12 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        
+		<!-- Controllers -->
+		<script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-		
-        <script src="scripts/controllers/genric.js"></script>
-        <script src="scripts/services/generic.js"></script>
-
-        <script src="scripts/services/myservice.js"></script>
-        <script src="scripts/services/api-url.js"></script>
-        <script src="scripts/controllers/link-master.js"></script>
+		<script src="scripts/controllers/genric.js"></script>
+		<script src="scripts/controllers/link-master.js"></script>
         <script src="scripts/controllers/flag-master.js"></script>
         <script src="scripts/controllers/patient-master.js"></script>
         <script src="scripts/controllers/hospital-master.js"></script>
@@ -141,7 +136,14 @@
         <script src="scripts/controllers/pms-reports.js"></script>
         <script src="scripts/controllers/change-pin.js"></script>
         <script src="scripts/controllers/entire-test.js"></script>
-
+		
+		<!-- Directives -->
+		
+		<!-- Services -->
+        <script src="scripts/services/generic.js"></script>
+        <script src="scripts/services/myservice.js"></script>
+        <script src="scripts/services/api-url.js"></script>
+		
         <!-- endbuild -->
 </body>
 </html>
