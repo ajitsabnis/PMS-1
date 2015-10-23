@@ -8,23 +8,29 @@
  * Controller of the pmsappApp
  */
  
-angular.module('pmsappApp').controller('GenricCtrl', ['$scope', 'generic', function ($scope, generic) {
-    $scope.items = [
-      {id: '1',cname:'group'},
-      { id: '2',cname:'instument'},
-      { id: '3',cname:'flag'}
-    ];
-     $scope.arr1=[];
+angular.module('pmsappApp').controller('GenricCtrl', ['$scope', 'generic','genericcat', function ($scope, generic, genericcat) {
+    
+     
+    console.log('Hi This is loger');
+    generic.query({}, function (record){
+      $scope.pmsdata = record.data;
+	 });
+    
+    genericcat.query({}, function (valu){
+      $scope.pms = valu.data;
+   });
+
+    $scope.arr1=[];
     $scope.add=function(val1) {
         var userVal = val1;
         $scope.arr1.push(userVal);
         userVal = {};
         $scope.val = {};
   };
-
-   generic.query({}, function (data){
-      $scope.pmsdata= data;
-	 });
     
+    genericcat.post($scope.genric_Id, function (arr1){
+          $scope.data = arr1;
+    });
+ 
   
   }]);
