@@ -9,9 +9,9 @@
  */
 
 angular.module('pmsappApp').factory('genericcat',['$resource', function ($resource) {
-    return $resource('http://localhost:81/PMS-1/services/index.php/generic_category', {}, {
+    return $resource('http://localhost:81/PMS-1/services/index.php/instruments', {}, {
       query: {method:'GET', params: {} , isArray:false},
-      post:  {method:'POST',  params: {genric_id: ''} , isArray:false}
+      post:  {method:'POST',  params: {} , isArray:true}
 
     });
     

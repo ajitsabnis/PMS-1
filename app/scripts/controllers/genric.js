@@ -20,16 +20,17 @@ angular.module('pmsappApp').controller('GenricCtrl', ['$scope', 'generic','gener
       $scope.pms = valu.data;
    });
 
-    $scope.arr1=[];
-    $scope.add=function(val1) {
-        var userVal = val1;
-        $scope.arr1.push(userVal);
-        userVal = {};
-        $scope.val = {};
-  };
+    $scope.add = function(data){
     
-    genericcat.post($scope.genric_Id, function (arr1){
-          $scope.data = arr1;
+
+  
+    $scope.G_id = $scope.selectedItem.id;
+    $scope.gval = $scope.gname;
+  };
+
+
+    genericcat.post($scope.G_id, $scope.gval, function (val){
+          $scope.arr = val.data;
     });
  
   

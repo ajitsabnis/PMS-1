@@ -4,18 +4,18 @@
 <form>
   <div class="form-group">
     <label class="control-label">Select</label>
-      <select ng-model="val.selectedItem" id="quli-opt" ng-options="value.name for value in pmsdata"></select>
+      <select ng-model="selectedItem" id="slct" ng-options="value.name for value in pmsdata track by value.id"></select>
 
 
 
   </div>
 
 <div class="form-group">
-	 <label class="control-label">Add {{val.selectedItem.name}}</label>
-	 <input type="text"  class="form-control input" ng-model="val.name">
+	 <label class="control-label">Add {{selectedItem.id}}</label>
+	 <input type="text"  class="form-control input" ng-model="gname">
 	</div>
 <div class="form-group">
-	<button type="button" class="btn btn-primary btn" ng-click="add(val)">Add</button>
+	<button type="button" class="btn btn-primary btn" ng-click="add()">Add</button>
   <button type="button" class="btn btn-warning btn" ng-click="">clear</button>
 </div>
 
