@@ -24,7 +24,7 @@
         <label class="control-label">Lab No</label>
       </div>
         <div class="col-md-6">
-          <input type="text" ng-model="date" class="form-control input-sm">
+          <input type="text" ng-model="labno" class="form-control input-sm">
         </div>
     </div>
     
@@ -33,7 +33,7 @@
         <label class="control-label">Patient Id</label>
       </div>
         <div class="col-md-6">
-          <input type="text" ng-model="date" class="form-control input-sm">
+          <input type="text" ng-model="pid" class="form-control input-sm">
         </div>
     </div>
 
@@ -43,7 +43,7 @@
         <label class="control-label">Barcode</label>
       </div>
         <div class="col-md-6">
-          <input type="text" ng-model="date" class="form-control input-sm">
+          <input type="text" ng-model="barcode" class="form-control input-sm">
         </div>
     </div>
 
@@ -53,10 +53,10 @@
         <label class="control-label">count</label>
       </div>
         <div class="col-md-3">
-          <input type="text" ng-model="date" class="form-control input-sm">
+          <input type="text" ng-model="count" class="form-control input-sm">
         </div>
         <div class="col-md-5">
-           <button type="button" class="btn btn-primary btn-xs" ng-model="">Print</button>
+           <button type="button" class="btn btn-primary btn-xs" ng-model="print">Print</button>
           <span class="glyphicons glyphicons-print"></span>
         </div>
 
@@ -102,7 +102,7 @@
             <label class="control-label">Patient Name</label>
           </div>
             <div class="col-md-8">
-              <input type="text" ng-model="date" class="form-control input-sm">
+              <input type="text" ng-model="pname" class="form-control input-sm">
             </div>
         </div>
       </div>
@@ -116,12 +116,12 @@
             <label class="control-label">Hospital</label>
           </div>
             <div class="col-md-4">
-               <select class="selectpicker" ng-model="" id="pid" ng-options="">
+               <select class="selectpicker" ng-model="hospital" id="hosp" ng-click="">
            <option>MR</option>
           </select>
           </div>
             <div class="col-md-3">
-               <button type="button" class="btn btn-primary btn-xs" ng-model>Add New</button>
+               <button type="button" class="btn btn-primary btn-xs">Add New</button>
             </div>
         </div>
       </div>
@@ -135,12 +135,12 @@
             <label class="control-label">Consultant</label>
           </div>
             <div class="col-md-4">
-               <select class="selectpicker" ng-model="" id="pid" ng-options="">
+               <select class="selectpicker" ng-model="consultant" id="pid">
            <option>MR</option>
           </select>
           </div>
             <div class="col-md-3">
-               <button type="button" class="btn btn-primary btn-xs" ng-model>Add New</button>
+               <button type="button" class="btn btn-primary btn-xs" ng-click="">Add New</button>
             </div>
         </div>
       </div>
@@ -165,8 +165,8 @@
          </div>
            <div class="form-group">
             <div class="row">
-              <button type="button" class="btn btn-success" ng-model="newpatient">Done</button>
-                <button type="button" class="btn btn-danger" ng-model="oldpatient">Cancel</button>
+              <button type="button" class="btn btn-success" ng-click="newpatient">Done</button>
+                <button type="button" class="btn btn-danger" ng-click="oldpatient">Cancel</button>
             </div>
           </div>
        
@@ -185,12 +185,12 @@
     <h5><span class="label label-default">Search By</span></h5>
    
       <label class="control-label">Test</label>
-        <select class="selectpicker" ng-model="" id="pid" ng-options="">
+        <select class="selectpicker" ng-model="test" id="pid">
            <option>MR</option>
           </select>
         
         <label class="control-label">Profile</label>
-        <select class="selectpicker" ng-model="" id="pid" ng-options="">
+        <select class="selectpicker" ng-model="profile" id="pid">
            <option>MR</option>
           </select>
        <div class="form-group">
@@ -198,19 +198,19 @@
         <h5><span class="label label-default">Lab Order</span></h5> 
         
                 <label >
-                    <input type="radio" id="q128" name="quality[21]" value="1" />Test
+                    <input type="radio" id="q128" name="quality[21]" value="1" ng-model="tst" />Test
                 </label> 
                 <label >
-                    <input type="radio" id="q129" name="quality[21]" checked="checked" value="2" />Profile
+                    <input type="radio" id="q129" name="quality[21]" checked="checked" value="2" ng-model="profile" />Profile
                 </label> 
                 <label >
-                    <input type="radio" id="q130" name="quality[21]" value="3" />Discriptive Test
+                    <input type="radio" id="q130" name="quality[21]" value="3" ng-model="dsptst" />Discriptive Test
                 </label> 
               <label class="control-label"></label>
             </div>
             <div class="form-group">
               <labal class="control-label" for="inputdefault"></label>
-                <select class="selectpicker form-control">
+                <select class="selectpicker form-control" >
                   <option>example</option>
                 </select>
               </div>
@@ -246,8 +246,8 @@
   
     <div class="form-group">
      <label class="control-label">Amount</label>
-     <input type="text" ng-model="search" class="form-control input-sm">
-        <button type="button" class="btn btn-primary btn-xs" ng-model>Insert</button>
+     <input type="text" ng-model="amount" class="form-control input-sm">
+        <button type="button" class="btn btn-primary btn-xs" ng-click="">Insert</button>
 
    </div>
 
@@ -255,16 +255,16 @@
 
    <div class="form-group">
      <label class="control-label">Total</label>
-     <input type="text" ng-model="search" class="form-control input-sm">
+     <input type="text" ng-model="total" class="form-control input-sm">
    </div>
   <div class="form-group">
      <label class="control-label">Paid</label>
-     <input type="text" ng-model="search" class="form-control input-sm">
+     <input type="text" ng-model="paid" class="form-control input-sm">
    </div>
 
     <div class="form-group">
      <label class="control-label">Discount</label>
-     <input type="text" ng-model="search" class="form-control input-sm">
+     <input type="text" ng-model="discount" class="form-control input-sm">
      <button type="button" class="btn btn-success btn-sm">Receipt</button>
    </div>
 
@@ -279,4 +279,4 @@
  </div>
 </form>
 </div>
-<p>This is the patient-registration view.</p>
+

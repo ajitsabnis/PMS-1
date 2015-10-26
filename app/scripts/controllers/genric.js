@@ -8,23 +8,45 @@
  * Controller of the pmsappApp
  */
  
-angular.module('pmsappApp').controller('GenricCtrl', ['$scope', 'generic', function ($scope, generic) {
-    $scope.items = [
-      {id: '1',cname:'group'},
-      { id: '2',cname:'instument'},
-      { id: '3',cname:'flag'}
-    ];
-     $scope.arr1=[];
-    $scope.add=function(val1) {
-        var userVal = val1;
-        $scope.arr1.push(userVal);
-        userVal = {};
-        $scope.val = {};
-  };
-
-   generic.query({}, function (data){
-      $scope.pmsdata= data;
+angular.module('pmsappApp').controller('GenricCtrl', ['$scope', 'generic','genericService', 
+  function ($scope, generic, genericService) {
+    
+     
+    console.log('Hi This is loger');
+    generic.query({}, function (record){
+      $scope.pmsdata = record.data;
 	 });
     
+    genericService.query({}, function (valu){
+      $scope.pms = valu.data;
+   });
+
+    $scope.add = function(data){
+    
+
+  
+    $scope.genric_id = $scope.selectedItem.id;
+    $scope.category_name = $scope.gname;
+
+
+    //     genericcat.post($scope.genric_id, $scope.category_name, function (val){
+    //       $scope.arr = val.data;
+    // });
+
+//console.log( genericcat.save );
+
+    var data = {
+      generic_name: $scope.category_name,
+      category_id: $scope.genric_id
+    };
+
+    genericService.save( data, function() {
+      console.log( 'Testing' );
+    });
+  };
+
+
+
+ 
   
   }]);

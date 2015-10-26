@@ -1,5 +1,5 @@
 {
-  "name": "pmsapp",
+  "name": "pms",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.3.0",
@@ -18,7 +18,7 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "pmsappApp",
+  "moduleName": "pmsApp",
   "overrides": {
     "bootstrap": {
       "main": [
