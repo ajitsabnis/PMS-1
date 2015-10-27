@@ -7,7 +7,7 @@
       
        <div class="form-group">
               <labal class="control-label" for="inputdefault"></label>
-                <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in pmsdata track by value.id" >
+                <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in pmsdata track by value.id" ng-change="getSelectedCategoryData()">
                   
                 </select>
               </div>

@@ -14,6 +14,5 @@ angular.module('pmsappApp').factory('genericService',['$resource', function ($re
       post:  {method:'POST',  params: {} , isArray:true}
 
     });
-    
+}]);
 
-  }]);
