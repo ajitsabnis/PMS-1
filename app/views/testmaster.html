@@ -7,50 +7,11 @@
      
 	
 	</div>
-
-	<div class="row">                                 
-		          <table class="table table-bordered">
-						  <thead>
-							  <tr>
-								 <th>Test Name</th>
-								 <th>Heading</th>
-							     <th>Group</th>
-								 <th>Test Code</th>
-								 <th>Test Charges</th>
-								 <th>Flag</th>
-								 <th>Method</th>
-						         <th>Sample</th>
-						         <th>Instiment</th>
-						         <th>Remarks</th>
-						         <th>Action</th>
-							 </tr>
-				          </thead>
-							<tbody>
-								<tr>
-								  <td></td>
-								  <td></td>
-								  <td></td>
-								  <td><td>
-								  <td></td>
-								  <td></td>
-								  <td></td>
-								  <td></td>
-								  <td></td>
-								  <td><a href="#"  <span class="glyphicon glyphicon-upload" data-toggle="tooltip" data-placement="top" title="UPDATE"></a>
-                                    <a href="#"  <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="DELETE"></a></td>
-								  
-								 </tr>
-								  <tr>
-								
-								 
-							  </tbody>
-			      </table>
-            </div>
-
-
-
-
-
+	<!-- Grid -->
+	<div ng-controller = "TestMasterDetailsCtrl">
+		<div ui-grid="myData" class="myGrid"></div>
+	</div>
+	<!-- -->
 
 
   <!-- Modal -->
@@ -114,7 +75,8 @@
 								<option>example</option>
 								<option>example</option>
 								</select>
-								<button type="button" class="btn btn-success btn-xs">ADD METHOD</button>
+								<button type="button" class="btn btn-success btn-xs"
+							data-toggle="modal" data-target="#myModal1" data-backdrop="true" data-keyboard="true">ADD METHOD</button>
 						</div>
 
 			          	
@@ -154,9 +116,62 @@
     </div>
   </div>
 
+   <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog model-lg">
+
+    	<div class="generic">
+  <h1>Generic</h1>
+<form>
+  <div class="form-group">
+    <label class="control-label">Select:</label>
+      
+       <div class="form-group">
+              <labal class="control-label" for="inputdefault"></label>
+                <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in pmsdata track by value.id" ng-change="getSelectedCategoryData()">
+                  
+                </select>
+              </div>
+
+
+
+  </div>
+
+
+  
+    <div class="form-group">
+	 <label class="control-label">Add {{selectedItem.name}}</label>
+    <input type="text"  class="form-control input" ng-model="gname">
+   
+  </div>
+
+
+<div class="form-group">
+	<button type="button" class="btn btn-primary btn" ng-click="add()">Add</button>
+  <button type="button" class="btn btn-warning btn" type="reset" value="Reset">clear</button>
+</div>
+
+</div>
+</div>
+
   
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
 
 
 
