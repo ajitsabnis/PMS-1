@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name pmsappApp
+ * @name pmsApp
  * @description
- * # pmsappApp
+ * # pmsApp
  *
  * Main module of the application.
  */
 angular
-  .module('pmsappApp', [
+  .module('pmsApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
