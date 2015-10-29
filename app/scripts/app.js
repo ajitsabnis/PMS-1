@@ -202,7 +202,7 @@ angular
     .state('/testmaster', {
         url: '/testmaster',
         templateUrl: 'views/testmaster.html',
-        controller: 'MainCtrl'
+        controller: 'TestMasterDetailsCtrl'
       })
     .state('/addcontactcategory', {
         url: '/addcontactcategory',
