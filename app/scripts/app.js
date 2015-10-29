@@ -17,7 +17,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ui.grid'
   ])
   .config(['$stateProvider','$urlRouterProvider',
      function ($stateProvider, $urlRouterProvider) {
