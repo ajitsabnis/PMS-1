@@ -1,18 +1,22 @@
 <div class="Add-test">
-<div class="container">
+
   <h2>Add test</h2>
   <!-- Trigger the modal with a button -->
  <div class="form-group">
-	<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true" data-keyboard="true">Add New</button>
-     
-	
-	</div>
-	<!-- Grid -->
-	<div ng-controller = "TestMasterDetailsCtrl">
-		<div ui-grid="myData" class="myGrid"></div>
-	</div>
-	<!-- -->
+ 	<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true" data-keyboard="true">Add Test</button>
 
+		
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1" data-backdrop="true" data-keyboard="true">Test Details</button>
+  </div>	
+	<hr class="devider">	
+	
+	<div class="form-group">
+	<!-- Grid -->
+		<div ng-controller = "TestMasterDetailsCtrl">
+			<div ui-grid="myData" class="myGrid"></div>
+		</div>
+	<!-- -->
+	</div>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -116,45 +120,203 @@
     </div>
   </div>
 
-   <div class="modal fade" id="myModal1" role="dialog">
+    <!-- Modal1 -->
+  <div class="modal fade modal-white" id="myModal1" role="dialog">
     <div class="modal-dialog model-lg">
 
-    	<div class="generic">
-  <h1>Generic</h1>
-<form>
-  <div class="form-group">
-    <label class="control-label">Select:</label>
-      
-       <div class="form-group">
-              <labal class="control-label" for="inputdefault"></label>
-                <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in pmsdata track by value.id" ng-change="getSelectedCategoryData()">
-                  
-                </select>
-              </div>
+
+    	<!-- Modal content-->
+    		<div class=test-detail>
+    			<h2>Test Detail</h2>
+    			<form>
+    			 <div class="form-group">     
+		            	<label  class="control-label" for="inputdefault">Select Test</label>:
+						 	<select class="selectpicker form-control">
+							<option>example</option>
+							<option>example</option> 
+						 </select>
+				  </div>
+
+				
+
+
+			<!-- table --> <div class="row">                                 
+		          <table class="table table-responsive">
+						  <thead>
+							  <tr>
+								 <th>EXAMINATION TYPE</th>
+								 <th>TEST DETAILS</th>
+								  <th>UNIT</th>
+								  <th>ORDER</th>
+							     <th>MIN REFERANCE</th>
+								<th>MAX REFERANCE</th>
+								 <th>MIN AGE</th>
+								  <th>MAX AGE</th>
+								 <th>GENDER</th>
+								 <th>REF RANGE</th>
+						         <th>ACTION</th>
+							 </tr>
+				          </thead>
+							<tbody>
+								<tr>
+								  <th></th>
+								 <th></th>
+								  <th></th>
+								  <th></th>
+							     <th></th>
+								<th></th>
+								 <th></th>
+								  <th></th>
+								 <th></th>
+								 <th></th>
+						         
+								  <td><a href="#"  <span class="glyphicon glyphicon-upload" data-toggle="tooltip" data-placement="top" title="UPDATE"></a>
+                                    <a href="#"  <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="DELETE"></a></td>
+								 </tr>
+								  </tbody>
+
+			      </table>
+            </div>
 
 
 
-  </div>
+     <div class="col-md-6"> 
+					<div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Test details:</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+
+		             <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Unit:</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+		             <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Min Refrance</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+		             <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Min Age</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+		             <div class="form-group">     
+		            	<label  class="control-label" for="inputdefault">Gender</label>:
+						 	<select class="selectpicker form-control">
+							<option>example</option>
+							<option>example</option> 
+						 </select>
+				  </div>
+
+
+
+
+
+
+
+				</div>
+
+			<div class="col-md-6"> 
+
+
+				<div class="form-group">     
+		            	<label  class="control-label" for="inputdefault">Exam Type</label>:
+						 	<select class="selectpicker form-control">
+							<option>example</option>
+							<option>example</option> 
+						 </select>
+				  </div>
+
+
+
+				  <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Order:</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+    		
+
+		             <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Max Refrance</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+		             <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Max Age</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text" required>
+			          <span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
+            			<span ng-show="form.first.$error.required">Mandatory Field</span>
+		             </div>
+
+		            <div class="form-group">	          
+			          <label class="control-label" for="inputdefault">Min Age</label>
+			          <input capitalize class="form-control" ng-model="td" id="124" type="text">
+			          
+		             </div>
+
+
+
+
+
+
+    		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+	</div>
+	</div>
+
 
 
   
-    <div class="form-group">
-	 <label class="control-label">Add {{selectedItem.name}}</label>
-    <input type="text"  class="form-control input" ng-model="gname">
-   
-  </div>
 
 
-<div class="form-group">
-	<button type="button" class="btn btn-primary btn" ng-click="add()">Add</button>
-  <button type="button" class="btn btn-warning btn" type="reset" value="Reset">clear</button>
-</div>
 
-</div>
-</div>
 
-  
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
@@ -204,4 +366,4 @@
 
 
 
-</div>				
+			

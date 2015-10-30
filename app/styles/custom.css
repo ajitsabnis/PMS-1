@@ -2,3 +2,11 @@
 	width: 1000px;
 	height: 100px;
 }
+
+.modal-backdrop {
+   background-color: #7B68EE;
+}
+
+.table-striped>tr:nth-child(odd){
+   background-color:red;
+}
