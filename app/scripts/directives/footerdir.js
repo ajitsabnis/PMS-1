@@ -6,7 +6,7 @@
  * @description
  * # footerDir
  */
-angular.module('pmsappApp')
+angular.module('pmsApp')
   .directive('pmsFooterDir', function () {
     return {
       templateUrl: 'views/footer.html',

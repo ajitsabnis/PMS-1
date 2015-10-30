@@ -6,7 +6,7 @@
  * @description
  * # navigationDir
  */
-angular.module('pmsappApp')
+angular.module('pmsApp')
   .directive('pmsNavigationDir', function () {
     return {
       templateUrl: 'views/navigation.html',
