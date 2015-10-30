@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('pmsApp', [
+  .module('pmsappApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -34,6 +34,11 @@ angular
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+    .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
     .state('genric', {
         url: '/genric',
