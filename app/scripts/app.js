@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name pmsappApp
+ * @name pmsApp
  * @description
- * # pmsappApp
+ * # pmsApp
  *
  * Main module of the application.
  */
