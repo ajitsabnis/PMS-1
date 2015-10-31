@@ -14,4 +14,11 @@ angular.module('pmsApp')
       'AngularJS',
       'Karma'
     ];
+    $(document).ready(function(){
+    $('#myTable').dataTable();
+});
+   jQuery(document).ready(function(){
+    jQuery('#hideshow').live('click', function(event) {        
+         jQuery('#content').toggle('show');
+    });
   });
