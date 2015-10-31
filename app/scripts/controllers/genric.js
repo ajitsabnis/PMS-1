@@ -34,7 +34,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   $scope.getSelectedCategoryData = function() {
     alert($scope.selectedItem.id);
     $scope.id = $scope.selectedItem.id
-    genericService.getGenericData({id: ''}, function (valu){
+    genericService.getGenericData({id:$scope.id}, function (valu){
       $scope.pms = valu.data;
     });
   }
