@@ -21,8 +21,7 @@ class Instruments extends CosRestController
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
-
-  public function instrument_post()
+  public function instrument_get()
   {
     // $this->load->database();
     // $this->response( $this->db->get('district')->result() );
@@ -34,7 +33,7 @@ class Instruments extends CosRestController
     // $this->db->select('districtID, districtName');
     // $sql = $this->db->get_compiled_select( 'districts' );
     // $this->response( $sql );
-    $id = $this->post('id');
+    $id = $this->get('id');
       switch ($id) {
          case 1:
                 $this->db->select('generic_instrument_id AS category_id, generic_instrument_name AS generic_name, generic_category_id AS generic_id');
