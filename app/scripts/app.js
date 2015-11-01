@@ -18,7 +18,12 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.grid'
+    'ui.grid',
+    'ui.grid.edit',
+    'ui.grid.rowEdit',
+    'ui.grid.cellNav',
+    'addressFormatter',
+    'ui.grid.pagination'
   ])
   .config(['$stateProvider','$urlRouterProvider',
      function ($stateProvider, $urlRouterProvider) {
