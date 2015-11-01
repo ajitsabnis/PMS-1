@@ -3,7 +3,7 @@
     <form>
       <!--form containt-->
       <div class="form-group">
-        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true" data-keyboard="true">Add New Patient</button>
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal2" data-backdrop="true" data-keyboard="true">Add New Patient</button>
       </div>
 
       <div class="form-group">
@@ -13,7 +13,7 @@
         </div>
       
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="myModal2" role="dialog">
           <div class="modal-dialog model-lg">
             
     <!-- Modal content-->
@@ -25,7 +25,7 @@
                 <label  class="control-label" for="inputdefault">Patient Id:</label>
               </div>
               <div class="col-md-4">
-           <input onlyDigits ng-model="patient" class="form-control input">
+           <input onlyDigits ng-model="patient" class="form-control input" ng-model="val.pid">
           </div>
         </div>
       </div>  
@@ -36,12 +36,12 @@
                 <label  class="control-label" for="inputdefault">Patient Name:</label>
               </div>
               <div class="col-md-2">
-           <select class="selectpicker" ng-model="pname" id="pid">
+           <select class="selectpicker" ng-model="val.pname" id="pid">
                    <option>MR</option>
                     </select> 
           </div>
           <div class="col-md-8">
-            <input onlyDigits ng-model="patient" class="form-control input">
+            <input type="text" ng-model="val.patientname" class="form-control input" >
         </div>
 
         </div>
@@ -50,7 +50,7 @@
       <div class="col-md-6"> 
         <div class="form-group">
           <label class="control-label">Address</label>
-              <textarea ng-model="address" cols="10" rows="5"></textarea>
+              <textarea ng-model="val.address" cols="10" rows="5"></textarea>
           </div>
 
            <div class="row">
@@ -59,7 +59,7 @@
           <div class="input-group col-md-8 col-xs-12 form-inline">
             <div class="input-group" style="width: 49%;">
             
-               <select class="selectpicker form-control" >
+               <select class="selectpicker form-control" ng-model="val.state" >
             <option>example</option>
           </select>
             </div>
@@ -73,7 +73,7 @@
           <div class="input-group col-md-8 col-xs-12 form-inline">
             <div class="input-group" style="width: 49%;">
             
-               <select class="selectpicker form-control" >
+               <select class="selectpicker form-control" ng-model="val.distric" >
             <option>example</option>
           </select>
             </div>
@@ -87,7 +87,7 @@
           <div class="input-group col-md-8 col-xs-12 form-inline">
             <div class="input-group" style="width: 49%;">
             
-              <select class="selectpicker form-control" >
+              <select class="selectpicker form-control" ng-model="val.city">
             <option>example</option>
           </select>
             </div>
@@ -100,7 +100,7 @@
           <label class="col-md-4 col-xs-12 control-label">DOB</label>
           <div class="input-group col-md-8 col-xs-12 form-inline">
             <p class="input-group">
-              <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="val.dob>"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -117,7 +117,7 @@
           <div class="input-group col-md-8 col-xs-12 form-inline">
             <div class="input-group" style="width: 49%;">
             
-              <select class="selectpicker form-control" >
+              <select class="selectpicker form-control" ng-model="val.gender">
             <option>example</option>
           </select>
             </div>
@@ -132,7 +132,7 @@
                 <label  class="control-label" for="inputdefault">Phone:</label>
               </div>
               <div class="col-md-6">
-           <input onlyDigits ng-model="patient" class="form-control input">
+           <input onlyDigits ng-model="patient" class="form-control input" ng-model="val.phone">
           </div>
         </div>
       </div>  
@@ -148,7 +148,7 @@
                 <label  class="control-label" for="inputdefault">Mobile:</label>
               </div>
               <div class="col-md-6">
-           <input onlyDigits ng-model="patient" class="form-control input">
+           <input onlyDigits ng-model="patient" class="form-control input" ng-model="val.mobile">
           </div>
         </div>
 
@@ -159,13 +159,13 @@
                 <label  class="control-label" for="inputdefault">Email:</label>
               </div>
               <div class="col-md-6">
-           <input onlyDigits ng-model="patient" class="form-control input">
+           <input onlyDigits ng-model="patient" class="form-control input" ng-model="val.email">
           </div>
         </div>
 
         <div class="form-group">
         <label>Photo</label>
-        <div class="fileupload fileupload-new" data-provides="fileupload">
+        <div class="fileupload fileupload-new" data-provides="fileupload" ng-model="val.photo">
           <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
           <div>
             <span class="btn btn-file"><span class="fileupload-new">Select image</span><br>
@@ -176,8 +176,8 @@
 
             <div class="form-group">
               <button type="button" class="btn btn-success" ng-click="add(val)">Save</button>
-                  <button type="button" class="btn btn-danger" ng-click="oldpatient">Clear</button>
-                </div>
+              <button type="button" class="btn btn-danger" ng-click="oldpatient">Clear</button>
+            </div>
 
 
 

@@ -20,7 +20,6 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     Addtest.get({}, function (record){
       $scope.test = record.data;
     });*/
-
 	
     $scope.myData = {
     	columnDefs: [
