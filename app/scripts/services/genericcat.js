@@ -9,7 +9,7 @@
  */
 
 angular.module('pmsApp').factory('genericService',['$resource', function ($resource) {
-    return $resource('http://localhost:81/PMS-1/services/index.php/instruments/category/', {}, {
+    return $resource('http://localhost:81/PMS-1/services/index.php/instruments/instrument/', {}, {
       getGenericData: {method:'GET', params: {id: ''} , isArray:false},
       post:  {method:'POST',  params: {} , isArray:true}
 
