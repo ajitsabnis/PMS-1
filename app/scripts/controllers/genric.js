@@ -8,8 +8,8 @@
  * Controller of the pmsApp
  */
  
-/*angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericService', 
-                                      function ($scope, generic, genericService) {
+angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericService', '$http',
+                                      function ($scope, generic, genericService, $http) {
     
     console.log('Hi This is loger');
     generic.query({}, function (record){
@@ -36,18 +36,10 @@
     $scope.id = $scope.selectedItem.id
     genericService.getGenericData({id:$scope.id}, function (valu){
       $scope.pms = valu.data;
+      $scope.gridOptions = valu.data;
     });
   }
-  }]); */
 
-angular.module('addressFormatter', []).filter('address', function () {
-  return function (input) {
-      return input.street + ', ' + input.city + ', ' + input.state + ', ' + input.zip;
-  };
-});
-
-angular.module('pmsApp')
-.controller('GenricCtrl', ['$scope', '$http', '$q', '$interval', 'genericService', function ($scope, $http, $q, $interval, genericService) {
   $scope.gridOptions = {};
  
   $scope.gridOptions.columnDefs = [
@@ -60,25 +52,10 @@ angular.module('pmsApp')
   $scope.saveRow = function( rowEntity ) {
     // create a fake promise - normally you'd use the promise returned by $http or $resource
     console.log(rowEntity);
-    /*genericService.post(angular.toJson(rowEntity), function(responce) {
-        console.log( 'Testing' );
-        
-    });*/
-    /*
-    var promise = $q.defer();
-        $scope.gridApi.rowEdit.setSavePromise( rowEntity, promise.promise );
-    
-        // fake a delay of 3 seconds whilst the save occurs, return error if gender is "male"
-        $interval( function() {
-        if (rowEntity.gender === 'male' ){
-            promise.reject();
-            } else {
-              promise.resolve();
-            }
-        }, 500, 1); */
-      updateGenericData.$promise.then(angular.toJson(rowEntity), function(responce) {
-        $scope.gridOptions = updateGenericData.data[0];
-      });
+   
+    updateGenericData.$promise.then(angular.toJson(rowEntity), function(responce) {
+      $scope.gridOptions = updateGenericData.data[0];
+    });
     
   };
  
@@ -87,10 +64,4 @@ angular.module('pmsApp')
     $scope.gridApi = gridApi;
     gridApi.rowEdit.on.saveRow($scope, $scope.saveRow);
   };
- 
-  $http.get('http://localhost/pms-1/services/index.php/instruments/instrument/1')
-  .success(function(data) {
-    
-    $scope.gridOptions = data;
-  });
-}]);
+}]); 
