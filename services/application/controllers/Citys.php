@@ -12,7 +12,7 @@ class Citys extends CosRestController
     $this->response(array("data" =>$this->db->get('city_master')->result()));
   }
 
-  public function district_get()
+  public function city_get()
   {
     $this->load->database();
     $id = $this->get('id');
