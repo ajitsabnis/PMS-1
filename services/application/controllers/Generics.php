@@ -7,7 +7,7 @@ class Generics extends CosRestController
   public function index_get()
   {
     $this->load->database();
-    $this->db->select('generic_id AS id, generic_NAme AS name');  //csId
+    $this->db->select('generic_id AS id, generic_Name AS name');  //csId
     //$this->db->select('stateName AS stateName'); //csFirstName
     //$this->db->select('lName AS lastName'); //csLastName
     //$this->db->select('mNumber AS phone');  //csPhone
@@ -16,7 +16,7 @@ class Generics extends CosRestController
     //$this->db->select('csDistrict AS district');
     //$this->db->select('csAboutMe AS aboutMe');
      $this->db->distinct();
-    $this->db->order_by("generic_NAme", "asc");
+    $this->db->order_by("generic_Name", "asc");
     $this->response(array("data" => $this->db->get('genericmaster')->result()));  //cosUsers
   }
 
