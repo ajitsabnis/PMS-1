@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/controllers/CosRestController.php';
-class Districts extends CosRestController
+class Citys extends CosRestController
 {
   public function index_get()
   {
@@ -13,20 +13,20 @@ class Districts extends CosRestController
     // $this->db->select('districtID, districtName');
     // $sql = $this->db->get_compiled_select( 'districts' );
     // $this->response( $sql );
-    $this->db->select('district_id AS district_id, district_name AS district_name');
+    $this->db->select('city_id AS city_id, city_name AS city_name');
     $this->db->distinct();
-    $this->db->order_by("district_name", "asc");
-    $this->response(array("data" =>$this->db->get('district_master')->result()));
+    $this->db->order_by("city_name", "asc");
+    $this->response(array("data" =>$this->db->get('city_master')->result()));
   }
 
   public function district_get($id)
   {
     $this->load->database();
-    $this->db->select('district_id AS district_id, district_name AS district_name');
+    $this->db->select('city_id AS city_id, city_name AS city_name');
     $this->db->distinct();
-    $this->db->order_by("district_name", "asc");
-    $this->db->where('state_id', $id);
-    $this->response(array("data" => $this->db->get('district_master')->result()));
+    $this->db->order_by("city_name", "asc");
+    $this->db->where('district_id', $id);
+    $this->response(array("data" => $this->db->get('city_master')->result()));
   }
 
 public function index_post()
@@ -34,15 +34,15 @@ public function index_post()
     try {
       
       $user = array(
-        'state_id' => $this->post('state_id'),
-        'district_name' => $this->post('district_name'),
+        'district_id' => $this->post('district_id'),
+        'city_name' => $this->post('city_name'),
       );
 
       $this->load->database();
       $this->load->helper('array');
 
-      $this->db->where('district_name',element( 'district_name', $user ));
-      $this->db->where('state_id', element( 'state_id', $user ));
+      $this->db->where('city_name',element( 'city_name', $user ));
+      $this->db->where('district_id', element( 'district_id', $user ));
 
       $query = $this->db->get('district_master');
 
