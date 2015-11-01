@@ -36,6 +36,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.id = $scope.selectedItem.id
     genericService.getGenericData({id:$scope.id}, function (valu){
       $scope.pms = valu.data;
+
       $scope.gridOptions = valu.data[0];
     });
   }

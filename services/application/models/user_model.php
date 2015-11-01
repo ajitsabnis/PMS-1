@@ -60,10 +60,23 @@ class User_model extends CI_Model
 	
 	function getUserAssignedModule($id)
 	{
-	   $sql="SELECT m.module_id,m.module_name,uta.is_add,uta.is_delete,uta.is_update, uta.is_received,uta.is_collect,uta.is_reject,uta.is_authorize FROM  user_track_access as uta inner join module as m on (m.module_id=uta.model_id) WHERE uta.user_id=1 and uta.is_visible='Y'";
+
+	   $sql="SELECT m.module_id,m.module_name,uma.is_visible FROM  user_module_access as uma inner join module as m on (m.module_id=uma.module) WHERE uma.user_id='".$id."'";
+
+	  
 		$query=$this->db->query($sql);
 		return $query->result();
 	}
+	
+	
+
+	function getUserAssignedModuleAssigned($id)
+	{
+	    $sql="SELECT m.module_id,m.module_name,uta.is_add,uta.is_delete,uta.is_update, uta.is_received,uta.is_collect,uta.is_reject,uta.is_authorize,uta.is_visible FROM  user_track_access as uta inner join module as m on (m.module_id=uta.model_id) WHERE uta.user_id='".$id."'";
+		$query=$this->db->query($sql);
+		return $query->result();
+	}
+	
 	
 	
 	
