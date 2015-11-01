@@ -32,7 +32,7 @@ angular
     $stateProvider
 	   .state('main', {
         url: '/',
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/login.html',
         controller: 'MainCtrl'
       })
     .state('about', {

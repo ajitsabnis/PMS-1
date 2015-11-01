@@ -60,10 +60,11 @@ angular.module('pmsApp')
   $scope.saveRow = function( rowEntity ) {
     // create a fake promise - normally you'd use the promise returned by $http or $resource
     console.log(rowEntity);
-    genericService.post(angular.toJson(rowEntity), function(responce) {
+    /*genericService.post(angular.toJson(rowEntity), function(responce) {
         console.log( 'Testing' );
         
-    });
+    });*/
+    /*
     var promise = $q.defer();
         $scope.gridApi.rowEdit.setSavePromise( rowEntity, promise.promise );
     
@@ -74,7 +75,10 @@ angular.module('pmsApp')
             } else {
               promise.resolve();
             }
-        }, 500, 1);
+        }, 500, 1); */
+      updateGenericData.$promise.then(angular.toJson(rowEntity), function(responce) {
+        $scope.gridOptions = updateGenericData.data[0];
+      });
     
   };
  
