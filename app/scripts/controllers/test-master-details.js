@@ -16,10 +16,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         userVal = {};
         $scope.val = {};
   };
-	/*console.log('Hi This is loger');
-    Addtest.get({}, function (record){
-      $scope.test = record.data;
-    });*/
+	
 	
     $scope.myData = {
     	columnDefs: [
