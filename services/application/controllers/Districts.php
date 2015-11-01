@@ -19,9 +19,10 @@ class Districts extends CosRestController
     $this->response(array("data" =>$this->db->get('district_master')->result()));
   }
 
-  public function district_get($id)
+  public function district_get()
   {
     $this->load->database();
+    $id = $this->get('id');
     $this->db->select('district_id AS district_id, district_name AS district_name');
     $this->db->distinct();
     $this->db->order_by("district_name", "asc");

@@ -5,23 +5,17 @@ class Citys extends CosRestController
 {
   public function index_get()
   {
-    // $this->load->database();
-    // $this->response( $this->db->get('district')->result() );
-    // $data = array('returned: '. $this->get('id'));
-    // $this->response($data);
     $this->load->database();
-    // $this->db->select('districtID, districtName');
-    // $sql = $this->db->get_compiled_select( 'districts' );
-    // $this->response( $sql );
     $this->db->select('city_id AS city_id, city_name AS city_name');
     $this->db->distinct();
     $this->db->order_by("city_name", "asc");
     $this->response(array("data" =>$this->db->get('city_master')->result()));
   }
 
-  public function district_get($id)
+  public function city_get()
   {
     $this->load->database();
+    $id = $this->get('id');
     $this->db->select('city_id AS city_id, city_name AS city_name');
     $this->db->distinct();
     $this->db->order_by("city_name", "asc");
@@ -44,14 +38,14 @@ public function index_post()
       $this->db->where('city_name',element( 'city_name', $user ));
       $this->db->where('district_id', element( 'district_id', $user ));
 
-      $query = $this->db->get('district_master');
+      $query = $this->db->get('city_master');
 
       $count = $query->num_rows();
       if( $count === 0 ) {
-        $this->db->insert('district_master', $user);
+        $this->db->insert('city_master', $user);
         $this->response(array("data" => array(
           "status" => 201,
-          "id" => element( 'district_name', $user ),
+          "id" => element( 'city_name', $user ),
           "message" => "District added succefully."
         )));
       } else {
