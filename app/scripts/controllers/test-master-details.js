@@ -9,8 +9,7 @@
  */
 angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest',
 							function ($scope,$http,Addtest) {
-<<<<<<< HEAD
-=======
+
     $scope.add=function(val1) {
         var userVal = val1;
         $scope.arr1.push(userVal);
@@ -21,7 +20,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     Addtest.get({}, function (record){
       $scope.test = record.data;
     });*/
->>>>>>> 8b1c0ed36993a65ea483825956e435e2ba48687a
+
 	
     $scope.myData = {
     	columnDefs: [
