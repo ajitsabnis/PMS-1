@@ -9,6 +9,7 @@
  */
 angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest',
 							function ($scope,$http,Addtest) {
+
     $scope.add=function(val1) {
         var userVal = val1;
         $scope.arr1.push(userVal);
@@ -33,9 +34,11 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     		{name: 'charges'}
     	]
     };
-    $http.get('http://localhost:81/PMS/services/index.php/test')
-    	.success(function(data) {
-    			$scope.myData = data;
-    		});
-  
-  }]);
+    function init() {
+        $http.get('http://localhost:81/PMS/services/index.php/test').success(function(data) {
+            $scope.myData = data;
+        });    
+    }
+    
+    init();  
+}]);

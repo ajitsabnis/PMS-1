@@ -21,6 +21,7 @@ class Instruments extends CosRestController
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
+
   public function instrument_get()
   {
     

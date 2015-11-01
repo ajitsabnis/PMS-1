@@ -1,6 +1,6 @@
 <div class="generic">
   <h1>Generic</h1>
-  <form>
+  <form name="myForm">
     <div class="form-group">
       <label class="control-label">Select:</label>
       <div class="form-group">
@@ -12,7 +12,10 @@
   
     <div class="form-group">
       <label class="control-label">Add {{selectedItem.name}}</label>
-      <input type="text"  class="form-control input" ng-model="gname">
+      <input type="text" name="user"  class="form-control input" ng-model="gname" required>
+      <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+  <span ng-show="myForm.user.$error.required">Username is required.</span>
+  </span>
     </div>
 
     <div class="form-group">

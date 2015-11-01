@@ -78,7 +78,11 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
+<<<<<<< HEAD
+	'database' => 'pms_db',
+=======
 	'database' => 'sampledb',
+>>>>>>> 1a98c2122a4f7e5626438f39971aad57c0fa1efd
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

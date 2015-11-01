@@ -1,1 +1,84 @@
-<p>This is the snippet-master view.</p>
+<h3>Snippet master</h3>
+<form name="sm">                               <!-- main form  -->
+
+      <div class="col-md-8">               <!-- FIRST DIVISION -->
+                 <form role="inline">        <!--  first form  -->
+           
+
+            
+
+                    <div class="form-group">            
+                    <label class="control-label" for="inputdefault">Short form:</label>
+                    <input capitalize class="form-control" ng-model="sf" id="inputdefault" type="text">
+                    <span style="color:red" ng-show="sm.sf.$dirty && sm.sf.$invalid">
+                                  <span ng-show="sm.sf.$error.required">shortform is required.</span>
+                                  </span>
+              </div>
+
+             <label>Description</label>
+
+               <textarea class="form-control ng-pristine ng-valid ng-touched" rows="10" id="searchresult" ng-model="result" aria-multiline="true" aria-invalid="false" style=""></textarea>
+<hr class="divider">
+
+<hr class="divider">
+
+ <form group="inline">
+                        <table id="myTable" class="table table-striped" >
+
+        <thead>  
+          <tr>  
+            <th>short code</th>  
+            <th>short description</th>             
+          </tr>  
+        </thead>  
+        <tbody>  
+          <tr>  
+            <td>TH</td>  
+            <td>thyroid</td>  
+              
+          </tr>  
+          <tr>  
+            <td>BLD</td>  
+            <td>blood</td>  
+              
+          </tr>  
+          <tr>  
+            <td>URN</td>  
+            <td>urine</td>  
+            
+          </tr>  
+           <tr>  
+            <td>TH1</td>  
+            <td>thyroid2</td>  
+           
+          </tr>  
+          
+          </tbody>  
+      </table>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  
+                </form>           <!-- first form ends -->
+              
+
+              
+
+
+
+
+              </div>                                <!-- first division End -->
+
+
