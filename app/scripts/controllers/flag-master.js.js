@@ -2,17 +2,16 @@
 
 /**
  * @ngdoc function
- * @name pmsApp.controller:ProfileMasterCtrl
+ * @name pmsApp.controller:FlagMasterJsCtrl
  * @description
- * # ProfileMasterCtrl
+ * # FlagMasterJsCtrl
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('ProfileMasterCtrl', function () {
+  .controller('FlagMasterJsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    
   });
