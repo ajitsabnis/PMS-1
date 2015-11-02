@@ -9,7 +9,8 @@
  */
  angular.module('pmsApp').factory('Addtest',['$resource', function ($resource) {
  	return $resource('http://localhost:81/PMS/services/index.php/test', {}, {
-      get: {method:'GET', params: {} , isArray:false}
+      get: {method:'GET', params: {} , isArray:false},
+      post: {method:'POST', params: {} , isArray:true}
       
 
     });
