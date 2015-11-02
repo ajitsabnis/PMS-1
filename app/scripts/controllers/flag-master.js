@@ -8,10 +8,16 @@
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('FlagMasterCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('FlagMasterCtrl', ['$scope', '$http','flag',  function ($scope, $http, flag) {
+  		$scope.myData = {
+  			columnDefs: [
+    		  { name: 'flag_name'},
+     		  { name: 'percent'},
+     		  { name: 'amount'}
+    		]
+ 		 };	
+  		$http.get('http://localhost/PMS-1/services/index.php/flag')
+  			.success(function (data) {
+   				 $scope.myData = data;
+  			});
+  }]);

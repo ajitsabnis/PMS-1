@@ -22,7 +22,6 @@ angular
     'ui.grid.edit',
     'ui.grid.rowEdit',
     'ui.grid.cellNav',
-    
     'ui.grid.pagination'
   ])
   .config(['$stateProvider','$urlRouterProvider',
