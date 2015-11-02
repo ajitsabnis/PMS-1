@@ -16,12 +16,13 @@ class Flag extends CosRestController
   {
     try {
           $data = array(
-              'short_code' => $this->post('short_code'),
-              'description' => $this->post('description'),
+              'flag_name' => $this->post('name'),
+              'amount' => $this->post('amount'),
+              'percent' => $this->post('percent')
           );
            $this->load->database();
            $this->load->helper('array');
-           $this->db->insert('snippet_master', $data);
+           $this->db->insert('flag_master', $data);
            $this->response(array("data" => array(
               "message" => "User added succefully."
             )));

@@ -229,11 +229,6 @@ angular
         templateUrl: 'views/addsnippet.html',
         controller: 'MainCtrl'
       })
-    .state('addflag', {
-        url: '/addflag',
-        templateUrl: 'views/addflag.html',
-        controller: 'MainCtrl'
-      })
     .state('addsample', {
         url: '/addsample',
         templateUrl: 'views/addsample.html',
