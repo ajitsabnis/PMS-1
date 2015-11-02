@@ -25,43 +25,40 @@
   
   				<div class="form-group">
   					
-  					<h4><span class="label label-default">Add Group:</span></h4>
-			    	<input capitalize class="form-control" ng-model="val.tstname" id="121" type="text">
+  					<h4><span class="label label-default">Test Name:</span></h4>
+			    	<input capitalize class="form-control" ng-model="tstname" id="121" type="text">
 		        </div>
 		        
 		    
                     <div class="form-group">     
 	            		<h4><span class="label label-default">Group:</span></h4>
-					 	<select class="selectpicker form-control"ng-model="val.selectedgrp">
-							<option>example</option>
-							<option>example</option> 
+					 	<select class="selectpicker form-control"ng-model="selectedgrp" ng-options="groups.name for groups in group">
+							 
 					 	</select>
+					 	 <button type="button" class="btn btn-success btn-xs">ADD Group</button>
 			      	</div>
 
-		            <div class="form-group">	          
-			            <h4><span class="label label-default">Add Group:</span></h4>
-			            <input capitalize class="form-control" ng-model="val.adg" id="122" type="text">
-		            </div>
+		            
 
 		            <div class="form-group">	          
 			             <h4><span class="label label-default">Heading:</span></h4>
-			            <input capitalize class="form-control" ng-model="val.hding" id="123" type="text">
+			            <input capitalize class="form-control" ng-model="hding" id="123" type="text">
 		            </div>
 
 		            <div class="form-group">
 						 <h4><span class="label label-default">Test Code:</span></h4>
-				 		<input type="text" name="input" class="form-control" ng-model="val.tc" min="0" max="99" required />
+				 		<input type="text" name="input" class="form-control" ng-model="tc" min="0" max="99" required />
 		          	</div>
 
 	                <div class="form-group">
 						<h4><span class="label label-default">Test Charges:</span></h4>
-				 		<input type="number" name="input" class="form-control" ng-model="val.tch" min="0" max="99" required />
+				 		<input type="number" name="input" class="form-control" ng-model="tch" min="0" max="99" required />
 				 		<div class="form-group">     
 		            		<h4><span class="label label-default">Flag:</span></h4>
-						 	<select class="selectpicker form-control" ng-model="val.selectedflag">
-								<option>sample</option>
-								<option>ple</option> 
+						 	<select class="selectpicker form-control" ng-model="selectedflag" ng-options="flags.name for flags in flag">
+								 
 						 	</select>
+						 	 <button type="button" class="btn btn-success btn-xs">ADD Falg</button>
 				    	</div>
 		          	</div>
 				</div>
@@ -69,35 +66,32 @@
 			    <div class="col-md-6"> 
 			    	<div class="form-group">     
 						<h4><span class="label label-default">Method:</span></h4>
-						<select class="selectpicker form-control" ng-model="val.selectedmthd">
-							<option>example</option>
-							<option>example</option>
+						<select class="selectpicker form-control" ng-model="selectedmthd" ng-options="mthd.name for mthd in methode">
+							
 						</select>
 						<button type="button" class="btn btn-success btn-xs"
 							data-toggle="modal" data-target="#myModal1" data-backdrop="true" data-keyboard="true">ADD METHOD</button>
 					</div>
 					<div class="form-group">
 						<h4><span class="label label-default">Sample:</span></h4>
-						<select class="selectpicker form-control" ng-model="val.selectedsmpl">
-							<option>example</option>
-							<option>example</option>
+						<select class="selectpicker form-control" ng-model="selectedsmpl" ng-options="samples.name for samples in sample">
+							
 						</select>
 				        <button type="button" class="btn btn-success btn-xs">ADD SAMPLE</button>
 					</div>
 
 					<div class="form-group">
 						<h4><span class="label label-default">Instrument:</span></h4>
-						<select class="selectpicker form-control" ng-model="val.selectedinstmt">
-							<option>example</option>
-							<option>example</option>
+						<select class="selectpicker form-control" ng-model="selectedinstmt" ng-options="names.name for names in instrument">
+							
 				        </select>
 				        <button type="button" class="btn btn-success btn-xs">ADD INSTRUMENT</button>
 					</div>
 				    <div class="form-group">
              			<h4><span class="label label-default">Remark:</span></h4>
-                        <textarea class="form-control custom-control" rows="8" ng-model="val.remark" style="resize:none"></textarea>
+                        <textarea class="form-control custom-control" rows="8" ng-model="remark" style="resize:none"></textarea>
 					</div>
-					<button type="button" class="btn btn-success" ng-click="add(val)">Save</button>
+					<button type="button" class="btn btn-success" ng-click="add()">Save</button>
                 	<button type="button" class="btn btn-danger" ng-click="oldpatient">Clear</button>
 				</div>
     		</div>
