@@ -15,7 +15,6 @@ angular.module('pmsApp').factory('genericService',['$resource', function ($resou
       getGenericData: {method:'GET', params: {id: ''} , isArray:false},
       post:  {method:'POST',  params: {} , isArray:true},
       updateGenericData: {method:'POST', params:{}, isArray:true}
-
     });
 }]);
 

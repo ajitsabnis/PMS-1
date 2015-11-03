@@ -22,7 +22,6 @@ angular
     'ui.grid.edit',
     'ui.grid.rowEdit',
     'ui.grid.cellNav',
-    /*'addressFormatter',*/
     'ui.grid.pagination'
   ])
   .config(['$stateProvider','$urlRouterProvider',
@@ -228,11 +227,6 @@ angular
     .state('addsnippet', {
         url: '/addsnippet',
         templateUrl: 'views/addsnippet.html',
-        controller: 'MainCtrl'
-      })
-    .state('addflag', {
-        url: '/addflag',
-        templateUrl: 'views/addflag.html',
         controller: 'MainCtrl'
       })
     .state('addsample', {
