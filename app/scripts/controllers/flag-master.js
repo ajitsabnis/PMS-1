@@ -26,8 +26,9 @@ angular.module('pmsApp')
                 amount: $scope.flag.amount,
                 percent: $scope.flag.percent
           };
-          flag.save( data, function() {
-              console.log( 'Data Saved Successfully');
-            });
+          flag.save( data, function(responce) {
+            console.log( 'Data Saved Successfully');
+            $scope.myData = responce;
+          });
   		};
   }]);

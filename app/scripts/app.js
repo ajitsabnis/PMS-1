@@ -243,6 +243,6 @@ angular
         url: '/addmethod',
         templateUrl: 'views/addmethod.html',
         controller: 'MainCtrl'
-      })
+      });
     
   }]);

@@ -7,10 +7,9 @@
  * # apiUrl
  * Service in the pmsApp.
  */
-angular.module('pmsApp')
-  .constant('apiUrl', function () {
+angular.module('pmsApp').constant('apiUrl', function () {
 	var BASE_URL = 'services/index.php/',
-        apiRoot = $('#apiRoot').attr('href') ? $('#apiRoot').attr('href') : '';
+        apiRoot = '';//$('#apiRoot').attr('href') ? $('#apiRoot').attr('href') : '';
 
     BASE_URL = apiRoot + BASE_URL;
     return {
