@@ -10,8 +10,6 @@
  
 angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericService', 
                                       function ($scope, generic, genericService) {
-    
-    console.log('Hi This is loger');
     generic.query({}, function (record){
       $scope.pmsdata = record.data;
     });
@@ -43,15 +41,46 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     });
   };
 
-  $scope.gridOptions = {};
- 
-  $scope.gridOptions.columnDefs = [
-    { name: 'category_id', enableCellEdit: false },
-    { name: 'generic_name', displayName: 'Name' },
-    { name: 'generic_id', enableCellEdit: false }
-    
-  ];
- 
+  $scope.singleFilter = function( renderableRows ){
+    console.log("in single filter");
+    var matcher = new RegExp($scope.filterValue);
+    renderableRows.forEach( function( row ) {
+      var match = false;
+      [ 'category_id', 'generic_name', 'generic_id', 'Action' ].forEach(function( field ){
+        if ( row.entity[field].match(matcher) ){
+          match = true;
+        }
+      });
+      if ( !match ){
+        row.visible = false;
+      }
+    });
+    return renderableRows;
+  };
+
+  $scope.gridOptions = {
+    enableFiltering: false,
+    onRegisterApi: function(gridApi){
+      console.log("in registerApi");
+      $scope.gridApi = gridApi;
+      $scope.gridApi.grid.registerRowsProcessor( $scope.singleFilter, 200 );
+    },
+    paginationPageSizes: [25, 50, 75],
+    paginationPageSize: 25,
+    columnDefs: [
+      { name: 'category_id', enableCellEdit: false },
+      { name: 'generic_name', displayName: 'Name' },
+      { name: 'generic_id', enableCellEdit: false },
+      { name: 'Action', enableCellEdit: false}
+    ]
+  };
+  
+  $scope.filter = function() {
+    console.log($scope.filterValue);
+    console.log("in filter function");
+    $scope.gridApi.grid.refresh();
+  };
+
   $scope.saveRow = function( rowEntity ) {
     // create a fake promise - normally you'd use the promise returned by $http or $resource
     console.log(rowEntity);
