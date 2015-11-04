@@ -26,8 +26,9 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
         category_id: $scope.genric_id
       };
 
-      genericService.save(postData, function() {
+      genericService.save(postData, function(responce) {
         console.log( 'Testing' );
+        $scope.getSelectedCategoryData();
       });
   };
 
