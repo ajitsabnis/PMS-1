@@ -32,7 +32,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     }
     
     init();  
-$scope.add = function(data){
+$scope.add = function(){
   
       $scope.testname = $scope.tstname;
       
@@ -47,7 +47,7 @@ $scope.add = function(data){
       $scope.remarks = $scope.remark;
 
 
-      var data = {
+      var postData = {
         name:  $scope.testname,
         heading: $scope.heading,
         shortname: $scope.tescode,
@@ -59,7 +59,7 @@ $scope.add = function(data){
         charges:$scope.testcharges
       };
 
-      Addtest.save( data, function() {
+      Addtest.save(postData, function() {
         console.log( 'Testing' );
       });
   };
