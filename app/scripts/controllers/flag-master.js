@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name pmsApp.controller:FlagMasterCtrl
+ * @name pmsApp.controller:FlagMasterJsCtrl
  * @description
- * # FlagMasterCtrl
+ * # FlagMasterJsCtrl
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('FlagMasterCtrl', function () {
+  .controller('FlagMasterJsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
