@@ -17,7 +17,6 @@ angular.module('pmsApp').factory('genericService',['$resource', function ($resou
       updateGenericData: {method:'POST', params:{}, isArray:true},
       recordDelete: {method: 'POST', params: {}, isArray: true}
     });
-
     /*return $resource('http://localhost/PMS-1/services/index.php/instruments/recordDelete/', {}, {
       recordDelete: {method: 'POST', params: {}, isArray: true}
     });*/
