@@ -34,8 +34,8 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     init();  
 $scope.add = function(){
   
-          var postdata = {
-        name:  $scope.testname,
+          var postData = {
+        name:  $scope.tstname,
         heading: $scope.hding,
         shortname: $scope.tc,
         remark:$scope.remark,
@@ -47,7 +47,7 @@ $scope.add = function(){
         grp:$scope.selectedgrp.id
       };
 
-      Addtest.save(angular.toJson(postdata), function(responce) {
+      Addtest.save(angular.toJson(postData), function(responce) {
         console.log(responce);
       });
   };
