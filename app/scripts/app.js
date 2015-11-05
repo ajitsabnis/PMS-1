@@ -18,7 +18,11 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.grid'
+    'ui.grid',
+    'ui.grid.edit',
+    'ui.grid.rowEdit',
+    'ui.grid.cellNav',
+    'ui.grid.pagination'
   ])
   .config(['$stateProvider','$urlRouterProvider',
      function ($stateProvider, $urlRouterProvider) {
@@ -27,7 +31,7 @@ angular
     $stateProvider
 	   .state('main', {
         url: '/',
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/login.html',
         controller: 'MainCtrl'
       })
     .state('about', {
@@ -225,11 +229,6 @@ angular
         templateUrl: 'views/addsnippet.html',
         controller: 'MainCtrl'
       })
-    .state('addflag', {
-        url: '/addflag',
-        templateUrl: 'views/addflag.html',
-        controller: 'MainCtrl'
-      })
     .state('addsample', {
         url: '/addsample',
         templateUrl: 'views/addsample.html',
@@ -244,6 +243,6 @@ angular
         url: '/addmethod',
         templateUrl: 'views/addmethod.html',
         controller: 'MainCtrl'
-      })
+      });
     
   }]);
