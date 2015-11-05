@@ -35,7 +35,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
 $scope.add = function(){
   
       $scope.testname = $scope.tstname;
-      
+      $scope.groups = $scope.selectedgrp.id;
       $scope.heading = $scope.hding;
       $scope.tescode = $scope.tc;
       $scope.testcharges = $scope.tch;
@@ -47,7 +47,7 @@ $scope.add = function(){
       $scope.remarks = $scope.remark;
 
 
-      var postData = {
+      var data = {
         name:  $scope.testname,
         heading: $scope.heading,
         shortname: $scope.tescode,
@@ -56,11 +56,12 @@ $scope.add = function(){
         mthd: $scope.methode,
         smpl:  $scope.sample,
         instrument: $scope.instrument,
-        charges:$scope.testcharges
+        charges:$scope.testcharges,
+        grp:$scope.groups
       };
 
-      Addtest.save(postData, function() {
-        console.log( 'Testing' );
+      Addtest.save(angular.toJson(data), function(responce) {
+        console.log(responce);
       });
   };
 
