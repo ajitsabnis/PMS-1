@@ -22,4 +22,3 @@ angular.module('pmsApp').factory('genericService',['$resource', function ($resou
       recordDelete: {method: 'POST', params: {}, isArray: true}
     });*/
 }]);
-
