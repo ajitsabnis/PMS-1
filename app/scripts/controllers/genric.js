@@ -37,7 +37,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       };
       $scope.pms = valu.data;
 
-      $scope.gridOptions = selectedCategoryData;
+      $scope.gridOptions.data = selectedCategoryData.data;
     });
   };
 
@@ -71,7 +71,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       { name: 'category_id', enableCellEdit: false },
       { name: 'generic_name', displayName: 'Name' },
       { name: 'generic_id', enableCellEdit: false },
-      { name: 'Action', enableCellEdit: false}
+      { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity.category_id,row.entity.generic_id)"><span class="glyphicon glyphicon-trash"></span></button>'}
     ]
   };
   
@@ -79,6 +79,18 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     console.log($scope.filterValue);
     console.log("in filter function");
     $scope.gridApi.grid.refresh();
+  };
+
+  
+
+  $scope.deleteRecord = function(category_id, generic_id){
+      var testData = {
+        category_id: category_id,
+        generic_id: generic_id
+      }
+      genericService.recordDelete(angular.toJson(testData), function(responce) {
+          console.log(responce);
+      });
   };
 
   $scope.saveRow = function( rowEntity ) {
