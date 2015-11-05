@@ -8,12 +8,8 @@
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('patientMasterCtrl', function ($scope) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('patientMasterCtrl', ['flag', function ($scope, flag) {
+    
     $scope.add = function() {
           var data = {
                 
@@ -23,4 +19,4 @@ angular.module('pmsApp')
             $scope.myData = responce;
           });
   		};
-  });
+  }]);

@@ -236,6 +236,12 @@ angular.module('pmsApp', [
       url: '/addmethod',
       templateUrl: 'views/addmethod.html',
       controller: 'MainCtrl'
-    })
+    });
 }])
-.constant('API_BASE_URI','http://localhost/PMS/services/index.php/')
+.config(['$resourceProvider', function($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    // $resourceProvider.defaults.stripTrailingSlashes = false;
+    $resourceProvider.defaults.useXDomain = true;
+    $resourceProvider.defaults.withCredentials = true;
+}])
+.constant('API_BASE_URI','http://localhost/PMS-1/services/index.php/');

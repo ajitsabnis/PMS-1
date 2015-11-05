@@ -10,9 +10,11 @@
  
 angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericService', 
                                       function ($scope, generic, genericService) {
-    generic.query({}, function (record){
-      $scope.pmsdata = record.data;
-    });
+    function init() {
+      generic.query({}, function (record){
+        $scope.pmsdata = record.data;
+      });  
+    }
 
     $scope.add = function(){
   
@@ -25,7 +27,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       };
 
       genericService.save(postData, function(responce) {
-        console.log( 'Testing' );
+        console.log(responce);
         $scope.getSelectedCategoryData();
       });
   };
@@ -97,4 +99,6 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.gridApi = gridApi;
     gridApi.rowEdit.on.saveRow($scope, $scope.saveRow);
   };
+
+  init();
 }]); 
