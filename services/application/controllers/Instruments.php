@@ -26,7 +26,6 @@ class Instruments extends CosRestController
   {
     $category_id = $this->post('category_id');
     $generic_id = $this->post('generic_id');
-    echo "Pravin".$generic_id; exit();
      $this->load->database();
       switch ($generic_id) {
          case 1:
