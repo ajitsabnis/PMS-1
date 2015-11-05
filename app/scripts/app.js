@@ -77,7 +77,7 @@ angular
     .state('staff-master', {
         url: '/staff-master',
         templateUrl: 'views/staff-master.html',
-        controller: 'staffMasterCtrl'
+        controller: ''
       })
     .state('descriptive-test', {
         url: '/descriptive-test',
@@ -244,5 +244,5 @@ angular
         templateUrl: 'views/addmethod.html',
         controller: 'MainCtrl'
       });
-    
+   
   }]);
