@@ -26,7 +26,7 @@ angular.module('pmsApp')
                 amount: $scope.flag.amount,
                 percent: $scope.flag.percent
           };
-          flag.save( data, function(responce) {
+          flag.save(angular.toJson(data), function(responce) {
             console.log( 'Data Saved Successfully');
             $scope.myData = responce;
           });

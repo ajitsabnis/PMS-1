@@ -14,7 +14,11 @@ angular.module('pmsApp').factory('genericService',['$resource', function ($resou
     return $resource('http://localhost/PMS-1/services/index.php/instruments/instrument/', {}, {
       getGenericData: {method:'GET', params: {id: ''} , isArray:false},
       post:  {method:'POST',  params: {} , isArray:true},
-      updateGenericData: {method:'POST', params:{}, isArray:true}
+      updateGenericData: {method:'POST', params:{}, isArray:true},
+      recordDelete: {method: 'POST', params: {}, isArray: true}
     });
-}]);
 
+    /*return $resource('http://localhost/PMS-1/services/index.php/instruments/recordDelete/', {}, {
+      recordDelete: {method: 'POST', params: {}, isArray: true}
+    });*/
+}]);
