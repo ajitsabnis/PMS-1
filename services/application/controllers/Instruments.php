@@ -15,6 +15,53 @@ class Instruments extends CosRestController
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
+  public function recordDelete_post() /*deleting the category from database*/
+  {
+    $category_id = $this->post('category_id');
+    $generic_id = $this->post('generic_id');
+    echo "Pravin".$generic_id; exit();
+     $this->load->database();
+      switch ($generic_id) {
+         case 1:
+                $this->db->where('generic_instrument_id', $category_id);
+                $this->response(array("data" => $this->db->delete('generic_instrument_master')->result()));
+           break;
+          
+          case 2:
+                 $this->db->where('generic_faculty_id', $category_id);
+                 $this->response(array("data" => $this->db->delete('generic_faculty_master')->result()));
+           break;
+
+          case 3 :
+                 $this->db->where('generic_exam_type_id', $category_id);
+                 $this->response(array("data" => $this->db->delete('generic_exam_type_master')->result()));
+           break;
+
+           case 4 :
+                 $this->db->where('generic_group_id', $category_id);
+                 $this->response(array("data" => $this->db->delete('generic_group_master')->result()));
+           break;
+
+           case 5 :
+                 $this->db->where('generic_method_id', $category_id);
+                 $this->response(array("data" => $this->db->delete('generic_method_master')->result()));
+           break;
+
+           case 6 :
+                 $this->db->where('generic_sample_id', $category_id);
+                 $this->response(array("data" => $this->db->delete('generic_sample_master')->result()));
+           break;
+
+           case 7 :
+                 $this->db->where('generic_staff_category_id', $category_id);
+                 $this->response(array("data" => $this->db->delete('generic_staff_category_master')->result()));
+           break;
+         default:
+              $this->response(array("data" =>"Invalid input"));
+           break;
+       }
+  }
+
   public function instrument_get()
   {
     // $this->load->database();
