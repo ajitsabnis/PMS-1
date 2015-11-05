@@ -244,5 +244,5 @@ angular
         templateUrl: 'views/addmethod.html',
         controller: 'MainCtrl'
       });
-    
+   
   }]);
