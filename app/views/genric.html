@@ -25,7 +25,8 @@
 <!-- editable grid -->
   <div>
     <input ng-model='filterValue'/>
-      <button type="button" class="btn btn-primary btn" ng-click="filter()">Search</button>
+    <button class="btn btn-primary" ng-click="filter()"><span class="glyphicon glyphicon-search"></span></button>
+     
     <div ui-grid="gridOptions"  ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pagination class="grid"></div>
   </div>
 </div>
