@@ -16,11 +16,11 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'getGenericData': BASE_URL + 'instruments',
       'getSelectedCategoryData': BASE_URL + 'instruments/instrument',
 
-      'instrument.get': BASE_URL + 'testdropdown',
-      'sample.query' :  BASE_URL + 'testdropdown/sample',
-      'methode.query' :  BASE_URL + 'testdropdown/methode',
-      'group.query' :  BASE_URL + 'testdropdown/group',
-      'flag.query' :  BASE_URL + 'testdropdown/flag',
+      'instrument': BASE_URL + 'testdropdown',
+      'sample' :  BASE_URL + 'testdropdown/sample',
+      'methode' :  BASE_URL + 'testdropdown/methode',
+      'group' :  BASE_URL + 'testdropdown/group',
+      'flag' :  BASE_URL + 'testdropdown/flag',
       'Addtest': BASE_URL + 'addtest'
     };
   }());
