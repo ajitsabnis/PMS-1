@@ -15,10 +15,11 @@ class Instruments extends CosRestController
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
-  public function recordDelete_post() /*deleting the category from database*/
+  public function instrument_delete() /*deleting the category from database*/
   {
     $category_id = $this->post('category_id');
     $generic_id = $this->post('generic_id');
+    
      $this->load->database();
       switch ($generic_id) {
          case 1:
