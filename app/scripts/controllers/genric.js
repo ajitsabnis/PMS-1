@@ -29,7 +29,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       });
   };
 
-  $scope.getSelectedCategoryData = function() {
+  $scope.getGenericData = function() {
     $scope.id = $scope.selectedItem.id;
     genericService.getGenericData({id:$scope.id}, function (valu){
       var selectedCategoryData = {
@@ -85,9 +85,11 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       var testData = {
         category_id: category_id,
         generic_id: generic_id
-      };
+
+    }
+      
       genericService.recordDelete(testData, function(responce) {
-          console.log(responce);
+        console.log(responce);
       });
   };
 

@@ -244,4 +244,4 @@ angular.module('pmsApp', [
     $resourceProvider.defaults.useXDomain = true;
     $resourceProvider.defaults.withCredentials = true;
 }])
-.constant('API_BASE_URI','http://localhost/PMS-1/services/index.php/');
+.constant('API_BASE_URI','http://localhost:81/PMS-1/services/index.php/');

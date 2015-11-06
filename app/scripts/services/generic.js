@@ -9,9 +9,9 @@
  */
 
 angular.module('pmsApp').factory('generic', ['$resource', 'API_BASE_URI', function ($resource, API_BASE_URI) {
-
-    return $resource(API_BASE_URI + 'instruments', {}, {
+	return $resource(API_BASE_URI + 'instruments', {}, {
       query: {method:'GET', params: {} , isArray:false}
+
     });
 
 }]);
