@@ -7,30 +7,30 @@
  * # addtestDropdown
  * Service in the pmsApp.
  */
-angular.module('pmsApp').service('addtestDropdown',['$resource', function ($resource){
+angular.module('pmsApp').service('addtestDropdown',['$resource', 'API_BASE_URI', function ($resource, API_BASE_URI){
    return{
-    instrument:$resource('http://localhost:81/PMS-1/services/index.php/testdropdown', {}, {
+    instrument:$resource(API_BASE_URI + 'testdropdown', {}, {
    	get: {method:'GET', params: {} , isArray:false}
       
 
     }),
 
-    sample:$resource('http://localhost:81/PMS-1/services/index.php/testdropdown/sample', {}, {
+    sample:$resource(API_BASE_URI + 'testdropdown/sample', {}, {
    	query: {method:'GET', params: {} , isArray:false}
       }),
 
-  	 methode:$resource('http://localhost:81/PMS-1/services/index.php/testdropdown/method', {}, {
+  	 methode:$resource(API_BASE_URI + 'testdropdown/method', {}, {
    	query: {method:'GET', params: {} , isArray:false}
       }),
 
 
-      group:$resource('http://localhost:81/PMS-1/services/index.php/testdropdown/group', {}, {
+      group:$resource(API_BASE_URI + 'testdropdown/group', {}, {
    	query: {method:'GET', params: {} , isArray:false}
       }),
 
-       flag:$resource('http://localhost:81/PMS-1/services/index.php/testdropdown/flag', {}, {
+       flag:$resource(API_BASE_URI + 'testdropdown/flag', {}, {
    	query: {method:'GET', params: {} , isArray:false}
       })        
 
-};
-  }]);
+  };
+}]);
