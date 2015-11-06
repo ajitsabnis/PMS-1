@@ -15,23 +15,23 @@
   				  
 			  				  <div class="col-md-4">
 							        <label for="first">Test</label>
-			                        <input id="first" type="radio" name="content" ng-model="content" value="first">
+			                        <input id="first" type="radio" name="content" ng-model="content" ng-init="content=true" value="first">
 			                  </div>
 
 							    <div class="col-md-4">
 							       <label for="second">Profile</label>
-			                       <input id="second" type="radio" name="content" ng-model="content2" value="second">
+			                       <input id="second" type="radio" name="content" ng-model="content" value="second">
 							    </label></div>
 
 							    <div class="col-md-4">
 							        <label for="third">D.T</label>
-			                       <input id="third" type="radio" name="content" ng-model="content3" value="third"></div>
+			                       <input id="third" type="radio" name="content" ng-model="content" value="third"></div>
 							    </label>
 		              </div>
 				        </form>
 		    </div><hr class="divider">
 		    
-                       <div class="col-md-12" ng-show="content == 'first'"> <!-- division for test radio button -->
+                       <div class="col-md-10" ng-show="content == 'first'"> <!-- division for test radio button -->
                              <form group="inline">
                                  <table id="myTable" class="table table-striped table-bordered" >
                                         <thead>  
@@ -59,7 +59,7 @@
                                  </form>
                        </div><!-- division for test radio button ends here -->
 
-              <div class="col-md-12" ng-show="content2 == 'second'">  <!-- division for profile radio button -->
+              <div class="col-md-10" ng-show="content == 'second'">  <!-- division for profile radio button -->
                              <form group="inline">
                                  <table id="myTable" class="table table-striped table-bordered" >
                                         <thead>  
@@ -86,7 +86,7 @@
                                         </table>  
                                  </form></div><!-- division for profile radio button ends here -->
 
-                                  <div class="col-md-12" ng-show="content3 == 'third'"><!-- division for D.T radio button  -->
+                                  <div class="col-md-10" ng-show="content == 'third'"><!-- division for D.T radio button  -->
                              <form group="inline">
                                  <table id="myTable" class="table table-striped table-bordered" >
                                         <thead>  
