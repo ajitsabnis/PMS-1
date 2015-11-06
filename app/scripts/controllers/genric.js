@@ -10,18 +10,23 @@
  
 angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericService', 
                                       function ($scope, generic, genericService) {
+
+    $scope.metadata = {
+      genericData : ""
+    }
     function init() {
-      generic.query({}, function (record){
-        $scope.pmsdata = record.data;
-      });  
+      generic.get(function (argument) {
+        $scope.metadata.genericData = argument.data;
+      }); 
     }
 
     $scope.add = function(){
-  
+
       var postData = {
         generic_name: $scope.gname,
         category_id: $scope.selectedItem.id
       };
+
 
       genericService.save(postData, function(responce) {
         console.log(responce);

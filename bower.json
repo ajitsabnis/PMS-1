@@ -13,7 +13,10 @@
     "angular-sanitize": "^1.3.0",
     "angular-touch": "^1.3.0",
     "angular-ui-router": "~0.2.15",
-    "angular-ui-grid": "~3.0.7"
+    "angular-ui-grid": "~3.0.7",
+    "csv": "http://ui-grid.info/docs/grunt-scripts/csv.js",
+    "pdfmake": "http://ui-grid.info/docs/grunt-scripts/pdfmake.js",
+    "vfs_fonts": "http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0"
