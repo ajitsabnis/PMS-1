@@ -7,8 +7,8 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', 'API_BASE_URI',
-							function ($scope, $http, Addtest, addtestDropdown, API_BASE_URI) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', 'apiUrl',
+							function ($scope, $http, Addtest, addtestDropdown, apiUrl) {
 
    
 	
@@ -26,9 +26,13 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     	]
     };
     function init() {
-        $http.get(API_BASE_URI + 'addtest').success(function(data) {
+        /*$http.get(apiUrl + 'addtest').success(function(data) {
+            console.log(apiUrl);
             $scope.myData = data;
-        });    
+        }); */ 
+        addtestDropdown.addtest.get({}, function (record){
+        $scope.myData = record.data;
+    });  
     }
     
     init();  
@@ -49,28 +53,29 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
 
       };
 
-      Addtest.save(angular.toJson(postData), function(responce) {
+      addtest.save(angular.toJson(postData), function(responce) {
         console.log(responce);
       });
     };
+
 
     addtestDropdown.instrument.get({}, function (record){
       $scope.instrument = record.data;
     });
 
-    addtestDropdown.sample.query({}, function (record){
+    addtestDropdown.sample.get({}, function (record){
       $scope.sample = record.data;
     });
 
-    addtestDropdown.methode.query({}, function (record){
+    addtestDropdown.methode.get({}, function (record){
       $scope.methode = record.data;
     });
 
-    addtestDropdown.group.query({}, function (record){
+    addtestDropdown.group.get({}, function (record){
       $scope.group = record.data;
     });
 
-    addtestDropdown.flag.query({}, function (record){
+    addtestDropdown.flag.get({}, function (record){
       $scope.flag = record.data;
     });
 
