@@ -12,8 +12,6 @@ angular.module('pmsApp').factory('generic', ['$resource', 'API_BASE_URI', functi
 
     return $resource(API_BASE_URI + 'instruments', {}, {
       query: {method:'GET', params: {} , isArray:false}
-
-
     });
 
 }]);
