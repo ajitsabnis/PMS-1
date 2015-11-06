@@ -26,12 +26,13 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     	]
     };
     function init() {
-        $http.get(API_BASE_URI + 'test').success(function(data) {
+        $http.get(API_BASE_URI + 'addtest').success(function(data) {
             $scope.myData = data;
         });    
     }
     
     init();  
+
     $scope.add = function() {
 
       var data = {
@@ -45,9 +46,10 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         instrument: $scope.selectedinstmt.id,
         charges: $scope.tch,
         grp: $scope.selectedgrp.id
+
       };
 
-      Addtest.save(angular.toJson(data), function(responce) {
+      Addtest.save(angular.toJson(postData), function(responce) {
         console.log(responce);
       });
     };
