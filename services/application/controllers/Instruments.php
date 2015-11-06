@@ -7,18 +7,11 @@ class Instruments extends CosRestController
 {
   public function index_get() /**/
   {
-    //echo $id;
-    //$user = $this->rest->get('user', array('id' => $id), 'json');
-     
-    //echo $user->name;
     $this->load->database();
     $this->db->select('generic_cate_id AS id, generic_cate AS name');  
     $this->db->distinct();
     $this->db->order_by("generic_cate", "asc");
-    /*if(empty($id))
-    {
-     $this->db->where("generic_id", $id);
-    }*/
+    
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
