@@ -5,13 +5,12 @@
       <label class="control-label">Select:</label>
       <div class="form-group">
         <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in metadata.genericData track by value.id" ng-change="getSelectedCategoryData()">
-                  
         </select>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label">Add {{selectedItem.name}}</label>
-      <input type="text" name="user"  class="form-control input" ng-model="gname" required>
+      <input type="text" name="user"  class="form-control input" ng-model="metadata.gname" required>
       <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
         <span ng-show="myForm.user.$error.required">Username is required.</span>
       </span>
