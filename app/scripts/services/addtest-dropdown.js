@@ -7,30 +7,37 @@
  * # addtestDropdown
  * Service in the pmsApp.
  */
-angular.module('pmsApp').service('addtestDropdown',['$resource', 'API_BASE_URI', function ($resource, API_BASE_URI){
-   return{
-    instrument:$resource(API_BASE_URI + 'testdropdown', {}, {
-   	get: {method:'GET', params: {} , isArray:false}
-      
 
+angular.module('pmsApp').factory('addtestDropdown', ['$resource', 'apiUrl', function ($resource, apiUrl) {
+      //return $resource( apiUrl.getGenericData, {} );
+      return {
+          addtest:$resource(apiUrl.Addtest, {}),
+          instrument:$resource(apiUrl.instrument, {}),
+          sample:$resource(apiUrl.sample, {}),
+          methode:$resource(apiUrl.methode, {}),
+          group:$resource(apiUrl.group, {}),
+          flag:$resource(apiUrl.flag, {})
+        };
+      /*
+       return{
+    instrument:$resource(apiUrl + 'testdropdown', {}, {
+    get: {method:'GET', params: {} , isArray:false}
     }),
 
-    sample:$resource(API_BASE_URI + 'testdropdown/sample', {}, {
-   	query: {method:'GET', params: {} , isArray:false}
+    sample:$resource(apiUrl + 'testdropdown/sample', {}, {
+    query: {method:'GET', params: {} , isArray:false}
       }),
 
-  	 methode:$resource(API_BASE_URI + 'testdropdown/method', {}, {
-   	query: {method:'GET', params: {} , isArray:false}
+     methode:$resource(apiUrl + 'testdropdown/method', {}, {
+    query: {method:'GET', params: {} , isArray:false}
       }),
 
 
-      group:$resource(API_BASE_URI + 'testdropdown/group', {}, {
-   	query: {method:'GET', params: {} , isArray:false}
+      group:$resource(apiUrl + 'testdropdown/group', {}, {
+    query: {method:'GET', params: {} , isArray:false}
       }),
 
-       flag:$resource(API_BASE_URI + 'testdropdown/flag', {}, {
-   	query: {method:'GET', params: {} , isArray:false}
-      })        
-
-  };
+       flag:$resource(apiUrl + 'testdropdown/flag', {}, {
+    query: {method:'GET', params: {} , isArray:false}
+      })  */      
 }]);

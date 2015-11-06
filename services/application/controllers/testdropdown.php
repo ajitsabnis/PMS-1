@@ -22,7 +22,7 @@ class testdropdown extends CosRestController
     $this->response(array("data" => $this->db->get('generic_sample_master')->result()));  //cosUsers
   }
 
-   public function method_get()
+   public function methode_get()
   {
     $this->load->database();
     $this->db->select('generic_method_name AS name, generic_method_id AS id');  //csId
