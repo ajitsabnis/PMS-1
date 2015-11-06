@@ -8,7 +8,7 @@
  * Service in the pmsApp.
  */
 
-angular.module('pmsApp').factory('genericService',['$resource', function ($resource) {
+angular.module('pmsApp').factory('genericService',['$resource', 'apiUrl', function ($resource, apiUrl) {
 
     /*return $resource('http://localhost:81/PMS-1/services/index.php/instruments/instrument/', {}, {*/
     return  $resource('http://localhost/PMS-1/services/index.php/instruments/instrument/', {}, {
@@ -20,4 +20,5 @@ angular.module('pmsApp').factory('genericService',['$resource', function ($resou
     /*return $resource('http://localhost/PMS-1/services/index.php/instruments/recordDelete/', {}, {
       recordDelete: {method: 'POST', params: {}, isArray: true}
     });*/
+    //return $resource( apiUrl.getGenericData, {} );
 }]);
