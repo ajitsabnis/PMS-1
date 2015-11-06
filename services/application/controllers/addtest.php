@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/controllers/CosRestController.php';
 
-class test extends CosRestController
+class addtest extends CosRestController
 {
   public function index_get()
   {
@@ -26,7 +26,8 @@ class test extends CosRestController
              'method' => $this->post('mthd'),
              'sample' => $this->post('smpl'),
              'instrumernt' => $this->post('instrument'),
-             'test_amount' => $this->post('charges')
+             'test_amount' => $this->post('charges'),
+             'groups' => $this->post('grp')
          );
         $this->load->database();
         $this->load->helper('array');
