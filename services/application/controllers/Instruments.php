@@ -64,16 +64,8 @@ class Instruments extends CosRestController
 
   public function instrument_get()
   {
-    // $this->load->database();
-    // $this->response( $this->db->get('district')->result() );
-
-    // $data = array('returned: '. $this->get('id'));
-    // $this->response($data);
 
     $this->load->database();
-    // $this->db->select('districtID, districtName');
-    // $sql = $this->db->get_compiled_select( 'districts' );
-    // $this->response( $sql );
     $id = $this->get('id');
       switch ($id) {
          case 1:
