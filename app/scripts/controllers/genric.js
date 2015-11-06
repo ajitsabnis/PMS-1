@@ -18,12 +18,9 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
 
     $scope.add = function(){
   
-      $scope.genric_id = $scope.selectedItem.id;
-      $scope.category_name = $scope.gname;
-
       var postData = {
-        generic_name: $scope.category_name,
-        category_id: $scope.genric_id
+        generic_name: $scope.gname,
+        category_id: $scope.selectedItem.id
       };
 
       genericService.save(postData, function(responce) {
@@ -84,25 +81,20 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.gridApi.grid.refresh();
   };
 
-  
-
   $scope.deleteRecord = function(category_id, generic_id){
       var testData = {
         category_id: category_id,
         generic_id: generic_id
-      }
+      };
       genericService.recordDelete(angular.toJson(testData), function(responce) {
           console.log(responce);
       });
   };
 
-  $scope.saveRow = function( rowEntity ) {
-    // create a fake promise - normally you'd use the promise returned by $http or $resource
-    console.log(rowEntity);
-   
-    /*updateGenericData.$promise.then(angular.toJson(rowEntity), function(responce) {
+  $scope.saveRow = function(rowEntity) {
+    genericService.updateGenericData.$promise.then(angular.toJson(rowEntity), function(responce) {
       $scope.gridOptions = responce.data[0];
-    });*/
+    });
     
   };
  
