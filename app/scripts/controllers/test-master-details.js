@@ -26,7 +26,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     	]
     };
     function init() {
-        $http.get(API_BASE_URI + 'test').success(function(data) {
+        $http.get(API_BASE_URI + 'addtest').success(function(data) {
             $scope.myData = data;
         });    
     }
