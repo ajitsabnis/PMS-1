@@ -8,10 +8,6 @@
  * Service in the pmsApp.
  */
 
-angular.module('pmsApp').factory('generic', ['$resource', 'API_BASE_URI', function ($resource, API_BASE_URI) {
-	return $resource(API_BASE_URI + 'instruments', {}, {
-      query: {method:'GET', params: {} , isArray:false}
-
-    });
-
+angular.module('pmsApp').factory('generic', ['$resource', 'apiUrl', function ($resource, apiUrl) {
+	    return $resource( apiUrl.getGenericData, {} );
 }]);

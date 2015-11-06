@@ -4,7 +4,7 @@
     <div class="form-group">
       <label class="control-label">Select:</label>
       <div class="form-group">
-        <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in pmsdata track by value.id" ng-change="getSelectedCategoryData()">
+        <select class="selectpicker form-control" ng-model="selectedItem" id="slct" ng-options="value.name for value in metadata.genericData track by value.id" ng-change="getSelectedCategoryData()">
                   
         </select>
       </div>
