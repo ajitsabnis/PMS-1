@@ -7,8 +7,8 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', 'apiUrl',
-							function ($scope, $http, Addtest, addtestDropdown, apiUrl) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope','Addtest', 'addtestDropdown',
+							function ($scope, Addtest, addtestDropdown) {
 
    
 	
@@ -26,10 +26,6 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     	]
     };
     function init() {
-        /*$http.get(apiUrl + 'addtest').success(function(data) {
-            console.log(apiUrl);
-            $scope.myData = data;
-        }); */ 
         addtestDropdown.addtest.get({}, function (record){
         $scope.myData = record.data;
     });  
