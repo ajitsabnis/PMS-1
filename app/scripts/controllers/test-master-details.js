@@ -7,19 +7,10 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest',
-							function ($scope,$http,Addtest) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', 'apiUrl',
+							function ($scope, $http, Addtest, addtestDropdown, apiUrl) {
 
-    $scope.add=function(val1) {
-        var userVal = val1;
-        $scope.arr1.push(userVal);
-        userVal = {};
-        $scope.val = {};
-  };
-	/*console.log('Hi This is loger');
-    Addtest.get({}, function (record){
-      $scope.test = record.data;
-    });*/
+   
 	
     $scope.myData = {
     	columnDefs: [
@@ -35,10 +26,58 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     	]
     };
     function init() {
-        $http.get('http://localhost:81/PMS/services/index.php/test').success(function(data) {
+        /*$http.get(apiUrl + 'addtest').success(function(data) {
+            console.log(apiUrl);
             $scope.myData = data;
-        });    
+        }); */ 
+        addtestDropdown.addtest.get({}, function (record){
+        $scope.myData = record.data;
+    });  
     }
     
     init();  
+
+    $scope.add = function() {
+
+      var data = {
+        name:  $scope.tstname,
+        heading: $scope.hding,
+        shortname: $scope.tc,
+        remark: $scope.remark,
+        flg: $scope.selectedflag.id,
+        mthd: $scope.selectedmthd.id,
+        smpl:  $scope.selectedsmpl.id,
+        instrument: $scope.selectedinstmt.id,
+        charges: $scope.tch,
+        grp: $scope.selectedgrp.id
+
+      };
+
+      addtest.save(angular.toJson(postData), function(responce) {
+        console.log(responce);
+      });
+    };
+
+
+    addtestDropdown.instrument.get({}, function (record){
+      $scope.instrument = record.data;
+    });
+
+    addtestDropdown.sample.get({}, function (record){
+      $scope.sample = record.data;
+    });
+
+    addtestDropdown.methode.get({}, function (record){
+      $scope.methode = record.data;
+    });
+
+    addtestDropdown.group.get({}, function (record){
+      $scope.group = record.data;
+    });
+
+    addtestDropdown.flag.get({}, function (record){
+      $scope.flag = record.data;
+    });
+
+
 }]);

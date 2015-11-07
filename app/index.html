@@ -5,6 +5,10 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <base href="/" />
+    <!-- build:remove -->
+      <link id="apiRoot" href="http://localhost/PMS-1/"/>
+    <!-- endbuild -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -14,10 +18,8 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/custom.css">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"><!-- ui-grid table link -->
+
     <!-- endbuild -->
-    <link rel="stylesheet" 
-      href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style><!-- link for data table -->
   </head>
   <body ng-app="pmsApp">
     <!--[if lte IE 8]>
@@ -64,6 +66,10 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/csv/index.js"></script>
+    <script src="bower_components/pdfmake/index.js"></script>
+    <script src="bower_components/vfs_fonts/index.js"></script>
+    <script src="bower_components/CSV-JS/csv.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -101,12 +107,6 @@
         <script src="scripts/controllers/pms-reports.js"></script>
         <script src="scripts/controllers/change-pin.js"></script>
         <script src="scripts/controllers/entire-test.js"></script>
-        <script type="text/javascript" 
-                src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" 
-                src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script><!-- uigrid links -->
-        <!-- Services-->
-        <script src="scripts/services/generic.js"></script>
         <script src="scripts/services/genericcat.js"></script>
         <script src="scripts/services/myservice.js"></script>
         <script src="scripts/services/api-url.js"></script>
@@ -115,12 +115,11 @@
          <script src="scripts/directives/navigationdir.js"></script>
         <script src="scripts/directives/footerdir.js"></script>
 
-
-        <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-       <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-       <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
-       
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/addtest-dropdown.js"></script>
+        <script src="scripts/services/snippet.js"></script>
+        <script src="scripts/services/flagservice.js"></script>
+        <script src="scripts/services/apiurl.js"></script>
         <!-- endbuild -->
-</body>
+  </body>
 </html>

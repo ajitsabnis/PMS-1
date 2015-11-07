@@ -3,5 +3,6 @@
 /.tmp
 /.sass-cache
 /bower_components
-/services
+/services/application/config/database.php
 /theme
+/.gitignore
