@@ -1,81 +1,150 @@
-<h2>This is the 2nd page of workflow view</h2>
+<h2>This is the 2nd page of workflow view(workflow list</h2>
 
 <div class="col-md-10">
-	                         <div class="col-md-4">
-							        <label for="first">pending</label>
-			                        <input id="first" type="checkbox" name="content1" ng-model="pending"  value="first">
-			                  </div>
+	                       <div class="form-inline col-md-4">
+	                       <div class="btn-group ">
+                  <button type="button" class="btn btn-info btn-lg dropdown-toggle " data-toggle="dropdown">
+                    Pending tests
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>pending tests and other information</li>
+                    <li><a href="#">thyroid</a></li>
+                    <li><a href="#">sugar</a></li>
+                    <li><a href="#">blood and urine</a></li>
+                  </ul>
+                </div></div>
 
-							    <div class="col-md-4">
-							       <label for="second">completed</label>
-			                       <input id="second" type="checkbox" name="content2" ng-model="comp" value="second">
-							    </label></div>
+                 <div class="form-inline col-md-4 ">
+	                       <div class="btn-group ">
+                  <button type="button" class="btn btn-info btn-lg dropdown-toggle btn-animate-demo" data-toggle="dropdown">
+                    completed tests
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>completed tests and other information</li>
+                    <li><a href="#">sugar</a></li>
+                    <li><a href="#">blood </a></li>
+                  </ul>
+                </div></div>
 
-							    <div class="col-md-4">
-							        <label for="third">history</label>
-			                       <input id="third" type="checkbox" name="content3" ng-model="his" value="third"></div>
-							    </label>
-</div><hr class="divider">
+                 <div class="form-inline col-md-4">
+	                       <div class="btn-group ">
+                  <button type="button" class="btn btn-info btn-lg dropdown-toggle btn-animate-demo" data-toggle="dropdown">
+                    Patient's History
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>test related history of the patient</li>
+                    <li><a href="#">linl</a></li>
+                    <li><a href="#">link</a></li>
+                  </ul>
+                </div><hr class="divider"></div>
+</div>
   
-                     <div class="col-md-10">
-                     	    <div class="row">
-                	<div class="col-md-4">    
-			           	<label  class="control-label" for="inputdefault">Barcode</label>:
-			           	</div>
-			           	<div class="col-md-7">
-							<input  class="form-control" ng-model="brc" id="741" type="text" placeholder="barcode">
-					   </div>
-					   </div>
-<hr class="divider">					   
-					<div class="row">
-                	<div class="col-md-4">    
-			           	<label  class="control-label">Date</label>:
-			           	</div>
-			           	<div class="col-md-7">
-							<input  class="form-control" ng-model="de" id="444" type="number" placeholder="date" >
-					   </div>
-					   </div>
+                    <div class="col-md-10 addBorder">
+                      
 
-					   <hr class="divider">					   
-					<div class="row">
-                	<div class="col-md-4">    
-			           	<label  class="control-label">Patient name</label>:
-			           	</div>
-			           	<div class="col-md-7">
-							<input  class="form-control" ng-model="pnme" id="412" type="text" placeholder="patient name" >
-					   </div>
-					   </div>
+                          <form role="inline">        <!--  first form  -->
+				   
 
-					    <hr class="divider">					   
-					<div class="row">
-                  
-					<div class="col-md-4">
-					           <label>Gender</label>:
-			           	   </div>
-			           	       <div class="col-md-4">
-							        <label for="first">Male</label>
-			                        <input id="first" type="checkbox">
-			                  </div>
+				    <div class="form-group col-md-6 ">	          
+				            <label class="control-label" for="inputdefault">Barcode:</label>
+			        </div>
 
-							    <div class="col-md-4">
-							       <label for="second">Female</label>
-			                       <input id="second" type="checkbox">
-							    </label></div>
 
-							    <hr class="divider">					   
-					
-                	<div class="col-md-4">    
-			           	<label  class="control-label">Age</label>:
-			           	</div>
-			           	<div class="col-md-4">
-							<input  class="form-control" ng-model="ae" id="785" type="number">
-					   </div>
-					   </div></div><hr class="divider">
+                    <div class="form-group col-md-6">
 
-					   <div class="col-md-4">    
-			           	<label  class="control-label">Test</label>:
-			           	</div>
+				            <label class="control-label" for="inputdefault">Date:</label>
+			        </div>
 
+			        <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">patient name :</label>
+			        </div>
+
+			        <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">gender:</label>
+			        </div>
+
+			        <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">age:</label>
+			        </div>
+                 
+                    <div class="col-md-12">           
+				     <div class=" form-group col-md-2">
+						   <label  class="control-label">Test</label>:
+				           	</div> 
+			           	 <div class="col-md-10">
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="red" /> 
+							</svg> 
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="skyblue" /> 
+							</svg> 
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="black" /> 
+							</svg> 
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="violet" /> 
+							</svg> 
+			           	</div> </div> 
+			           
+			           	</div> 
+			           	</form>											
+ </div><hr class="divider">
+
+                   <div class="col-md-10 addBorder">
+
+
+                          <form role="inline">        <!--  first form  -->
+				   
+
+				    <div class="form-group col-md-6 ">	          
+				            <label class="control-label" for="inputdefault">Barcode:</label>
+			        </div>
+
+
+                    <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">Date:</label>
+			        </div>
+
+			        <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">patient name :</label>
+			        </div>
+
+			        <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">gender:</label>
+			        </div>
+
+			        <div class="form-group col-md-6">	          
+				            <label class="control-label" for="inputdefault">age:</label>
+			        </div>
+                 
+                    <div class="col-md-12 ">           
+				     <div class=" form-group col-md-2">
+						   <label  class="control-label">Test</label>:
+				           	</div> 
+			           	 <div class="col-md-10">
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="red" /> 
+							</svg> 
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="skyblue" /> 
+							</svg> 
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="black" /> 
+							</svg> 
+							<svg height="90" width="90">
+							  <circle cx="50" cy="50" r="8" hieght="20" width="20" stroke="black" stroke-width="1" fill="violet" /> 
+							</svg> 
+			           	</div> </div> 
+			           
+			           	</div>  
+			           	</form>	
+			          <style> 	.addBorder {
+    border: 2px solid black;
+}	</style>									
+ </div>
 
 
 
