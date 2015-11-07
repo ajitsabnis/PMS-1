@@ -3,9 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/controllers/CosRestController.php';
 class Citys extends CosRestController
 {
+  public  function __construct() {
+        parent::__construct();
+        $this->load->database();
+        //$this->load->model('user_model');
+   }
   public function index_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('city_id AS city_id, city_name AS city_name');
     $this->db->distinct();
     $this->db->order_by("city_name", "asc");
@@ -14,7 +19,7 @@ class Citys extends CosRestController
 
   public function city_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $id = $this->get('id');
     $this->db->select('city_id AS city_id, city_name AS city_name');
     $this->db->distinct();
@@ -32,7 +37,7 @@ public function index_post()
         'city_name' => $this->post('city_name'),
       );
 
-      $this->load->database();
+      //$this->load->database();
       $this->load->helper('array');
 
       $this->db->where('city_name',element( 'city_name', $user ));
