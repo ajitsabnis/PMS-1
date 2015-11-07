@@ -14,7 +14,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.metadata = {
       genericData: "",
       gname: ""
-    }
+    };
     function init() {
       generic.get(function (argument) {
         $scope.metadata.genericData = argument.data;
@@ -28,16 +28,16 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
         category_id: $scope.selectedItem.id
       };
 
-      var postData = {
+      var updateData = {
         generic_name: $scope.metadata.gname,
         generic_id: $scope.selectedItem.id
       };
 
       genericService.save(angular.toJson(postData), function(responce) {
-        $scope.metadata.gname = "";
         if(responce.data.message === "User added succefully") {
-          $scope.gridOptions.data.push(postData);
+          $scope.gridOptions.data.push(updateData);
         }
+        $scope.metadata.gname = "";
       });
   };
 
@@ -97,7 +97,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
         category_id: category_id,
         generic_id: generic_id
 
-    }
+    };
       
       genericService.recordDelete(testData, function(responce) {
         console.log(responce);
