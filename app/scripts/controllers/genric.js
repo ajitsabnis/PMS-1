@@ -42,13 +42,10 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   };
 
   $scope.getSelectedCategoryData = function() {
-    $scope.id = $scope.selectedItem.id;
-    genericService.get({id:$scope.id}, function (valu){
+    genericService.get({id: $scope.selectedItem.id}, function (valu){
       var selectedCategoryData = {
         data: valu.data
       };
-      $scope.pms = valu.data;
-
       $scope.gridOptions.data = selectedCategoryData.data;
     });
   };
@@ -58,7 +55,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     var matcher = new RegExp($scope.filterValue);
     renderableRows.forEach( function( row ) {
       var match = false;
-      [ 'category_id', 'generic_name', 'generic_id', 'Action' ].forEach(function( field ){
+      [ 'category_id', 'generic_name', 'Action' ].forEach(function( field ){
         if ( row.entity[field].match(matcher) ){
           match = true;
         }
@@ -73,7 +70,6 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   $scope.gridOptions = {
     enableFiltering: false,
     onRegisterApi: function(gridApi){
-      console.log("in registerApi");
       $scope.gridApi = gridApi;
       $scope.gridApi.grid.registerRowsProcessor( $scope.singleFilter, 200 );
     },
@@ -81,8 +77,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     paginationPageSize: 25,
     columnDefs: [
       { name: 'generic_name', displayName: 'Name' },
-      { name: 'generic_id', enableCellEdit: false },
-      { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity.category_id,row.entity.generic_id)"><span class="glyphicon glyphicon-trash"></span></button>'}
+      { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity)"><span class="glyphicon glyphicon-trash"></span></button>'}
     ]
   };
   
@@ -92,14 +87,14 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.gridApi.grid.refresh();
   };
 
-  $scope.deleteRecord = function(category_id, generic_id){
+  $scope.deleteRecord = function(deleteData){
       var testData = {
-        category_id: category_id,
-        generic_id: generic_id
+        genericId: deleteData.generic_id,
+        rowId: deleteData.row_id
 
     };
       
-      genericService.recordDelete(testData, function(responce) {
+      genericService.delete(testData, function(responce) {
         console.log(responce);
       });
   };
