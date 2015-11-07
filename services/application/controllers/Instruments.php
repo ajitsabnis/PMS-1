@@ -102,28 +102,16 @@ class Instruments extends CosRestController
   public function index_post()
   {
     try {
-      // $fName = $this->input->post("firstName");
-      // $fName = $_POST["firstName"];
-      // $this->load->library('encrypt');
-      //$_POST["instrument_id"] = 2;
-      //$_POST["instrument_name"] = "Instruments-2";
-      //$_POST["generic_id"] = 1;
-      //$this->post('generic_id');
+      
        $this->load->database();
        $this->load->helper('array');
-       //$query = "";
-      // $user ="";
+      
        switch ($this->post('category_id')) {
          case 1:
                   $user = array(
                           //'generic_instrument_id'=> $this->post('generic_instrument_id'),
                           'generic_instrument_name'=> $this->post('generic_name'),
                           'generic_category_id'=> $this->post('category_id')
-                              /*'isBlock' => 1,
-                                'csOtp'=> rand(pow(10, 3), pow(10, 4)-1),
-                                'csPassword' => MD5($this->post('password')),
-                                'ipAddress' => $this->input->ip_address(),
-                                'createdDateTime' => date("Y-m-d H:i:s")*/
                               );
                     //print_r($user);
                     $this->db->where('generic_instrument_name', element('generic_instrument_name', $user));
