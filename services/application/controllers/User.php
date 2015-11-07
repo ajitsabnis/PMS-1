@@ -7,7 +7,7 @@ class User extends CosRestController
 
  public function __construct() {
         parent::__construct();
-          $this->load->database();
+        $this->load->database();
         $this->load->model('user_model');
    }
 
@@ -20,38 +20,28 @@ class User extends CosRestController
 	$listArr=array();
 	if($user_id > 0)
 	{
-
-
-	$resultRow=$this->user_model->getUserInfo($user_id);
-	$listArr['user_name']=trim($resultRow->user_name);
-	$listArr['modules']=$this->user_model->getUserAssignedModule($user_id);
-	//$listArr['access']=$this->user_model->getUserAssignedModuleAssigned($user_id);
+		$resultRow=$this->user_model->getUserInfo($user_id);
+		$listArr['user_name']=trim($resultRow->user_name);
+		$listArr['modules']=$this->user_model->getUserAssignedModule($user_id);
+		//$listArr['access']=$this->user_model->getUserAssignedModuleAssigned($user_id);
 	
-	$result=$this->user_model->getUserAssignedModuleAssigned($user_id);
+		$result=$this->user_model->getUserAssignedModuleAssigned($user_id);
 	
 
-	$listArrModulesAccess=array();
-	foreach($result as $row)
-	{
-		
-		$listArrModulesFinal[$row->module_name]=$row;
-	}
-
-	
-	$listArr['access']=$listArrModulesFinal; 
-	$response=array("status" => "success","messege" => "ok","user_detail" => $listArr);
-	
-	
-	
+		$listArrModulesAccess=array();
+		foreach($result as $row)
+		{
+			
+			$listArrModulesFinal[$row->module_name]=$row;
+		}
+		$listArr['access']=$listArrModulesFinal; 
+		$response=array("status" => "success","messege" => "ok","user_detail" => $listArr);
 	}
 	else
 	{
-	$response=array("status" => "error","messege" => "Invalid Login","user_detail" => $listArr);
+		$response=array("status" => "error","messege" => "Invalid Login","user_detail" => $listArr);
 	} 
 	    $this->response($response);
-		
-		
-	
     }
 	
 	

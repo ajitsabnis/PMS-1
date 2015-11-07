@@ -4,9 +4,14 @@ require APPPATH . '/controllers/CosRestController.php';
 
 class testdropdown extends CosRestController
 {
+  public function __construct() {
+        parent::__construct();
+        $this->load->database();
+        //$this->load->model('user_model');
+   }
   public function index_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('generic_instrument_name AS name, generic_instrument_id AS id');  //csId
      $this->db->distinct();
    // $this->db->order_by("generic_instrument_name", "asc");
@@ -15,7 +20,7 @@ class testdropdown extends CosRestController
 
   public function sample_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('generic_sample_name AS name, generic_sample_id AS id');  //csId
      $this->db->distinct();
    // $this->db->order_by("generic_instrument_name", "asc");
@@ -24,7 +29,7 @@ class testdropdown extends CosRestController
 
    public function methode_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('generic_method_name AS name, generic_method_id AS id');  //csId
      $this->db->distinct();
    // $this->db->order_by("generic_instrument_name", "asc");
@@ -33,7 +38,7 @@ class testdropdown extends CosRestController
 
    public function group_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('generic_group_name AS name, generic_group_id AS id');  //csId
      $this->db->distinct();
    // $this->db->order_by("generic_instrument_name", "asc");
@@ -43,7 +48,7 @@ class testdropdown extends CosRestController
 
   public function flag_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('flag_name AS name, flag_id AS id');  //csId
      $this->db->distinct();
    // $this->db->order_by("generic_instrument_name", "asc");

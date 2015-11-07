@@ -5,9 +5,15 @@ require APPPATH . '/controllers/CosRestController.php';
 
 class Instruments extends CosRestController
 {
+  public function __construct() {
+        parent::__construct();
+        $this->load->database();
+//        $this->load->model('user_model');
+  }
+
   public function index_get() /**/
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('generic_cate_id AS id, generic_cate AS name');  
     $this->db->distinct();
     $this->db->order_by("generic_cate", "asc");
@@ -20,7 +26,7 @@ class Instruments extends CosRestController
     $category_id = $this->post('category_id');
     $generic_id = $this->post('generic_id');
     
-     $this->load->database();
+     //$this->load->database();
       switch ($generic_id) {
          case 1:
                 $this->db->where('generic_instrument_id', $category_id);
@@ -65,7 +71,7 @@ class Instruments extends CosRestController
   public function instrument_get()
   {
 
-    $this->load->database();
+    //$this->load->database();
     $id = $this->get('id');
       switch ($id) {
          case 1:
@@ -119,7 +125,7 @@ class Instruments extends CosRestController
 
            case 7 :
 
-                  $this->db->select('generic_staff_category_name AS generic_name, generic_category_id AS generic_id');
+                 $this->db->select('generic_staff_category_name AS generic_name, generic_category_id AS generic_id');
                  $this->db->distinct();
                  $this->db->order_by("generic_staff_category_name", "asc");
                  $this->db->where('generic_category_id', $id);
@@ -134,7 +140,7 @@ class Instruments extends CosRestController
   public function instrument_post()
   {
     try {
-       $this->load->database();
+       //$this->load->database();
        $this->load->helper('array');
        switch ($this->post('category_id')) {
          case 1:
