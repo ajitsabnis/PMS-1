@@ -8,22 +8,73 @@
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('patientMasterCtrl', ['flagService', function ($scope, flagService) {
-    $scope.arr1=[];
-    $scope.add = function() {
-      $scope.add=function(val1) {
-        var userVal = val1;
-        $scope.arr1.push(userVal);
-        userVal = {};
-        $scope.val = {};
-  };
+  .controller('patientMasterCtrl', ['$scope', 'patientMaster', function ($scope, patientMaster) {
+
+    $scope.gndr = [
+      {id: '1',gender:'Male'},
+      { id: '2',gender:'Female'},
+      ];
+
+      init();      
+      
+
+      $scope.add = function() {
+
+      var postData = {
+        id:  $scope.pid,
+        name: $scope.pnm,
+       address: $scope.adrs,
+        state: $scope.sts.id,
+        distric: $scope.dst.id,
+        dob: $scope.dob,
+        gender:  $scope.gdr.gender,
+        phone: $scope.phn,
+        mobile: $scope.mble,
+        email: $scope.email
+
+      };
+
+      patientMaster.patient.save(angular.toJson(postData), function(responce) {
+        console.log(responce);
+      });
+    };
    
-          var data = {
-                
-          };
-          flagService.save( data, function(responce) {
-            console.log( 'Data Saved Successfully');
-            $scope.myData = responce;
-          });
-  		};
+       $scope.patientinfo = {
+        columnDefs: [
+          {name: 'id'},
+          {name: 'name'},
+          {name: 'address'},
+          {name: 'city'},
+          {name: 'dob'},
+          {name: 'gender'},
+          {name: 'mobile'},
+          {name: 'phone'},
+          {name: 'email'},
+          { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity.category_id,row.entity.generic_id)"><span class="glyphicon glyphicon-pencil"></span></button>'}
+        ]
+    };
+    function init() {
+      patientMaster.states.get(function(record) {
+        $scope.state = record.data;
+      });  
+
+       patientMaster.distric.get(function(record) {
+        $scope.districs = record.data;
+      }); 
+
+       patientMaster.patient.get(function(record) {
+        $scope.patientinfo.data = record.data;
+      });   
+    }
+
+    
+   /* patientMaster.citys.get({}, function (record){
+      $scope.citys = record.data;
+    });
+
+    patientMaster.districts.get({}, function (record){
+      $scope.districts = record.data;
+    }); */
+
+    
   }]);
