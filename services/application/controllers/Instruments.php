@@ -5,9 +5,15 @@ require APPPATH . '/controllers/CosRestController.php';
 
 class Instruments extends CosRestController
 {
+  public function __construct() {
+        parent::__construct();
+        $this->load->database();
+//        $this->load->model('user_model');
+  }
+
   public function index_get() /**/
   {
-    $this->load->database();
+    //$this->load->database();
     $this->db->select('generic_cate_id AS id, generic_cate AS name');  
     $this->db->distinct();
     $this->db->order_by("generic_cate", "asc");
@@ -69,7 +75,7 @@ class Instruments extends CosRestController
   public function instrument_get()
   {
 
-    $this->load->database();
+    //$this->load->database();
     $id = $this->get('id');
     $is_delete = 0;
       switch ($id) {

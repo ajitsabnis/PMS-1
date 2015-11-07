@@ -12,8 +12,9 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
                                       function ($scope, generic, genericService) {
 
     $scope.metadata = {
-      genericData : ""
-    }
+      genericData: "",
+      gname: ""
+    };
     function init() {
       generic.get(function (argument) {
         $scope.metadata.genericData = argument.data;
@@ -23,20 +24,26 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.add = function(){
 
       var postData = {
-        generic_name: $scope.gname,
+        generic_name: $scope.metadata.gname,
         category_id: $scope.selectedItem.id
       };
 
+      var updateData = {
+        generic_name: $scope.metadata.gname,
+        generic_id: $scope.selectedItem.id
+      };
 
-      genericService.save(postData, function(responce) {
-        console.log(responce);
-        $scope.getSelectedCategoryData();
+      genericService.save(angular.toJson(postData), function(responce) {
+        if(responce.data.message === "User added succefully") {
+          $scope.gridOptions.data.push(updateData);
+        }
+        $scope.metadata.gname = "";
       });
   };
 
-  $scope.getGenericData = function() {
+  $scope.getSelectedCategoryData = function() {
     $scope.id = $scope.selectedItem.id;
-    genericService.getGenericData({id:$scope.id}, function (valu){
+    genericService.get({id:$scope.id}, function (valu){
       var selectedCategoryData = {
         data: valu.data
       };
@@ -73,7 +80,6 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     paginationPageSizes: [25, 50, 75],
     paginationPageSize: 25,
     columnDefs: [
-      { name: 'category_id', enableCellEdit: false },
       { name: 'generic_name', displayName: 'Name' },
       { name: 'generic_id', enableCellEdit: false },
       { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity.category_id,row.entity.generic_id)"><span class="glyphicon glyphicon-trash"></span></button>'}
@@ -91,7 +97,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
         category_id: category_id,
         generic_id: generic_id
 
-    }
+    };
       
       genericService.recordDelete(testData, function(responce) {
         console.log(responce);
