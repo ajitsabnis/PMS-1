@@ -7,11 +7,9 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope','Addtest', 'addtestDropdown',
-							function ($scope, Addtest, addtestDropdown) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown',
+							function ($scope, $http, Addtest, addtestDropdown) {
 
-   
-	
     $scope.myData = {
     	columnDefs: [
     		{name: 'name'},
@@ -49,7 +47,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope','Addtest',
 
       };
 
-      addtest.save(angular.toJson(postData), function(responce) {
+      Addtest.save(angular.toJson(data), function(responce) {
         console.log(responce);
       });
     };

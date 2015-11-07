@@ -3,13 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/controllers/CosRestController.php';
 class Districts extends CosRestController
 {
+  public function __construct() {
+        parent::__construct();
+        $this->load->database();
+        //$this->load->model('user_model');
+   }
   public function index_get()
   {
     // $this->load->database();
     // $this->response( $this->db->get('district')->result() );
     // $data = array('returned: '. $this->get('id'));
     // $this->response($data);
-    $this->load->database();
+    //$this->load->database();
     // $this->db->select('districtID, districtName');
     // $sql = $this->db->get_compiled_select( 'districts' );
     // $this->response( $sql );
@@ -21,7 +26,7 @@ class Districts extends CosRestController
 
   public function district_get()
   {
-    $this->load->database();
+    //$this->load->database();
     $id = $this->get('id');
     $this->db->select('district_id AS district_id, district_name AS district_name');
     $this->db->distinct();
@@ -39,7 +44,7 @@ public function index_post()
         'district_name' => $this->post('district_name'),
       );
 
-      $this->load->database();
+      //$this->load->database();
       $this->load->helper('array');
 
       $this->db->where('district_name',element( 'district_name', $user ));
