@@ -127,28 +127,28 @@
 
 		             		<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Unit:</label>
-			          			<input type="text"class="form-control" ng-model="td" id="124">
+			          			<input type="text"class="form-control" ng-model="tstunit" id="124">
 			          			<span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
             					<span ng-show="form.first.$error.required">Mandatory Field</span>
 		             		</div>
 
 		             		<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Min Refrance</label>
-			          			<input type="text" class="form-control" ng-model="td" id="124">
+			          			<input type="text" class="form-control" ng-model="minref" id="124">
 			          			<span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
             					<span ng-show="form.first.$error.required">Mandatory Field</span>
 		             		</div>
 
 		             		<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Min Age</label>
-			          			<input type="text" class="form-control" ng-model="td" id="124"+>
+			          			<input type="text" class="form-control" ng-model="mnage" id="124"+>
 			          			<span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
             					<span ng-show="form.first.$error.required">Mandatory Field</span>
 		             		</div>
 
 		             		<div class="form-group">     
 		            			<label  class="control-label" for="inputdefault">Gender</label>:
-						 		<select class="selectpicker form-control">
+						 		<select class="selectpicker form-control" ng-model="gndr">
 									<option>example</option>
 									<option>example</option> 
 						 		</select>
@@ -158,7 +158,7 @@
 						<div class="col-md-6"> 
 							<div class="form-group">     
 		            			<label  class="control-label" for="inputdefault">Exam Type</label>:
-						 		<select class="selectpicker form-control">
+						 		<select class="selectpicker form-control" ng-model="exmtyp">
 									<option>example</option>
 									<option>example</option> 
 						 		</select>
@@ -166,28 +166,28 @@
 
 						  	<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Order:</label>
-			          			<input type="text" class="form-control" ng-model="td" id="124">
+			          			<input type="text" class="form-control" ng-model="ordr" id="124">
 			          			<span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
             					<span ng-show="form.first.$error.required">Mandatory Field</span>
 		             		</div>
 
 	             			<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Max Refrance</label>
-			          			<input type="text" class="form-control" ng-model="td" id="124">
+			          			<input type="text" class="form-control" ng-model="mxref" id="124">
 			          			<span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
             					<span ng-show="form.first.$error.required">Mandatory Field</span>
 		             		</div>
 
 		             		<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Max Age</label>
-			          			<input type="text" class="form-control" ng-model="td" id="124">
+			          			<input type="text" class="form-control" ng-model="mxage" id="124">
 			          			<span style="color:red" ng-show="form.first.$dirty && form.first.$invalid"></span>
             					<span ng-show="form.first.$error.required">Mandatory Field</span>
 		             		</div>
 
 		            		<div class="form-group">	          
 			          			<label class="control-label" for="inputdefault">Min Age</label>
-			          			<input type="text" class="form-control" ng-model="td" id="124">
+			          			<input type="text" class="form-control" id="124">
 		             		</div>
 		             		<div class="form-group">
 		             			<button type="button" class="btn btn-success" ng-click="add(val)">Save</button>
