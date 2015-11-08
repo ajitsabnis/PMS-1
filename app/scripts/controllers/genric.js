@@ -46,6 +46,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       var selectedCategoryData = {
         data: valu.data
       };
+      $scope.categoryResultCount = selectedCategoryData.data.length;
       $scope.gridOptions.data = selectedCategoryData.data;
     });
   };
@@ -88,15 +89,14 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   };
 
   $scope.deleteRecord = function(deleteData){
-      var testData = {
-        genericId: deleteData.generic_id,
-        rowId: deleteData.row_id
-
-    };
+    var removeData = {
+      genericId: deleteData.generic_id,
+      rowId: deleteData.row_id
+    }
       
-      genericService.delete(testData, function(responce) {
-        console.log(responce);
-      });
+    genericService.delete({},removeData, function(responce) {
+      console.log(responce);
+    });
   };
 
   $scope.saveRow = function(rowEntity) {
