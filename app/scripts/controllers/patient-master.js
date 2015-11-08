@@ -20,12 +20,12 @@ angular.module('pmsApp')
 
       $scope.add = function() {
 
-      var postData = {
+      var data = {
         id:  $scope.pid,
-        name: $scope.pnm,
+        name: $scope.pname,
        address: $scope.adrs,
-        state: $scope.sts.id,
-        distric: $scope.dst.id,
+        state: $scope.sts.state_id,
+        distric: $scope.dst,
         dob: $scope.dob,
         gender:  $scope.gdr.gender,
         phone: $scope.phn,
@@ -34,7 +34,7 @@ angular.module('pmsApp')
 
       };
 
-      patientMaster.patient.save(angular.toJson(postData), function(responce) {
+      patientMaster.patient.save(angular.toJson(data), function(responce) {
         console.log(responce);
       });
     };
