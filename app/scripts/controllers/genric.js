@@ -46,6 +46,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       var selectedCategoryData = {
         data: valu.data
       };
+      $scope.categoryResultCount = selectedCategoryData.data.length;
       $scope.gridOptions.data = selectedCategoryData.data;
     });
   };

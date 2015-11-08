@@ -1,6 +1,6 @@
 <div class="generic">
   <h1>Generic</h1>
-  <form name="myForm">
+  <form name="myForm" ng-submit="add()">
     <div class="form-group">
       <label class="control-label">Select:</label>
       <div class="form-group">
@@ -8,25 +8,30 @@
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label">Add {{selectedItem.name}}</label>
-      <input type="text" name="user"  class="form-control input" ng-model="metadata.gname" required>
-      <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
-        <span ng-show="myForm.user.$error.required">Username is required.</span>
-      </span>
-    </div>
+    <div ng-if="selectedItem">
+      <div class="form-group">
+        <label class="control-label">Add {{selectedItem.name}}</label>
+        <input type="text" name="user"  class="form-control input" ng-model="metadata.gname" required>
+        <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+          <span ng-show="myForm.user.$error.required">Username is required.</span>
+        </span>
+      </div>
 
-    <div class="form-group">
-      <button type="button" class="btn btn-primary btn" ng-click="add()">Add</button>
-      <button type="button" class="btn btn-warning btn" type="reset" value="Reset">clear</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn" ng-click="add()">Add</button>
+        <button type="reset" class="btn btn-warning btn" type="reset" value="Reset">clear</button>
+      </div>
     </div>
   </form>
 <!-- editable grid -->
-  <div>
+  <div ng-if="selectedItem && categoryResultCount">
     <input ng-model='filterValue'/>
 
     <button class="btn btn-primary" ng-click="filter()"><span class="glyphicon glyphicon-search"></span></button>
      
     <div ui-grid="gridOptions"  ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pagination class="grid"></div>
+  </div>
+  <div ng-if="selectedItem && !categoryResultCount">
+    <p><h4>No result found</h4></p>
   </div>
 </div>
