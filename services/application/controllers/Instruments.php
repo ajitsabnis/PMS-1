@@ -13,7 +13,6 @@ class Instruments extends CosRestController
 
   public function index_get() /**/
   {
-    //$this->load->database();
     $this->db->select('generic_cate_id AS id, generic_cate AS name');  
     $this->db->distinct();
     $this->db->order_by("generic_cate", "asc");
@@ -26,6 +25,7 @@ class Instruments extends CosRestController
     $gId = $this->get('genericId');
     $rowId = $this->get('rowId');
     $this->load->database();
+    echo "Pravin".$gId; exit();
 
     $rowData = array(
       'is_delete'=> 1
@@ -67,14 +67,13 @@ class Instruments extends CosRestController
                 $this->response(array("data" => $this->db->delete('generic_staff_category_master')->result()));
                 break;
         default:
-                $this->response(array("data" =>"Invalid input"));
+                $this->response(array("data" =>"Please check your input"));
                 break;
        }
   }
 
   public function instrument_get()
   {
-
     //$this->load->database();
     $id = $this->get('id');
     $is_delete = 0;
@@ -332,7 +331,7 @@ class Instruments extends CosRestController
       )));
     }
   }
-  
+
   public function instru_post()
     {
     try {
