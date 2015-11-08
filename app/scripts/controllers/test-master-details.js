@@ -20,12 +20,13 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     		{name: 'mthd'},
     		{name: 'smpl'},
     		{name: 'instrument'},
-    		{name: 'charges'}
+    		{name: 'charges'},
+            { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity.category_id,row.entity.generic_id)"><span class="glyphicon glyphicon-pencil"></span></button>'}
     	]
     };
     function init() {
-        addtestDropdown.addtest.get({}, function (record){
-        $scope.myData = record.data;
+        addtestDropdown.addtst.get({}, function (record){
+        $scope.myData.data = record.data;
     });  
     }
     
