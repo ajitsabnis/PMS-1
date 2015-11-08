@@ -10,8 +10,6 @@
 angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown',
 							function ($scope, $http, Addtest, addtestDropdown) {
 
-   
-	
     $scope.myData = {
     	columnDefs: [
     		{name: 'name'},
