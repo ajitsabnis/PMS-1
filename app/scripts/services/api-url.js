@@ -7,13 +7,20 @@
  * # apiUrl
  * Service in the pmsApp.
  */
-angular.module('pmsApp')
-  .constant('apiUrl', function () {
-	var BASE_URL = 'services/index.php/',
-        apiRoot = $('#apiRoot').attr('href') ? $('#apiRoot').attr('href') : '';
+angular.module('pmsApp').constant('apiUrl', function () {
+		var BASE_URL = 'services/index.php/',
+       		 apiRoot = $('#apiRoot').attr('href') ? $('#apiRoot').attr('href') : '';
 
     BASE_URL = apiRoot + BASE_URL;
     return {
-      'DISTRICT': BASE_URL + 'districts',
+      'getGenericData': BASE_URL + 'instruments',
+      'getSelectedCategoryData': BASE_URL + 'instruments/instrument',
+
+      'instrument': BASE_URL + 'testdropdown',
+      'sample' :  BASE_URL + 'testdropdown/sample',
+      'methode' :  BASE_URL + 'testdropdown/methode',
+      'group' :  BASE_URL + 'testdropdown/group',
+      'flag' :  BASE_URL + 'testdropdown/flag',
+      'Addtest': BASE_URL + 'addtest'
     };
   }());
