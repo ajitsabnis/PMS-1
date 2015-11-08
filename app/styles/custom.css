@@ -30,4 +30,8 @@
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
+
 }
+ .addBorder {
+    border: 2px solid black;
+}      
