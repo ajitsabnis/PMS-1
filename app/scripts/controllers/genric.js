@@ -93,8 +93,8 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       genericId: deleteData.generic_id,
       rowId: deleteData.row_id
     }
-      
-    genericService.delete({},removeData, function(responce) {
+    
+    genericService.remove(angular.toJson(removeData), function(responce) {
       console.log(responce);
     });
   };
