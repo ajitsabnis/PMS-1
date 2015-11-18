@@ -14,6 +14,7 @@ angular.module('pmsApp').constant('apiUrl', function () {
     BASE_URL = apiRoot + BASE_URL;
     return {
       'getGenericData': BASE_URL + 'instruments',
+      'updateGenericData': BASE_URL + 'instruments/instru',
       'getSelectedCategoryData': BASE_URL + 'instruments/instrument',
 
       'getStats': BASE_URL + 'states',
