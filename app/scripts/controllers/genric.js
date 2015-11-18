@@ -42,7 +42,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   };
 
   $scope.getSelectedCategoryData = function() {
-    genericService.get({id: $scope.selectedItem.id}, function (valu){
+    genericService.category.get({id: $scope.selectedItem.id}, function (valu){
       var selectedCategoryData = {
         data: valu.data
       };
@@ -93,14 +93,14 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       genericId: deleteData.generic_id,
       rowId: deleteData.row_id
     }
-      
-    genericService.delete({},removeData, function(responce) {
+    
+    genericService.category.remove(angular.toJson(removeData), function(responce) {
       console.log(responce);
     });
   };
 
   $scope.saveRow = function(rowEntity) {
-    genericService.updateGenericData.$promise.then(angular.toJson(rowEntity), function(responce) {
+    genericService.update.save(angular.toJson(rowEntity), function(responce) {
       $scope.gridOptions = responce.data[0];
     });
     
