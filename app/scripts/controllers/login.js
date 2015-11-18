@@ -13,7 +13,7 @@ angular.module('pmsApp').controller('LoginCtrl', ['$scope', 'loginService', func
     		username: $scope.user.username,
     		password: $scope.user.password
     	};
-    	loginService.save(loginCredentials, function(responce) {
+    	loginService.save(angular.toJson(loginCredentials), function(responce) {
     		console.log(responce);
     	});
     };
