@@ -11,7 +11,10 @@
 angular.module('pmsApp').factory('genericService',['$resource', 'API_BASE_URI', 'apiUrl', function ($resource, API_BASE_URI, apiUrl) {
 
     /*return $resource( apiUrl.saveGenericCategory, {} );*/
-    return $resource( apiUrl.getSelectedCategoryData, {} )
+    return{
+     		category:$resource( apiUrl.getSelectedCategoryData, {} ),
+    		update:$resource( apiUrl.updateGenericData, {} )
+    	};
 
     /*return $resource(API_BASE_URI + 'instruments/instrument/', {}, {
       saveGenericCategory:  {method:'POST',  params: {} , isArray:true},
