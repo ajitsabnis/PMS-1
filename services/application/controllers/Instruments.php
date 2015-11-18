@@ -22,9 +22,10 @@ class Instruments extends CosRestController
 
   public function instrument_delete() /*deleting the category from database*/
   {
+    $this->load->database();
+    $this->load->helper('array');
     $gId = $this->get('genericId');
     $rowId = $this->get('rowId');
-    $this->load->database();
     echo "Pravin".$gId; exit();
 
     $rowData = array(
