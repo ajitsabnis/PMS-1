@@ -108,11 +108,11 @@ angular.module('pmsApp')
 
   $scope.deleteRecord = function(deleteData){
     var removeData = {
-      patientId: deleteData.patient_id,
-      rowId: deleteData.row_id
+      patientId: deleteData.id,
+      status: 'delete',
     }
     
-    patientMaster.patient.remove(angular.toJson(removeData), function(responce) {
+    patientMaster.patient.save(angular.toJson(removeData), function(responce) {
       console.log(responce);
     });
   };
