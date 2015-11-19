@@ -10,10 +10,10 @@
 angular.module('pmsApp').controller('LoginCtrl', ['$scope', 'loginService', function ($scope,loginService) {
     $scope.loginSubmit = function() {
     	var loginCredentials = {
-    		username: $scope.user.username,
+    		user_login_name: $scope.user.username,
     		password: $scope.user.password
     	};
-    	loginService.save(loginCredentials, function(responce) {
+    	loginService.save(angular.toJson(loginCredentials), function(responce) {
     		console.log(responce);
     	});
     };
