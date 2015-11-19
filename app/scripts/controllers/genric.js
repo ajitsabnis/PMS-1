@@ -33,7 +33,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
         generic_id: $scope.selectedItem.id
       };
 
-      genericService.save(angular.toJson(postData), function(responce) {
+      genericService.category.save(angular.toJson(postData), function(responce) {
         if(responce.data.message === "User added succefully") {
           $scope.gridOptions.data.push(updateData);
         }
