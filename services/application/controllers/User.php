@@ -11,9 +11,7 @@ class User extends CosRestController
         $this->load->model('user_model');
    }
 
-    public function login_post() {
-
-	
+    public function index_post() {
 	$user_login_name=trim($this->post('user_login_name'));
 	$password=$this->post('password');
 	$user_id=$this->user_model->chechUserExist($user_login_name,$password);
