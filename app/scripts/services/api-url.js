@@ -30,6 +30,6 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'flag' :  BASE_URL + 'testdropdown/flag',
       'Addtest': BASE_URL + 'addtest',
       'testdetails' : BASE_URL + 'testmasterdetail',
-      'login' : BASE_URL + 'user/login'
+      'login' : BASE_URL + 'user'
     };
   }());
