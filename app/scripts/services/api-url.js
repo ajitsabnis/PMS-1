@@ -29,6 +29,6 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'group' :  BASE_URL + 'testdropdown/group',
       'flag' :  BASE_URL + 'testdropdown/flag',
       'Addtest': BASE_URL + 'addtest',
-      'login' : BASE_URL + 'user'
+      'login' : BASE_URL + 'user/login'
     };
   }());
