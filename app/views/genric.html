@@ -1,6 +1,13 @@
 <div class="generic">
   <h1>Generic</h1>
+
   <form name="myForm" ng-submit="add()">
+    <section class="error-section" >  
+          <div class="row">
+            <div>
+            <alert class="col-lg-12 alert alert-success" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-click="closeAlert($index)" id="display-error-home">{{alert.msg}}</alert>
+          </div>
+          </div>
     <div class="form-group">
       <label class="control-label">Select:</label>
       <div class="form-group">
@@ -12,20 +19,21 @@
       <div class="form-group">
         <label class="control-label">Add {{selectedItem.name}}</label>
         <input type="text" name="user"  class="form-control input" ng-model="metadata.gname" required>
-        <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
-          <span ng-show="myForm.user.$error.required">Username is required.</span>
-        </span>
+        <!--<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+     <span ng-show="myForm.user.$error.required">Username is required.</span> -->
+        
+        
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-primary btn" ng-click="add()">Add</button>
-        <button type="reset" class="btn btn-warning btn" type="reset" value="Reset">clear</button>
+        <button type="submit" class="btn btn-primary btn">Add</button>
+        <button type="reset" class="btn btn-warning btn">clear</button>
       </div>
     </div>
   </form>
 <!-- editable grid -->
   <div ng-if="selectedItem && categoryResultCount">
-    <input ng-model='filterValue'/>
+    <input ng-model='filterValue'>
 
     <button class="btn btn-primary" ng-click="filter()"><span class="glyphicon glyphicon-search"></span></button>
      

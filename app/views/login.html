@@ -1,5 +1,13 @@
   <div class="container">
     <div class="row">
+      <section class="error-section" >  
+          <div class="row">
+            <div>
+            <alert class="col-lg-12 alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-click="closeAlert($index)" id="display-error-home">{{alert.msg}}</alert>
+          </div>
+          </div>
+      </section>
+
       <div class="col-sm-5 login-box">
         <div class="panel panel-default">
           <div class="panel-intro text-center">
