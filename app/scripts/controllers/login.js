@@ -14,7 +14,12 @@ angular.module('pmsApp').controller('LoginCtrl', ['$scope', 'loginService', func
     		password: $scope.user.password
     	};
     	loginService.save(angular.toJson(loginCredentials), function(responce) {
-    		/*console.log(responce);*/
+    		console.log(responce.status);
+            $scope.alerts = [];
+            if (responce.status == "error") {
+                $scope.alerts.push({msg: 'Invalid Username or password. Please try again', type:'danger'});
+            }
+            
     	});
     };
   }]);

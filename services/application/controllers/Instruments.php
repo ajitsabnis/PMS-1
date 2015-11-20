@@ -8,7 +8,6 @@ class Instruments extends CosRestController
   public function __construct() {
         parent::__construct();
         $this->load->database();
-//        $this->load->model('user_model');
   }
 
   public function index_get() /**/
@@ -20,13 +19,15 @@ class Instruments extends CosRestController
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
-  public function instrument_delete() /*deleting the category from database*/
+  public function instrument_post()) /*deleting the category from database*/
   {
-    $this->load->database();
+    /*$this->delete('id')*/
     $this->load->helper('array');
-    $gId = $this->get('genericId');
-    $rowId = $this->get('rowId');
-    echo "Pravin".$gId; exit();
+
+    $gId = $this->post('genericId');
+    /*$rowId = $this->get('rowId');*/
+    echo "Pravin1".$gId;
+    exit();
 
     $rowData = array(
       'is_delete'=> 1
@@ -409,97 +410,89 @@ class Instruments extends CosRestController
 
   public function instru_post()
     {
-    try {
-       //$this->load->database();
+      try {
        $this->load->helper('array');
-       switch ($this->post('category_id')) {
+       switch ($this->post('generic_id')) {
          case 1:
           $user = array(
-                  'generic_instrument_name'=> $this->post('generic_name'),
-                  'generic_category_id'=> $this->post('category_id'),
-                  'generic_instrument_id'=> $this->post('id')
-                              );
-                    $this->db->where('generic_instrument_id', element('generic_instrument_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
-                    $query = $this->db->get('generic_instrument_master');
-          $count = $query->num_rows();
-                    if( $count !== 0 ) {
-                      $this->db->update('generic_instrument_master', $user);
-                      $this->response(array("data" => array(
-                        "status" => 201,
-                        "id" => element( 'generic_instrument_name', $user ),
-                        "message" => "generic instrument name updated successfully"
-                      )));
-                    } else {
-                      $this->response(array("data" => array(
-                        "status" => 301,
-                        "message" => "generic instrument name not updated successfully",
-                        "query" => $this->db->last_query()
-                      )));
-                    }
-           break;
-          
-          case 2:
-                  $user = array(
-                          'generic_faculty_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'generic_faculty_id'=> $this->post('id')
-                              );
-                    $this->db->where('generic_faculty_id', element('generic_faculty_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
-                    $query = $this->db->get('generic_faculty_master');
+                  'generic_instrument_name'=> $this->post('generic_name'));
+                   $this->db->where('generic_category_id', element('generic_category_id', $user));
+                  $query = $this->db->get_where('generic_instrument_master', array('generic_instrument_name' => $this->post('generic_name')));
                     $count = $query->num_rows();
-                    if( $count !== 0 ) {
-                      $this->db->update('generic_faculty_master', $user);
-                      $this->response(array("data" => array(
+
+                   if($count == 0) {
+                    $this->db->where('generic_faculty_id', $this->post('row_id'));
+                    $this->db->update('generic_faculty_master',$user);
+                    $this->response(array("data" => array(
                         "status" => 201,
                         "id" => element( 'generic_faculty_name', $user ),
                         "message" => "generic faculty name updated successfully."
-                      )));
-                    } else {
-                      $this->response(array("data" => array(
-                        "status" => 301,
-                        "message" => "generic faculty name not updated successfully.",
-                        "query" => $this->db->last_query()
-                      )));
-                    }
-           break;
+                    )));
+                  } else {
+                    $this->response(array("data" => array(
+                      "status" => 301,
+                      "message" => "generic faculty name not updated successfully.",
+                      "query" => $this->db->last_query()
+                    )));
+                  }
+                  break;
+          
+          case 2:
+                  $user = array(
+                          'generic_faculty_name'=> $this->post('generic_name'));
+                           $this->db->where('generic_category_id', element('generic_category_id', $user));
+                           $query = $this->db->get_where('generic_faculty_master', array('generic_faculty_name' => $this->post('generic_name')));
+                             $count = $query->num_rows();
+
+                   if($count == 0) {
+                    $this->db->where('generic_faculty_id', $this->post('row_id'));
+                    $this->db->update('generic_faculty_master',$user);
+                    $this->response(array("data" => array(
+                        "status" => 201,
+                        "id" => element( 'generic_faculty_name', $user ),
+                        "message" => "generic faculty name updated successfully."
+                    )));
+                  } else {
+                    $this->response(array("data" => array(
+                      "status" => 301,
+                      "message" => "generic faculty name not updated successfully.",
+                      "query" => $this->db->last_query()
+                    )));
+                  }
+                  break;
 
           case 3 :
-                  $user = array(
-                'generic_exam_type_name'=> $this->post('generic_name'),
-                'generic_category_id'=> $this->post('category_id'),
-                'generic_exam_type_id'=> $this->post('id')
-                               );
-                    $this->db->where('generic_exam_type_id', element('generic_exam_type_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
-                    $query = $this->db->get('generic_exam_type_master');
-                    $count = $query->num_rows();
-                    if( $count !== 0 ) {
-                      $this->db->update('generic_exam_type_master', $user);
-                      $this->response(array("data" => array(
+                  $user = array('generic_exam_type_name'=> $this->post('generic_name'));
+                  $this->db->where('generic_category_id', element('generic_category_id', $user));
+                  $query = $this->db->get_where('generic_exam_type_master', array('generic_exam_type_name' => $this->post('generic_name')));
+                  $count = $query->num_rows();
+
+                  if($count == 0) {
+                    $this->db->where('generic_exam_type_id', $this->post('row_id'));
+                    $this->db->update('generic_exam_type_master',$user);
+                    $this->response(array("data" => array(
                         "status" => 201,
                         "id" => element( 'generic_exam_type_name', $user ),
                         "message" => "generic exam type name updated successfully."
-                      )));
-                    } else {
-                      $this->response(array("data" => array(
-                        "status" => 301,
-                        "message" => "generic exam type name not updated successfully.",
-                        "query" => $this->db->last_query()
-                      )));
-                    }
-           break;
+                    )));
+                  } else {
+                    $this->response(array("data" => array(
+                      "status" => 301,
+                      "message" => "generic exam type name not updated successfully.",
+                      "query" => $this->db->last_query()
+                    )));
+                  }
+                  break;
 
            case 4 :
                   $user = array(
                           'generic_group_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'generic_group_id'=> $this->post('id')
+                          'generic_category_id'=> $this->post('generic_id'),
+                          'generic_group_id'=> $this->post('row_id')
                               );
                     $this->db->where('generic_group_id', element('generic_group_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
-                    $query = $this->db->get('generic_group_master');
+                    $this->db->where('generic_category_id', element('generic_category_id', $user));
+                    $query = $query = $this->db->get_where('generic_group_master', array('generic_exam_type_name' => $this->post('generic_name')));
                     $count = $query->num_rows();
                     if( $count !== 0 ) {
                       $this->db->update('generic_group_master', $user);
@@ -520,12 +513,12 @@ class Instruments extends CosRestController
            case 5 :
                   $user = array(
                           'generic_method_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'generic_method_id'=> $this->post('id')
+                          'generic_category_id'=> $this->post('generic_id'),
+                          'generic_method_id'=> $this->post('row_id')
                               );
                     $this->db->where('generic_method_id', element('generic_method_id', $user));
                     $this->db->where('generic_category_id', element('generic_category_id', $user));
-          $query = $this->db->get('generic_method_master');
+                    $query = $this->db->get('generic_method_master');
                     $count = $query->num_rows();
                     if( $count !== 0 ) {
                       $this->db->pdate('generic_method_master', $user);
@@ -546,11 +539,11 @@ class Instruments extends CosRestController
            case 6 :
                   $user = array(
                           'generic_sample_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'generic_sample_id'=> $this->post('id')
+                          'generic_category_id'=> $this->post('generic_id'),
+                          'generic_sample_id'=> $this->post('row_id')
                               );
                     $this->db->where('generic_sample_id', element('generic_sample_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
+                    $this->db->where('generic_category_id', element('generic_category_id', $user));
                     $query = $this->db->get('generic_sample_master');
                     $count = $query->num_rows();
                     if( $count !== 0 ) {
@@ -572,11 +565,11 @@ class Instruments extends CosRestController
            case 7 :
                   $user = array(
                           'generic_staff_category_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'generic_staff_category_id'=> $this->post('id')
+                          'generic_category_id'=> $this->post('generic_id'),
+                          'generic_staff_category_id'=> $this->post('row_id')
                               );
                     $this->db->where('generic_staff_category_id', element('generic_staff_category_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
+                    $this->db->where('generic_category_id', element('generic_category_id', $user));
                     $query = $this->db->get('generic_staff_category_master');
                     $count = $query->num_rows();
                     if( $count !== 0 ) {
@@ -598,11 +591,11 @@ class Instruments extends CosRestController
            case 8 :
                   $user = array(
                           'contact_category_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'contact_category_id'=> $this->post('id')
+                          'generic_category_id'=> $this->post('generic_id'),
+                          'contact_category_id'=> $this->post('row_id')
                               );
                     $this->db->where('contact_category_id', element('contact_category_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
+                    $this->db->where('generic_category_id', element('generic_category_id', $user));
                     $query = $this->db->get('generic_contact_category');
                     $count = $query->num_rows();
                     if( $count !== 0 ) {
@@ -624,11 +617,11 @@ class Instruments extends CosRestController
            case 9 :
                   $user = array(
                           'employee_category_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('category_id'),
-              'employee_category_id'=> $this->post('id')
+                          'generic_category_id'=> $this->post('generic_id'),
+                          'employee_category_id'=> $this->post('row_id')
                               );
                     $this->db->where('employee_category_id', element('employee_category_id', $user));
-          $this->db->where('generic_category_id', element('generic_category_id', $user));
+                    $this->db->where('generic_category_id', element('generic_category_id', $user));
                     $query = $this->db->get('generic_employee_category');
                     $count = $query->num_rows();
                     if( $count !== 0 ) {
