@@ -1,15 +1,11 @@
-<div class="sidebar-holder">
+<div class="sidebar-holder" ng-if="isLogin">
                 <ul class="nav  nav-list">
 
                   <!-- sidebar to mini Sidebar toggle -->
-                  <li class="nav-toggle">
+                  <!--<li class="nav-toggle">
                     <button class="btn  btn-nav-toggle text-primary"><i class="fa fa-angle-double-left toggle-left"></i> </button>
-                  </li>
-
-
-                  <li class="active"><a href="index.html" data-original-title="Dashboard"><i class="fa fa-dashboard"></i><span class="hidden-minibar"> Dashboard </span></a></li>
-                  <li><a ui-sref="main" data-original-title="Home"><i class="fa fa-indent"></i><span class="hidden-minibar"> Home </span></a></li>
-
+                  </li> -->
+                  <!--<li><a ui-sref="login" data-original-title="Home"><i class="fa fa-indent"></i><span class="hidden-minibar"> Home </span></a></li> -->
                   <li class="submenu">
                     <a class="dropdown" ui-sref="genric" data-original-title="Generic"><i class="fa fa-book"></i><span class="hidden-minibar">  Generic <span class="badge bg-primary pull-right">14</span>
                     </a>
@@ -31,7 +27,7 @@
                     </ul>
                   </li>
 
-                  <li class="submenu">
+                  <!--<li class="submenu">
                     <a class="dropdown" ui-sref="login" data-original-title="Login"><i class="fa fa-tint"></i><span class="hidden-minibar">  Login <span class="badge bg-primary pull-right">7</span></a>
                     <ul>
                       <li><a href="404.html" data-original-title="404"><i class="fa fa-exclamation-circle"></i><span> 404 Error Page</span></a></li>
@@ -42,9 +38,9 @@
                       <li><a href="screens.html" data-original-title="SignUp"><i class="fa fa-smile-o"></i><span> Sign Up</span></a></li>
                       <li><a href="template.html" data-original-title="Template"><i class="fa fa-pagelines"></i><span> Template Page</span></a></li>
                     </ul> 
-                  </li>
+                  </li> -->
                   
-                  <li class="submenu"> <!-- Example for second level menu -->
+                  <li class="submenu" ng-if="checkVisible[1].is_visible"> <!-- Example for second level menu -->
                     <a class="dropdown" ui-sref="descriptive-test" data-original-title="UI Elements"><i class="fa fa-user"></i><span class="hidden-minibar">  Descriptive Test <span class="badge bg-primary pull-right">17</span></a>
                     <ul>
                       <li><a href="alerts.html" data-original-title="Alerts"><i class="fa fa-exclamation-triangle"></i><span> Alerts</span></a></li>
@@ -75,7 +71,7 @@
                     </ul>
                   </li>    
 
-                  <li class="submenu"> <!-- Example for second level menu -->
+                  <li class="submenu" ng-if="checkVisible[2].is_visible"> <!-- Example for second level menu -->
                     <a class="dropdown" ui-sref="testmaster" data-original-title="Testmaster"><i class="fa fa-table"></i><span class="hidden-minibar">  Testmaster <span class="badge bg-primary pull-right">3</span></a>
                     <ul>
                       <li><a href="basic-tables.html" data-original-title="Basic"><i class="fa fa-table"></i><span>  Basic Tables</span></a></li>
@@ -84,7 +80,7 @@
                     </ul> 
                   </li>
 
-                  <li class="submenu"> <!-- Example for Third level menu -->
+                  <li class="submenu" ng-if="checkVisible[3].is_visible"> <!-- Example for Third level menu -->
                     <a class="dropdown" ui-sref="flag-master" data-original-title="Flag Master"><i class="fa fa-sitemap"></i><span class="hidden-minibar"> Flag Master <span class="badge bg-primary pull-right">3</span></a>
                     <ul>
                       <li><a href="#" data-original-title="SubMenu"><i class="fa fa-android"></i><span> Submenu </span></a></li>
@@ -107,7 +103,7 @@
                     </ul> 
                   </li>
 
-                  <li class="submenu">
+                  <li class="submenu" ng-if="checkVisible[2].is_visible">
                     <a class="dropdown" ui-sref="patient-master" data-original-title="Patient Master"><i class="fa fa-list-alt"></i><span class="hidden-minibar"> Patient Master  <span class="badge bg-primary pull-right">9</span></a>
                     <ul>
                       <li ><a href="dropzone-file-upload.html" data-original-title="Dropzone"><i class="fa fa-level-down"></i><span>  Dropzone File Upload</span></a></li>
@@ -122,7 +118,7 @@
                     </ul> 
                   </li>
 
-                  <li class="submenu">
+                  <!--<li class="submenu">
                     <a class="dropdown" href="#" data-original-title="Charts"><i class="fa fa-bar-chart-o"></i><span class="hidden-minibar"> Charts  <span class="badge bg-primary pull-right">6</span></a>
                     <ul>
                       <li ><a href="basic-charts.html" data-original-title="Basic Charts"><i class="fa fa-bar-chart-o"></i><span>  Basic Charts</span></a></li>
@@ -142,9 +138,9 @@
                     </ul> 
                   </li>
 
-                  <li><a href="icons.html" data-original-title="Icons"><i class="fa fa-truck"></i><span class="hidden-minibar"> Icons</span></a></li>
+                  <li><a href="icons.html" data-original-title="Icons"><i class="fa fa-truck"></i><span class="hidden-minibar"> Icons</span></a></li> -->
 
-                   <li class="submenu">
+                   <li class="submenu" ng-if="checkVisible[1].is_visible">
                     <a class="dropdown" ui-sref="test-master-details" data-original-title="test master details"><i class="fa fa-list-alt"></i><span class="hidden-minibar"> test master details<span class="badge bg-primary pull-right">7</span></a>
                     <ul>
                       <li ><a href="dropzone-file-upload.html" data-original-title="Dropzone"><i class="fa fa-level-down"></i><span>  Dropzone File Upload</span></a></li>
@@ -159,7 +155,7 @@
                     </ul> 
                   </li>
 
-                   <li class="submenu">
+                   <li class="submenu" ng-if="checkVisible[1].is_visible">
                     <a class="dropdown" ui-sref="test-calculator" data-original-title="test calculator"><i class="fa fa-list-alt"></i><span class="hidden-minibar">test calculator<span class="badge bg-primary pull-right">5</span></a>
                     <ul>
                       <li ><a href="dropzone-file-upload.html" data-original-title="Dropzone"><i class="fa fa-level-down"></i><span>  Dropzone File Upload</span></a></li>
@@ -175,7 +171,7 @@
                   </li>
 
                  
-                  <li class="submenu">
+                  <li class="submenu" ng-if="checkVisible[0].is_visible">
                     <a class="dropdown" ui-sref="sample-collection" data-original-title="sample collection"><i class="fa fa-list-alt"></i><span class="hidden-minibar"> sample collection<span class="badge bg-primary pull-right">9</span></a>
                     <ul>
                       <li ><a href="dropzone-file-upload.html" data-original-title="Dropzone"><i class="fa fa-level-down"></i><span>  Dropzone File Upload</span></a></li>
