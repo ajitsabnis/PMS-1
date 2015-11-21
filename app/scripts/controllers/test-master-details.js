@@ -7,8 +7,8 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown',
-							function ($scope, $http, Addtest, addtestDropdown) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log', 
+							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log) {
 
     $scope.myData = {
     	columnDefs: [
@@ -21,7 +21,8 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     		{name: 'smpl'},
     		{name: 'instrument'},
     		{name: 'charges'},
-            { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity.category_id,row.entity.generic_id)"><span class="glyphicon glyphicon-trash"></span></button>'}
+        /*{name: 'Action', enableCellEdit: false, cellTemplate:'<span style="cursor:pointer" class="glyphicon glyphicon-pencil" ng-click="grid.appScope.open(row.entity)""></span>'}*/
+        { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.open(row.entity)"><span class="glyphicon glyphicon-pencil"></span></button>'}
     	]
     };
     function init() {
@@ -29,6 +30,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         $scope.myData.data = record.data;
     });  
     }
+    
     
     init();  
 
@@ -45,7 +47,6 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         instrument: $scope.selectedinstmt.id,
         charges: $scope.tch,
         grp: $scope.selectedgrp.id
-
       };
 
       Addtest.save(angular.toJson(data), function(responce) {
@@ -85,7 +86,59 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     });
   };
 
+  
+   $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+  $scope.ok = function () {
+    $uibModalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 
 
 
+}]);
+
+angular.module('pmsApp').controller('ModalInstanceCtrl',['$uibModalInstance', function ($scope, $uibModalInstance, items) {
+
+   $scope.items = ['item1', 'item2', 'item3'];
+  
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $uibModalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 }]);
