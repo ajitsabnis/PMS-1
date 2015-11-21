@@ -30,53 +30,81 @@ class Instruments extends CosRestController
 
         case 1:
                 $this->db->where('generic_instrument_id', $rowId);
-                $this->response(array("data" => $this->db->update('generic_instrument_master', $rowData)->result()));
+                $this->db->update('generic_instrument_master', $rowData);
+               $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
           
         case 2:
                 $this->db->where('generic_faculty_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_faculty_master')->result()));
-                break;
-
-        case 3:
-
-                $this->db->where('generic_exam_type_id', $rowId);
-
-                $this->db->update('generic_exam_type_master', $rowData);
-
+                $this->db->update('generic_faculty_master', $rowData);
                 $this->response(array("data" => array(
                     "status" => 201,
                     "message" => "Row deleted successfully"
                 )));
+                break;
 
+        case 3:
+                $this->db->where('generic_exam_type_id', $rowId);
+                $this->db->update('generic_exam_type_master', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
 
         case 4:
                 $this->db->where('generic_group_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_group_master')->result()));
+                $this->db->update('generic_group_master', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
 
         case 5:
                 $this->db->where('generic_method_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_method_master')->result()));
+                $this->db->update('generic_method_master', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
 
         case 6:
                 $this->db->where('generic_sample_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_sample_master')->result()));
+                $this->db->update('generic_sample_master', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
 
         case 7:
                 $this->db->where('generic_staff_category_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_staff_category_master')->result()));
+                $this->db->update('generic_staff_category_master', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
         case 8:
                 $this->db->where('contact_category_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_contact_category')->result()));
+                $this->db->update('generic_contact_category', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
         case 9:
                 $this->db->where('employee_category_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_employee_category')->result()));
+                $this->db->update('generic_employee_category', $rowData);
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
                 break;
         default:
                 $this->response(array("data" =>"Please check your input"));
