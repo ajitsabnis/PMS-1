@@ -2,16 +2,17 @@
 
 /**
  * @ngdoc function
- * @name pmsappApp.controller:AboutCtrl
+ * @name pmsApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the pmsappApp
+ * Controller of the pmsApp
  */
-angular.module('pmsappApp')
-  .controller('AboutCtrl', function () {
+angular.module('pmsApp')
+  .controller('AboutCtrl', function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+	$scope.users = [];
   });

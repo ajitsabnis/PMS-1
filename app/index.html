@@ -5,57 +5,51 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <!-- build:remove -->
+     <link id="apiRoot" href="http://localhost/PMS-1/"/>
+    <!-- endbuild -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="less/style.less" title="lessCss" id="lessCss">
+
     <!-- endbuild -->
   </head>
-  <body ng-app="pmsappApp">
+  <body ng-app="pmsApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">pmsapp</a>
+      <div id="wrapper">
+         <!-- <header class="header"> -->
+           <pms-navigation-dir></pms-navigation-dir>
+          <!-- </header> -->
+          <!-- Body Portion-->
+          <div class="box-holder">
+            <div class="left-sidebar">
+              <left-navigation-dir></left-navigation-dir>
+            </div>
+            <div class="content">
+              <div class="row">
+                <div class="col-mod-12">
+                  <div ui-view></div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
+          <!-- Footer Portion -->
+          <!-- <pms-footer-dir></pms-footer-dir> -->
       </div>
-    </div>
-
-    <div class="container">
-    <div ui-view></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+    
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -83,14 +77,66 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/csv/index.js"></script>
+    <script src="bower_components/pdfmake/index.js"></script>
+    <script src="bower_components/vfs_fonts/index.js"></script>
+    <script src="bower_components/CSV-JS/csv.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="js/less-1.5.0.min.js"></script>
         <script src="scripts/app.js"></script>
+        <!-- Controllers -->
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-		
+        <script src="scripts/controllers/genric.js"></script>
+        <script src="scripts/controllers/link-master.js"></script>
+        <script src="scripts/controllers/flag-master.js"></script>
+        <script src="scripts/controllers/patient-master.js"></script>
+        <script src="scripts/controllers/hospital-master.js"></script>
+        <script src="scripts/controllers/staff-master.js"></script>
+        <script src="scripts/controllers/descriptive-test.js"></script>
+        <script src="scripts/controllers/user-account.js"></script>
+        <script src="scripts/controllers/test-calculator.js"></script>
+        <script src="scripts/controllers/snippet-master.js"></script>
+        <script src="scripts/controllers/profile-master.js"></script>
+        <script src="scripts/controllers/patient-registration.js"></script>
+        <script src="scripts/controllers/test-master-details.js"></script>
+        <script src="scripts/controllers/bill-master-detail-view.js"></script>
+        <script src="scripts/controllers/pms-administration.js"></script>
+        <script src="scripts/controllers/pms-concise.js"></script>
+        <script src="scripts/controllers/visit-request-authentication.js"></script>
+        <script src="scripts/controllers/pms-receipt.js"></script>
+        <script src="scripts/controllers/pms-privilliges.js"></script>
+        <script src="scripts/controllers/id-management.js"></script>
+        <script src="scripts/controllers/todays-patient.js"></script>
+        <script src="scripts/controllers/sample-collection.js"></script>
+        <script src="scripts/controllers/cc-charges.js"></script>
+        <script src="scripts/controllers/branch-management.js"></script>
+        <script src="scripts/controllers/sample-received.js"></script>
+        <script src="scripts/controllers/concise-print.js"></script>
+        <script src="scripts/controllers/pms-reports.js"></script>
+        <script src="scripts/controllers/change-pin.js"></script>
+        <script src="scripts/controllers/entire-test.js"></script>
+        <script src="scripts/services/genericcat.js"></script>
+        <script src="scripts/services/myservice.js"></script>
+        <script src="scripts/services/api-url.js"></script>
+        <script src="scripts/services/addtest.js"></script>
+        <script src="scripts/controllers/test-details.js"></script>
+        <!-- Directives -->
+         <script src="scripts/directives/navigationdir.js"></script>
+         <script src="scripts/directives/leftnavigationdir.js"></script>
+        <script src="scripts/directives/footerdir.js"></script>
+
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/addtest-dropdown.js"></script>
+        <script src="scripts/services/snippet.js"></script>
+        <script src="scripts/services/flagservice.js"></script>
+        <script src="scripts/services/patient-master.js"></script>
+        <script src="scripts/services/testdetail.js"></script>
+        <script src="scripts/services/loginservice.js"></script>
         <!-- endbuild -->
-</body>
+  </body>
 </html>

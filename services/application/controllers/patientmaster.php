@@ -17,12 +17,6 @@ class patientmaster extends CosRestController
   {
     
     /*try {*/
-	if($this->post('status') == 'delete') {
-		$data = array(
-			'patient_id' => $this->post('patientId')
-		)
-	}else {
-	}
          $data = array(
              'patient_id' => $this->post('id'),
              'patient_name' => $this->post('name'),
@@ -42,46 +36,11 @@ class patientmaster extends CosRestController
         $this->response(array("data" => array(
            "message" => "User added succefully."
         )));
-
        /*} catch(Exception $e) {
            $this->response(array("data" => array(
            "message" => "Some error occured. Please contact admin."
        )));
        }*/
-	   
-  }
-
-	public function patient_post()
-  {
-    
-    /*try {*/
-         $data = array(
-             'patient_id' => $this->post('id'),
-             'patient_name' => $this->post('name'),
-             'patient_address' => $this->post('address'),
-             'patient_state' => $this->post('state'),
-             'patient_distric' => $this->post('distric'),
-             'patient_city' => $this->post('city'),
-             'patient_dob' => $this->post('dob'),
-             'patient_gender' => $this->post('gender'),
-             'patient_phone' => $this->post('phone'),
-             'patient_mobile' => $this->post('mobile'),
-             'patient_email' => $this->post('email')
-         );
-        $this->load->database();
-        $this->load->helper('array');
-        $this->db->insert('patient_master', $data);
-        $this->response(array("data" => array(
-           "message" => "User added succefully."
-        )));
-
-       /*} catch(Exception $e) {
-           $this->response(array("data" => array(
-           "message" => "Some error occured. Please contact admin."
-       )));
-       }*/
-	   
   }
 }
-
 ?>

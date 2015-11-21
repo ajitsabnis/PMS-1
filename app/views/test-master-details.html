@@ -1,0 +1,139 @@
+<div class="assign-test">
+	<h1>assign-test</h1>
+	   <div class="col-md-10"><!-- main divisionstarts here -->
+	        <div class="col-md-12">
+			    <div class="input-group">
+			      <input type="text" class="form-control" placeholder="Search patient by name,middle name or surname ...">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button">Search!</button>
+			      </span>
+			    </div><!-- /input-group -->
+		    </div><!-- /.col-md-12 --><hr class="divider"><hr class="divider">
+     
+                      <div class="col-md-12">
+  				        <form role="form">
+  				  
+			  				  <div class="col-md-4">
+							        <label for="first">Test</label>
+			                        <input id="first" type="radio" name="content" ng-model="content" ng-init="content=true" value="first">
+			                  </div>
+
+							    <div class="col-md-4">
+							       <label for="second">Profile</label>
+			                       <input id="second" type="radio" name="content" ng-model="content" value="second">
+							    </label></div>
+
+							    <div class="col-md-4">
+							        <label for="third">D.T</label>
+			                       <input id="third" type="radio" name="content" ng-model="content" value="third"></div>
+							    </label>
+		              </div>
+				        </form>
+		    </div><hr class="divider">
+		    
+                       <div class="col-md-10" ng-show="content == 'first'"> <!-- division for test radio button -->
+                             <form group="inline">
+                                 <table id="myTable" class="table table-striped table-bordered" >
+                                        <thead>  
+                                            <tr>  
+                                              <th>Tests</th>                                              
+                                           </tr>  
+                                          </thead>  
+                                          <tbody>  
+                                              <tr>  
+                                                <th><label class="radio-inline">
+												    <input type="checkbox" name="optrao">TEST
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="optrao">PROFILE
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="optdio">D.T
+												    </label></div>
+												 </th>                                               
+                                               </tr>                                               
+                                             </tbody>  
+                                        </table>  
+                                 </form>
+                       </div><!-- division for test radio button ends here -->
+
+              <div class="col-md-10" ng-show="content == 'second'">  <!-- division for profile radio button -->
+                             <form group="inline">
+                                 <table id="myTable" class="table table-striped table-bordered" >
+                                        <thead>  
+                                            <tr>  
+                                              <th>Profile</th>                                              
+                                           </tr>  
+                                          </thead>  
+                                          <tbody>  
+                                              <tr>  
+                                                <th><label class="radio-inline">
+												    <input type="checkbox" name="oadio">profile 1
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="optradio">PROFILE 2
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="optradio">profile 3
+												    </label></div>
+												 </th>                                               
+                                               </tr>                                               
+                                             </tbody>  
+                                        </table>  
+                                 </form></div><!-- division for profile radio button ends here -->
+
+                                  <div class="col-md-10" ng-show="content == 'third'"><!-- division for D.T radio button  -->
+                             <form group="inline">
+                                 <table id="myTable" class="table table-striped table-bordered" >
+                                        <thead>  
+                                            <tr>  
+                                              <th>D.T</th>                                              
+                                           </tr>  
+                                          </thead>  
+                                          <tbody>  
+                                              <tr>  
+                                                <th><label class="radio-inline">
+												    <input type="checkbox" name="adio">D.T
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="oradio">D.T
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="opadio">D.T
+												    </label></div>
+												 </th>                                               
+                                               </tr>                                               
+                                             </tbody>  
+                                        </table>  
+                                 </form></div><!-- division for DT radio button ends here -->
+
+                                     <div class="col-md-12"><hr class="divider">
+                                          <H4>SAMPLE</H4>
+							  				 <label class="radio-inline">
+												    
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="oradio">BLOOD
+												    </label></div>
+												    <div class="col-md-4">
+												    <label class="radio-inline">
+												    <input type="checkbox" name="opadio">SUGAR
+												    </label>
+		                                 </div>
+
+		                                 <div class="col-md-12"><hr class="divder">
+		                                       <div class="">
+											  <button type="button" class="btn btn-success" ng-click="">SUBMIT</button>
+											 
+											  <div class="col-md-4">
+											  <button type="button" class="btn btn-info" onclick="window.location.href='http://localhost:9000/#/test-calculator'" ng-click="">START</button>
+											  </div>      
+											</div>
+	   </div>
+</div>
