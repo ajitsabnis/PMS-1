@@ -34,7 +34,9 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       };
 
       genericService.category.save(angular.toJson(postData), function(responce) {
+        $scope.alerts = [];
         if(responce.data.message === "User added succefully") {
+          $scope.alerts.push({msg: 'Record added successfully', type:'success'});
           $scope.gridOptions.data.push(updateData);
         }
         $scope.metadata.gname = "";
@@ -42,7 +44,8 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   };
 
   $scope.getSelectedCategoryData = function() {
-    genericService.category.get({id: $scope.selectedItem.id}, function (valu){
+    genericService.category.get({id: $scope.selectedItem.id}, function (valu) {
+      $scope.categoryData = valu.data;
       var selectedCategoryData = {
         data: valu.data
       };
@@ -93,9 +96,13 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
       genericId: deleteData.generic_id,
       rowId: deleteData.row_id
     }
-    
-    genericService.category.remove(angular.toJson(removeData), function(responce) {
-      console.log(responce);
+    genericService.deletecategory.save(angular.toJson(removeData), function(responce) {
+      if(responce.data.message === 'Row deleted successfully') {
+        /*$scope.categoryData.splice(deleteData.row_id);
+        $scope.gridOptions.data = $scope.categoryData;*/
+        console.log(responce);
+      }
+      //$scope.alerts.push({msg: 'Record deleted successfully', type:'success'});
     });
   };
 

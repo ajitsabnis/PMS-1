@@ -1,0 +1,36 @@
+
+doDelete
+==============
+URL --> http://localhost/PMS-1/services/index.php/common/doDelete
+* method = post
+* action = generic_instrument
+* id= id
+
+Response:
+{"status":"success","messege":"ok"}
+
+***********************************************************************************************
+
+getTestType
+==============
+URL --> http://localhost/PMS-1/services/index.php/common/getTestType
+* method = get
+
+Response:
+{"status":"success","messege":"ok","list":[{"test_type_ID":"1","test_type":"Profile"},{"test_type_ID":"2","test_type":"Test"},{"test_type_ID":"3","test_type":"Descriptive Test"}]}
+
+***********************************************************************************************
+
+getTestTypeDetails
+==============
+URL --> http://localhost/PMS-1/services/index.php/common/getTestTypeDetails?test_type_ID=2
+* method = get
+* test_type_ID = 2
+
+Response:
+
+
+
+
+
+
