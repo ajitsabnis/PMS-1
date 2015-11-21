@@ -16,7 +16,7 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'getGenericData': BASE_URL + 'instruments',
       'updateGenericData': BASE_URL + 'instruments/instru',
       'getSelectedCategoryData': BASE_URL + 'instruments/instrument',
-
+      'deleteSelectedCategoryData': BASE_URL + 'instruments/categorydelete',
       'getStats': BASE_URL + 'states',
       'getDistrics': BASE_URL + 'districts',
       

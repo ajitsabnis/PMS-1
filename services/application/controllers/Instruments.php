@@ -19,19 +19,13 @@ class Instruments extends CosRestController
     $this->response(array("data" => $this->db->get('generic_category')->result()));  //cosUser
   }
 
-  public function instrument_post()) /*deleting the category from database*/
+  public function categorydelete_post() /*deleting the category from database*/
   {
-    /*$this->delete('id')*/
     $this->load->helper('array');
-
     $gId = $this->post('genericId');
-    /*$rowId = $this->get('rowId');*/
-    echo "Pravin1".$gId;
-    exit();
+    $rowId = $this->post('rowId');
+    $rowData = array('is_delete'=> 1);
 
-    $rowData = array(
-      'is_delete'=> 1
-      );
       switch ($gId) {
 
         case 1:
@@ -45,8 +39,16 @@ class Instruments extends CosRestController
                 break;
 
         case 3:
+
                 $this->db->where('generic_exam_type_id', $rowId);
-                $this->response(array("data" => $this->db->delete('generic_exam_type_master')->result()));
+
+                $this->db->update('generic_exam_type_master', $rowData);
+
+                $this->response(array("data" => array(
+                    "status" => 201,
+                    "message" => "Row deleted successfully"
+                )));
+
                 break;
 
         case 4:
@@ -84,7 +86,6 @@ class Instruments extends CosRestController
 
   public function instrument_get()
   {
-    //$this->load->database();
     $id = $this->get('id');
     $is_delete = 0;
       switch ($id) {
@@ -414,8 +415,7 @@ class Instruments extends CosRestController
        $this->load->helper('array');
        switch ($this->post('generic_id')) {
          case 1:
-          $user = array(
-                  'generic_instrument_name'=> $this->post('generic_name'));
+          $user = array('generic_instrument_name'=> $this->post('generic_name'));
                    $this->db->where('generic_category_id', element('generic_category_id', $user));
                   $query = $this->db->get_where('generic_instrument_master', array('generic_instrument_name' => $this->post('generic_name')));
                     $count = $query->num_rows();
@@ -426,7 +426,7 @@ class Instruments extends CosRestController
                     $this->response(array("data" => array(
                         "status" => 201,
                         "id" => element( 'generic_faculty_name', $user ),
-                        "message" => "generic faculty name updated successfully."
+                        "message" => "generic faculty name updated successfully"
                     )));
                   } else {
                     $this->response(array("data" => array(
