@@ -17,7 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
+<<<<<<< HEAD
+$config['base_url'] = 'http://localhost:81/PMS-1/services/';
+=======
 $config['base_url'] = 'http://localhost/PMS-1/services/';
+>>>>>>> 4a610151572eb5e2afd482a9b23fb33da197b9d9
 
 /*
 |--------------------------------------------------------------------------
