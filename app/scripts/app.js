@@ -105,7 +105,7 @@ angular.module('pmsApp', [
     .state('test-master-details', {
       url: '/test-master-details',
       templateUrl: 'views/test-master-details.html',
-      controller: 'TestMasterDetailsCtrl'
+      controller: 'workflowCtrl'
     })
     .state('bill-master-detail-view', {
       url: '/bill-master-detail-view',
