@@ -644,39 +644,39 @@ class Instruments extends CosRestController
 
            case 9 :
                   $user = array(
-                          'employee_category_name'=> $this->post('generic_name'),
-                          'generic_category_id'=> $this->post('generic_id'),
-                          'employee_category_id'=> $this->post('row_id')
-                              );
-                    $this->db->where('employee_category_id', element('employee_category_id', $user));
-                    $this->db->where('generic_category_id', element('generic_category_id', $user));
-                    $query = $this->db->get('generic_employee_category');
-                    $count = $query->num_rows();
-                    if( $count !== 0 ) {
-                      $this->db->update('generic_employee_category', $user);
-                      $this->response(array("data" => array(
-                        "status" => 201,
-                        "id" => element( 'employee_category_name', $user ),
-                        "message" => "employee category name updated successfully."
-                      )));
-                    } else {
-                      $this->response(array("data" => array(
-                        "status" => 301,
-                        "message" => "employee category name not updated successfully.",
-                        "query" => $this->db->last_query()
-                      )));
-                    }
-           break;
-         default:
-           $this->response(array("data" => "Invalid input"));
-       }
+                      'employee_category_name'=> $this->post('generic_name'),
+                      'generic_category_id'=> $this->post('generic_id'),
+                      'employee_category_id'=> $this->post('row_id')
+                    );
+                  $this->db->where('employee_category_id', element('employee_category_id', $user));
+                  $this->db->where('generic_category_id', element('generic_category_id', $user));
+                  $query = $this->db->get('generic_employee_category');
+                  $count = $query->num_rows();
+                  if( $count !== 0 ) {
+                    $this->db->update('generic_employee_category', $user);
+                    $this->response(array("data" => array(
+                      "status" => 201,
+                      "id" => element( 'employee_category_name', $user ),
+                      "message" => "employee category name updated successfully."
+                    )));
+                  } else {
+                    $this->response(array("data" => array(
+                      "status" => 301,
+                      "message" => "employee category name not updated successfully.",
+                      "query" => $this->db->last_query()
+                    )));
+                  }
+                  break;
+            default:
+                    $this->response(array("data" => "Invalid input"));
+          }
       
-    } catch(Exception $e) {
-      $this->response(array("data" => array(
-        "status" => 501,
-        "message" => "Some error occured. Please contact admin.",
-        "query" => $this->db->last_query()
-      )));
+      } catch(Exception $e) {
+        $this->response(array("data" => array(
+          "status" => 501,
+          "message" => "Some error occured. Please contact admin.",
+          "query" => $this->db->last_query()
+        )));
     }
   }
 }

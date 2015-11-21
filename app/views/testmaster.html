@@ -3,24 +3,124 @@
   		<h2>Add test</h2>
   		<!-- Trigger the modal with a button -->
  		<div class="form-group">
-			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true" data-keyboard="true">Add New</button>
+			<button type="button" class="btn btn-info btn-md" data-backdrop="true" data-keyboard="true" data-target="#myModal" >Add New</button>
 
 			 <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1" data-backdrop="true" data-keyboard="true">Test Details</button>
-		</div>
-		<hr class="devider">
-		<div class="form-group">
+
+	<hr class="devider">
+		<div class="form-group"> 
 			<!-- Grid -->
 			<div ng-controller = "TestMasterDetailsCtrl">
 				<div ui-grid="myData" class="myGrid"></div>
 			</div>
 			<!-- -->
 		</div>
+
+			 
+<!--modal for update-->
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add New Test</h3>
+        </div>
+        <div class="modal-body">
+        <h1></h1>
+      			<button class="btn primary" ng-click="close()"><span class="glyphicon glyphicon-remove"></span></button>
+  				<div class="col-md-6"> 
+  
+  				<div class="form-group">
+  					
+  					<h4><span class="label label-default">Test Name:</span></h4>
+			    	<input type="text" class="form-control" ng-model="tstname" id="121">
+		        </div>
+		        
+		    
+                    <div class="form-group">     
+	            		<h4><span class="label label-default">Group:</span></h4>
+					 	<select class="selectpicker form-control" ng-model="selectedgrp" ng-options="groups.name for groups in group">
+							 
+					 	</select>
+					 	 <button type="button" class="btn btn-success btn-xs">ADD Group</button>
+			      	</div>
+
+		            
+
+		            <div class="form-group">	          
+			             <h4><span class="label label-default">Heading:</span></h4>
+			            <input type="text" class="form-control" ng-model="hding" id="123">
+		            </div>
+
+		            <div class="form-group">
+						 <h4><span class="label label-default">Test Code:</span></h4>
+				 		<input type="text" name="input" class="form-control" ng-model="tc" min="0" max="99"/>
+		          	</div>
+
+	                <div class="form-group">
+						<h4><span class="label label-default">Test Charges:</span></h4>
+				 		<input type="text" name="input" class="form-control" ng-model="tch" />
+				 		<div class="form-group">     
+		            		<h4><span class="label label-default">Flag:</span></h4>
+						 	<select class="selectpicker form-control" ng-model="selectedflag" ng-options="flags.name for flags in flag">
+								 
+						 	</select>
+						 	 <button type="button" class="btn btn-success btn-xs">ADD Falg</button>
+				    	</div>
+		          	</div>
+				</div>
+
+			    <div class="col-md-6"> 
+			    	<div class="form-group">     
+						<h4><span class="label label-default">Method:</span></h4>
+						<select class="selectpicker form-control" ng-model="selectedmthd" ng-options="mthd.name for mthd in methode">
+							
+						</select>
+						<button type="button" class="btn btn-success btn-xs"
+							data-toggle="modal" data-target="#myModal1" data-backdrop="true" data-keyboard="true">ADD METHOD</button>
+					</div>
+					<div class="form-group">
+						<h4><span class="label label-default">Sample:</span></h4>
+						<select class="selectpicker form-control" ng-model="selectedsmpl" ng-options="samples.name for samples in sample">
+							
+						</select>
+				        <button type="button" class="btn btn-success btn-xs">ADD SAMPLE</button>
+					</div>
+
+					<div class="form-group">
+						<h4><span class="label label-default">Instrument:</span></h4>
+						<select class="selectpicker form-control" ng-model="selectedinstmt" ng-options="names.name for names in instrument">
+							
+				        </select>
+				        <button type="button" class="btn btn-success btn-xs">ADD INSTRUMENT</button>
+					</div>
+				    <div class="form-group">
+             			<h4><span class="label label-default">Remark:</span></h4>
+                        <textarea class="form-control custom-control" rows="8" ng-model="remark" style="resize:none"></textarea>
+					</div>
+					<button type="button" class="btn btn-success" ng-click="add()">Save</button>
+                	<button type="button" class="btn btn-danger" ng-click="oldpatient">Clear</button>
+				</div>
+    		</div>
+  		</div>
+           
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+   
+
+
+
+		</div>
+		
 		<!-- Modal -->
-  		<div class="modal fade" id="myModal" role="dialog">
+  		<div class="modal" id="myModal" role="dialog" close="cancel()">
     		<div class="modal-dialog model-lg">
     
       			<!-- Modal content-->
       			<h1>Add New Test</h1>
+      			<button class="btn primary" ng-click="close()"><span class="glyphicon glyphicon-remove"></span></button>
   				<div class="col-md-6"> 
   
   				<div class="form-group">
