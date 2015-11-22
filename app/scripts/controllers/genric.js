@@ -81,7 +81,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     paginationPageSize: 25,
     columnDefs: [
       { name: 'generic_name', displayName: 'Name' },
-      { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity)"><span class="glyphicon glyphicon-trash"></span></button>'}
+      { name: 'Action', enableCellEdit: false, cellTemplate:'<a href="" title="Delete Category" ng-click="grid.appScope.deleteRecord(row.entity)" class="btn">&nbsp;<i class="glyphicon glyphicon-trash"></i>&nbsp;</a>'}
     ]
   };
   
@@ -98,11 +98,11 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     }
     genericService.deletecategory.save(angular.toJson(removeData), function(responce) {
       if(responce.data.message === 'Row deleted successfully') {
-        /*$scope.categoryData.splice(deleteData.row_id);
-        $scope.gridOptions.data = $scope.categoryData;*/
-        console.log(responce);
+        $scope.categoryData.splice(deleteData.row_id);
+        $scope.gridOptions.data = $scope.categoryData;
+        $scope.alerts = [];
+        $scope.alerts.push({msg: 'Record deleted successfully', type:'success'});
       }
-      //$scope.alerts.push({msg: 'Record deleted successfully', type:'success'});
     });
   };
 
