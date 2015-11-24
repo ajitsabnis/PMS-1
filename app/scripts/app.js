@@ -50,7 +50,7 @@ angular.module('pmsApp', [
     }) */
     .state('genric', {
       url: '/genric',
-      templateUrl: 'views/genric.html',
+      templateUrl: 'views/user-group.html',
       controller: 'GenricCtrl'
     })
     .state('link-master', {
