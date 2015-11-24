@@ -57,6 +57,27 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       });
     };
 
+     $scope.update = function() {
+
+      var data = {
+        id:$scope.test.test_id,
+        name:  $scope.test.test_name,
+        heading: $scope.test.test_heading,
+        shortname: $scope.test.test_short_name,
+        remark: $scope.remark,
+        flg: $scope.test.flag_name,
+        mthd: $scope.test.generic_method_name,
+        smpl:  $scope.test.generic_sample_name,
+        instrument: $scope.test.generic_instrument_name,
+        charges: $scope.test.amount,
+        grp: $scope.test.group.id
+      };
+
+      Addtest.save(angular.toJson(data), function(responce) {
+        console.log(responce);
+      });
+    };
+
 
     addtestDropdown.instrument.get({}, function (record){
       $scope.instrument = record.data;
@@ -139,7 +160,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
 
 }]);
 
-angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'DataStore', 'tests', function ($scope, $uibModalInstance, DataStore, tests) {
+angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'DataStore', 'tests', 'addtestDropdown', function ($scope, $uibModalInstance, DataStore, tests, addtestDropdown) {
 
   $scope.test = tests;
   var tData = DataStore.getTestData();
@@ -154,4 +175,27 @@ angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalIns
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
+
+
+     $scope.update = function() {
+
+      var data = {
+        id:$scope.test.test_id,
+        name:  $scope.test.test_name,
+        heading: $scope.test.test_heading,
+        shortname: $scope.test.test_short_name,
+        remark: $scope.test.test_remark,
+        flg: $scope.test.flag_name,
+        mthd: $scope.test.generic_method_name,
+        smpl:  $scope.test.generic_sample_name,
+        instrument: $scope.test.generic_instrument_name,
+        charges: $scope.test.amount
+       
+      };
+
+      addtestDropdown.updatetest.save(angular.toJson(data), function(responce) {
+        console.log(responce);
+      });
+    };
+
 }]);
