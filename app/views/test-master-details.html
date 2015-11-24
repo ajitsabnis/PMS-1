@@ -3,38 +3,35 @@
 	   <div class="col-md-10"><!-- main divisionstarts here -->
 	        <div class="col-md-12">
 			    <div class="input-group">
-                    <input type="text" class="form-control" id="srch" placeholder="search.....">			      			        			      
+                    <input type="text" class="form-control" id="srch" placeholder="search.....">
 			    </div><!-- /input-group -->
-		    </div><!-- /.col-md-12 --><hr class="divider"><hr class="divider">
-     
-                      <div class="col-md-8">
-  				        <form role="form">
-  				  
-			  				  <div class="col-md-4">
-							        <label for="first">Test</label>
-			                        <input id="first" type="radio" name="content" ng-model="content" ng-init="content=true" ng-change="showHideDiv()" value="first">
-			                  </div>
-
-							    <div class="col-md-4">
-							       <label for="second">Profile</label>
-			                       <input id="second" type="radio" name="content" ng-model="content" ng-change="showHideDiv()" value="second">
-							    </label></div>
-
-							    <div class="col-md-4">
-							        <label for="third">D.T</label>
-			                       <input id="third" type="radio" name="content"  ng-change="showHideDiv()"ng-model="content" value="third"></div>
-							    </label>
-		              </div>
-				        </form>
-		    </div><hr class="divider">
-		    
-                       <div class="col-md-8" ng-show="content == 'first'"> <!-- division for checkboxes -->
-                             <form group="inline">
-                                 <table id="myTable" class="table table-striped table-bordered" >
-                                        <thead>  
-                                            <tr>  
-                                              <th>Tests</th>                                              
-                                           </tr>  
+		    </div><!-- /.col-md-12 -->
+		    <hr class="divider"><hr class="divider">
+  			<div class="col-md-8">
+  				<form role="form">
+  				    <div class="col-md-4">
+						<label for="first">Test</label>
+			            <input id="first" type="radio" name="content" ng-model="content" ng-init="content=true" ng-change="showHideDiv()" value="first">
+			        </div>
+					<div class="col-md-4">
+						<label for="second">Profile</label>
+			            <input id="second" type="radio" name="content" ng-model="content" ng-change="showHideDiv()" value="second">
+					</div>
+					<div class="col-md-4">
+						<label for="third">D.T</label>
+			            <input id="third" type="radio" name="content"  ng-change="showHideDiv()"ng-model="content" value="third">
+			        </div>
+				</form>
+			</div>
+		</div>
+		<hr class="divider">    
+        <div class="col-md-8" ng-show="content == 'first'"> <!-- division for checkboxes -->
+           	<form group="inline">
+                <table id="myTable" class="table table-striped table-bordered" >
+                    <thead>  
+                        <tr>  
+                            <th>Tests</th>                                              
+                        </tr>  
                                           </thead>  
                                           <tbody>  
                                               <tr>  
