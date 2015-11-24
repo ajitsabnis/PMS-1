@@ -15,7 +15,7 @@ angular.module('pmsApp').controller('LoginCtrl', ['$rootScope','$scope', '$locat
     	};
     	loginService.save(angular.toJson(loginCredentials), function(responce) {
             $scope.alerts = [];
-            if (responce.status == "success"){
+            if (responce.status === "success"){
                 $rootScope.isLogin = true;
 
                 $rootScope.checkVisible = responce.user_detail.modules;

@@ -9,5 +9,5 @@ angular.module('pmsApp').factory('DataStore', function() {
 		getTestData: function() {
 			return testDataForUpdata;
 		}
-	}
-})
+	};
+});

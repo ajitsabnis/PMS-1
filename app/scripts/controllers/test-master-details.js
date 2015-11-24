@@ -7,8 +7,8 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log', 'DataStore', 
-							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log, DataStore) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log',  
+							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log) {
 
     
     $scope.myData = {
@@ -78,16 +78,15 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       $scope.flag = record.data;
     });
 
-     $scope.deleteRecord = function(deleteData){
-    var removeData = {
-      
-
-    }
+    $scope.deleteRecord = function(deleteData){
+      var removeData = {
+        removeData: deleteData
+      };
     
-    Addtest.remove(angular.toJson(removeData), function(responce) {
-      console.log(responce);
-    });
-  };
+      Addtest.remove(angular.toJson(removeData), function(responce) {
+        console.log(responce);
+      });
+    };
 
   
    $scope.animationsEnabled = true;
@@ -129,20 +128,11 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-
 }]);
 
-angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'DataStore', 'tests', function ($scope, $uibModalInstance, DataStore, tests) {
+angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'tests', function ($scope, $uibModalInstance, tests) {
 
   $scope.test = tests;
-  var tData = DataStore.getTestData();
   $scope.selected = {
     test: $scope.test[0]
   };
