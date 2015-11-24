@@ -32,6 +32,7 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'testdetails' : BASE_URL + 'testmasterdetail',
       'login' : BASE_URL + 'user',
       'getPatient' : BASE_URL + 'common/searchPatient?searchString',
-      'getTest' : BASE_URL + 'common/getTestType'
+      'getTest' : BASE_URL + 'common/getTestType',
+      'selectTest' : BASE_URL + 'common/getTestTypeDetails'
     };
   }());

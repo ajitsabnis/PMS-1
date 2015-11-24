@@ -107,6 +107,8 @@ $scope.checkPatient = function() {
     };
 
     $scope.selectTest = function() {
-        console.log($scope.content);
+        testdetail.selectTest.get({test_type_ID:$scope.content}, function(responce) {
+        console.log(responce);
+      });
     };
 }]);
