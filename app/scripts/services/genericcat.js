@@ -8,7 +8,7 @@
  * Service in the pmsApp.
  */
 
-angular.module('pmsApp').factory('genericService',['$resource', 'API_BASE_URI', 'apiUrl', function ($resource, API_BASE_URI, apiUrl) {
+angular.module('pmsApp').factory('genericService',['$resource', 'apiUrl', function ($resource, apiUrl) {
 
     return{
      		category:$resource( apiUrl.getSelectedCategoryData, {} ),

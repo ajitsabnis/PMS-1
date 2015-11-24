@@ -8,20 +8,16 @@
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('workflowCtrl', function ($scope) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('workflowCtrl', ['$scope', 'testdetail', function ($scope, testdetail) {
+    $scope.testList = [];
+    testdetail.getTest.get(function(responce) {
+          $scope.testList = responce.list;
+          console.log($scope.testList);
+      });
      $scope.items= [
     {id:'1',area:'cash'},
      {id:'2',area:'cheque'},
       {id:'3',area:'card'},
-      
-
-
-
     ];
     $scope.showHideDiv = function () {
 if ($scope.chkStatus1) {
@@ -95,4 +91,22 @@ else {
 $scope.showhideprop = false;
 }
 }
-  });
+
+$scope.checkPatient = function() {
+    var check_patient = $scope.check_patient;
+    console.log(check_patient.length);
+    if (check_patient.length >= 3)
+    {
+      testdetail.searchPatient.get({searchString:$scope.check_patient}, function(responce) {
+        console.log(responce);
+      });
+    }
+    else {
+      console.log("minimum 3 charactors required for search");
+    }
+    };
+
+    $scope.selectTest = function() {
+        console.log($scope.content);
+    };
+}]);
