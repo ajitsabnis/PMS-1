@@ -26,7 +26,7 @@ class Common extends CosRestController
 	}
 	else
 	{
-$response=array("status" => "success","messege" => "ok","list" => $result);
+		$response=array("status" => "success","messege" => "ok","list" => $result);
 	} 
 	    $this->response($response);
 	}
