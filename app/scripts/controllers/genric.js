@@ -130,4 +130,10 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     $scope.loader = false;
   }
   init();
+  $scope.showCreateModal=function(){
+    $scope.modalTitle="Create groups";
+    //true indiactes "add" operation perform
+    $scope.currOperation=true;
+    $('#myModal').modal('show');
+  }
 }]); 
