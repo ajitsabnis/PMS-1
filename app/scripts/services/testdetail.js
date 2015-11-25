@@ -14,9 +14,8 @@
 
 angular.module('pmsApp').service('testdetail', ['$resource', 'apiUrl', function ($resource, apiUrl) {
 	return{
-     		searchPatient:$resource( apiUrl.getPatient, {} ),
+     		searchPatient:$resource( apiUrl.searchPatient, {} ),
      		getTest:$resource( apiUrl.getTest, {} ),
      		selectTest:$resource(apiUrl.selectTest, {})
-
     };
 }]);
