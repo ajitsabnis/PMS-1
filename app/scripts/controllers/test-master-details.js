@@ -7,28 +7,31 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log', 
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log',  
 							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log) {
 
+    
     $scope.myData = {
     	columnDefs: [
-    		{name: 'name'},
-    		{name: 'heading'},
-    		{name: 'shortname'},
-    		{name: 'remark'},
-    		{name: 'flg'},
-    		{name: 'mthd'},
-    		{name: 'smpl'},
-    		{name: 'instrument'},
-    		{name: 'charges'},
-        /*{name: 'Action', enableCellEdit: false, cellTemplate:'<span style="cursor:pointer" class="glyphicon glyphicon-pencil" ng-click="grid.appScope.open(row.entity)""></span>'}*/
+    		{name: 'test_name'},
+    		{name: 'test_heading'},
+    		{name: 'test_short_name'},
+    		{name: 'test_remark'},
+    		{name: 'flag_name'},
+    		{name: 'generic_method_name'},
+    		{name: 'generic_sample_name'},
+    		{name: 'generic_instrument_name'},
+    		{name: 'amount'},
         { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.open(row.entity)"><span class="glyphicon glyphicon-pencil"></span></button>'}
     	]
     };
     function init() {
-        addtestDropdown.addtst.get({}, function (record){
-        $scope.myData.data = record.data;
-    });  
+      addtestDropdown.addtst.get({}, function (record) {
+        
+          $scope.testData = record.list.testTypeDetails;
+          $scope.myData.data = record.list.testTypeDetails;
+          
+      });  
     }
     
     
@@ -47,6 +50,27 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         instrument: $scope.selectedinstmt.id,
         charges: $scope.tch,
         grp: $scope.selectedgrp.id
+      };
+
+      Addtest.save(angular.toJson(data), function(responce) {
+        console.log(responce);
+      });
+    };
+
+     $scope.update = function() {
+
+      var data = {
+        id:$scope.test.test_id,
+        name:  $scope.test.test_name,
+        heading: $scope.test.test_heading,
+        shortname: $scope.test.test_short_name,
+        remark: $scope.remark,
+        flg: $scope.test.flag_name,
+        mthd: $scope.test.generic_method_name,
+        smpl:  $scope.test.generic_sample_name,
+        instrument: $scope.test.generic_instrument_name,
+        charges: $scope.test.amount,
+        grp: $scope.test.group.id
       };
 
       Addtest.save(angular.toJson(data), function(responce) {
@@ -75,21 +99,28 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       $scope.flag = record.data;
     });
 
-     $scope.deleteRecord = function(deleteData){
-    var removeData = {
-      
-
-    }
+    $scope.deleteRecord = function(deleteData){
+      var removeData = {
+        removeData: deleteData
+      };
     
-    Addtest.remove(angular.toJson(removeData), function(responce) {
-      console.log(responce);
-    });
-  };
+      Addtest.remove(angular.toJson(removeData), function(responce) {
+        console.log(responce);
+      });
+    };
 
   
    $scope.animationsEnabled = true;
+   /*$scope.items = ['item1', 'item2', 'item3'];*/
+
 
   $scope.open = function (size) {
+
+    angular.forEach($scope.testData, function(key, value) {
+      if(key.id === size.id){
+        $scope.test = key;
+      }
+    });
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
@@ -97,8 +128,11 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
-        items: function () {
+        /*items: function () {
           return $scope.items;
+        },*/
+        tests: function () {
+          return $scope.test;
         }
       }
     });
@@ -108,37 +142,49 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
+
   };
 
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-
-
-
 }]);
 
-angular.module('pmsApp').controller('ModalInstanceCtrl',['$uibModalInstance', function ($scope, $uibModalInstance, items) {
+angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'tests', 'addtestDropdown', function ($scope, $uibModalInstance, tests, addtestDropdown) {
 
-   $scope.items = ['item1', 'item2', 'item3'];
-  
+  $scope.test = tests;
   $scope.selected = {
-    item: $scope.items[0]
+    test: $scope.test[0]
   };
 
   $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
+    $uibModalInstance.close($scope.selected.test);
   };
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
+
+
+     $scope.update = function() {
+
+      var data = {
+        id:$scope.test.test_id,
+        name:  $scope.test.test_name,
+        heading: $scope.test.test_heading,
+        shortname: $scope.test.test_short_name,
+        remark: $scope.test.test_remark,
+        flg: $scope.test.flag_name,
+        mthd: $scope.test.generic_method_name,
+        smpl:  $scope.test.generic_sample_name,
+        instrument: $scope.test.generic_instrument_name,
+        charges: $scope.test.amount
+       
+      };
+
+      addtestDropdown.updatetest.save(angular.toJson(data), function(responce) {
+        console.log(responce);
+      });
+    };
 }]);

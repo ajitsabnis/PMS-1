@@ -23,6 +23,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
 
     $scope.add = function(){
 
+      $scope.alerts = [];
       var postData = {
         generic_name: $scope.metadata.gname,
         category_id: $scope.selectedItem.id
@@ -81,7 +82,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     paginationPageSize: 25,
     columnDefs: [
       { name: 'generic_name', displayName: 'Name' },
-      { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity)"><span class="glyphicon glyphicon-trash"></span></button>'}
+      { name: 'Action', enableCellEdit: false, cellTemplate:'<a href="" title="Delete Category" ng-click="grid.appScope.deleteRecord(row.entity)" class="btn">&nbsp;<i class="glyphicon glyphicon-trash"></i>&nbsp;</a>'}
     ]
   };
   
@@ -92,21 +93,26 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
   };
 
   $scope.deleteRecord = function(deleteData){
+    $scope.alerts = [];
     var removeData = {
       genericId: deleteData.generic_id,
       rowId: deleteData.row_id
-    }
+    };
     genericService.deletecategory.save(angular.toJson(removeData), function(responce) {
       if(responce.data.message === 'Row deleted successfully') {
-        /*$scope.categoryData.splice(deleteData.row_id);
-        $scope.gridOptions.data = $scope.categoryData;*/
-        console.log(responce);
+        angular.forEach($scope.categoryData, function(value, key) {
+          if(value.row_id === deleteData.row_id) {
+            $scope.categoryData.splice(key);    
+          }
+        });
+        $scope.gridOptions.data = $scope.categoryData;
+        $scope.alerts.push({msg: 'Record deleted successfully', type:'success'});
       }
-      //$scope.alerts.push({msg: 'Record deleted successfully', type:'success'});
     });
   };
 
   $scope.saveRow = function(rowEntity) {
+    $scope.alerts = [];
     genericService.update.save(angular.toJson(rowEntity), function(responce) {
       $scope.gridOptions = responce.data[0];
     });
@@ -119,5 +125,15 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     gridApi.rowEdit.on.saveRow($scope, $scope.saveRow);
   };
 
+  $scope.closeAlert = function(index) {
+    $scope.alerts = [];
+    $scope.loader = false;
+  }
   init();
+  $scope.showCreateModal=function(){
+    $scope.modalTitle="Create groups";
+    //true indiactes "add" operation perform
+    $scope.currOperation=true;
+    $('#myModal').modal('show');
+  }
 }]); 
