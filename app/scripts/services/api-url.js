@@ -21,7 +21,7 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'getDistrics': BASE_URL + 'districts',
       
       'getCitys': BASE_URL + 'citys',
-      'getPatient' : BASE_URL + 'patientmaster',
+      'Patientmstr' : BASE_URL + 'patientmaster',
 
       'instrument': BASE_URL + 'testdropdown',
       'sample' :  BASE_URL + 'testdropdown/sample',
