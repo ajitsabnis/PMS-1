@@ -19,10 +19,8 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'deleteSelectedCategoryData': BASE_URL + 'instruments/categorydelete',
       'getStats': BASE_URL + 'states',
       'getDistrics': BASE_URL + 'districts',
-      
       'getCitys': BASE_URL + 'citys',
       'getPatient' : BASE_URL + 'patientmaster',
-
       'instrument': BASE_URL + 'testdropdown',
       'sample' :  BASE_URL + 'testdropdown/sample',
       'methode' :  BASE_URL + 'testdropdown/methode',
@@ -32,7 +30,7 @@ angular.module('pmsApp').constant('apiUrl', function () {
       'updatetest': BASE_URL + 'common/updateTest',
       'testdetails' : BASE_URL + 'testmasterdetail',
       'login' : BASE_URL + 'user',
-      'getPatient' : BASE_URL + 'common/searchPatient?searchString',
+      'searchPatient' : BASE_URL + 'common/searchPatient?searchString',
       'getTest' : BASE_URL + 'common/getTestType',
       'selectTest' : BASE_URL + 'common/getTestTypeDetails'
     };
