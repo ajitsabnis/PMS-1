@@ -17,7 +17,10 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/custom.css">
+
     <!-- ui-grid table link -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="less/style.less" title="lessCss" id="lessCss">
     <!-- endbuild -->
     <!-- link for data table -->
   </head>
@@ -28,14 +31,25 @@
 
     <!-- Add your site or application content here -->
 
-      <div id="wrapper" class="container">
-         <header class="header">
+      <div id="wrapper">
+         <!-- <header class="header"> -->
            <pms-navigation-dir></pms-navigation-dir>
-          </header>
+          <!-- </header> -->
           <!-- Body Portion-->
-         <div ui-view></div>
-             <!-- Footer Portion -->
-         <pms-footer-dir></pms-footer-dir>
+          <div class="box-holder">
+            <div class="left-sidebar">
+              <left-navigation-dir></left-navigation-dir>
+            </div>
+            <div class="content">
+              <div class="row">
+                <div class="col-mod-12 container">
+                  <div ui-view></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Footer Portion -->
+          <!-- <pms-footer-dir></pms-footer-dir> -->
       </div>
     
 
@@ -66,14 +80,15 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
-    <script src="bower_components/csv/index.js"></script>
     <script src="bower_components/pdfmake/index.js"></script>
     <script src="bower_components/vfs_fonts/index.js"></script>
     <script src="bower_components/CSV-JS/csv.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="js/less-1.5.0.min.js"></script>
         <script src="scripts/app.js"></script>
         <!-- Controllers -->
         <script src="scripts/controllers/main.js"></script>
@@ -107,26 +122,30 @@
         <script src="scripts/controllers/pms-reports.js"></script>
         <script src="scripts/controllers/change-pin.js"></script>
         <script src="scripts/controllers/entire-test.js"></script>
-<<<<<<< HEAD
         <!-- uigrid links -->
         <!-- Services-->
         <script src="scripts/services/generic.js"></script>
-=======
->>>>>>> 679511d1d6865b32c3ad2a5c967cc1a7d6bae82e
         <script src="scripts/services/genericcat.js"></script>
         <script src="scripts/services/myservice.js"></script>
         <script src="scripts/services/api-url.js"></script>
         <script src="scripts/services/addtest.js"></script>
+        <script src="scripts/controllers/test-details.js"></script>
+        <script src="scripts/controllers/workflow.js"></script>
         <!-- Directives -->
          <script src="scripts/directives/navigationdir.js"></script>
+         <script src="scripts/directives/leftnavigationdir.js"></script>
         <script src="scripts/directives/footerdir.js"></script>
 
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/services/addtest-dropdown.js"></script>
+        <script src="scripts/services/datastore.js"></script>
         <script src="scripts/services/snippet.js"></script>
         <script src="scripts/services/flagservice.js"></script>
-        <script src="scripts/services/apiurl.js"></script>
         <script src="scripts/services/patient-master.js"></script>
+        <script src="scripts/services/testdetail.js"></script>
+        <script src="scripts/services/loginservice.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
         <!-- endbuild -->
   </body>
 </html>

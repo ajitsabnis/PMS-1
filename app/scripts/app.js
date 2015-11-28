@@ -22,29 +22,35 @@ angular.module('pmsApp', [
   'ui.grid.edit',
   'ui.grid.rowEdit',
   'ui.grid.cellNav',
-  'ui.grid.pagination'
+  'ui.grid.pagination',
+  'ui.bootstrap'
 ])
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
   $stateProvider
-    .state('main', {
+    .state('login', {
       url: '/',
       templateUrl: 'views/login.html',
-      controller: 'MainCtrl'
+      controller: 'LoginCtrl'
     })
     .state('about', {
       url: '/about',
       templateUrl: 'views/about.html',
       controller: 'AboutCtrl'
     })
-    .state('login', {
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'views/dashboard.html',
+      controller: 'MainCtrl'
+    })
+    /*.state('login', {
       url: '/login',
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'
-    })
+    }) */
     .state('genric', {
       url: '/genric',
-      templateUrl: 'views/genric.html',
+      templateUrl: 'views/user-group.html',
       controller: 'GenricCtrl'
     })
     .state('link-master', {
@@ -105,7 +111,7 @@ angular.module('pmsApp', [
     .state('test-master-details', {
       url: '/test-master-details',
       templateUrl: 'views/test-master-details.html',
-      controller: 'TestMasterDetailsCtrl'
+      controller: 'workflowCtrl'
     })
     .state('bill-master-detail-view', {
       url: '/bill-master-detail-view',
@@ -244,4 +250,4 @@ angular.module('pmsApp', [
     $resourceProvider.defaults.useXDomain = true;
     $resourceProvider.defaults.withCredentials = true;
 }])
-.constant('API_BASE_URI','http://localhost:81/PMS-1/services/index.php/');
+.constant('API_BASE_URI','http://localhost/PMS-1/services/index.php/');
