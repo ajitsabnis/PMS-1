@@ -33,20 +33,16 @@
                             <th>Tests</th>                                              
                         </tr>  
                                           </thead>  
-                                          <tbody>  
-                                              <tr>  
-                                                <th><label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus1" id="1" ng-change="showHideDiv()"/ name="optrao1">TEST
-												    </label></div>
-												    <div class="col-md-4">
-												    <label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus2" ng-change="showHideDiv1()"/ name="optrao2">PROFILE
-												    </label></div>
-												    <div class="col-md-4">
-												    <label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus3" ng-change="showHideDiv2()"/ name="optdio3">D.T
-												    </label></div>
-												 </th>                                               
+                                          <tbody>
+
+                                                <tr ng-repeat="displaytest in test">  
+                                                     <td>
+                                                	     <div class="col-md-4">
+                                                    	 	<label class="radio-inline">
+												    			<input type="checkbox" ng-model="chkStatus4" ng-change="showHideDiv3()"/ name="oadio" value="a">{{displaytest.test_name}}
+												    		</label>
+												    	</div> 
+													</td>                                      
                                                </tr>                                               
                                              </tbody>  
                                         </table>  
@@ -62,19 +58,14 @@
                                            </tr>  
                                           </thead>  
                                           <tbody>  
-                                              <tr>  
-                                                <th><label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus4" ng-change="showHideDiv3()"/ name="oadio" value="a">profile 1
-												    </label></div>
-												    <div class="col-md-4">
-												    <label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus5" ng-change="showHideDiv4()"/ name="optradio1" value="b">PROFILE 2
-												    </label></div>
-												    <div class="col-md-4">
-												    <label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus6" ng-change="showHideDiv5()"/ name="optradio2" value="b">profile 3
-												    </label></div>
-												 </th>                                               
+                                              <tr ng-repeat="displaytest in test">  
+                                                     <td>
+                                                	     <div class="col-md-4">
+                                                    	 	<label class="radio-inline">
+												    			<input type="checkbox" ng-model="chkStatus4" ng-change="showHideDiv3()"/ name="oadio" value="a">{{displaytest.test_name}}
+												    		</label>
+												    	</div> 
+													</td>                                      
                                                </tr>                                               
                                              </tbody>  
                                         </table>  
@@ -89,20 +80,15 @@
                                            </tr>  
                                          </thead>  
                                           <tbody>  
-                                              <tr>  
-                                                <th><label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus7" ng-change="showHideDiv6()"/  name="adio">D.T
-												    </label></div>
-												    <div class="col-md-4">
-												    <label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus8" ng-change="showHideDiv7()"/ name="oradio">D.T
-												    </label></div>
-												    <div class="col-md-4">
-												    <label class="radio-inline">
-												    <input type="checkbox" ng-model="chkStatus9" ng-change="showHideDiv8()"/ name="opadio">D.T
-												    </label></div>
-												 </th>                                               
-                                               </tr>                                               
+                                              <tr ng-repeat="displaytest in test">  
+                                                     <td>
+                                                	     <div class="col-md-4">
+                                                    	 	<label class="radio-inline">
+												    			<input type="checkbox" ng-model="chkStatus4" ng-change="showHideDiv3()"/ name="oadio" value="a">{{displaytest.test_name}}
+												    		</label>
+												    	</div> 
+													</td>                                      
+                                               </tr>                                          
                                              </tbody>  
                                         </table>  
                                  </form>
@@ -111,7 +97,7 @@
                                      <div class="col-md-8" ng-show='showhideprop'><hr class="divider"><!-- sample table -->                                          
 							  			          <table class="table table-bordered">
 												    <thead>
-												      <tr >
+												      <tr>
 												        <th class="danger">sample</th>
 												        <th class="danger">test</th>
 												        <th class="danger">collect</th>
@@ -119,25 +105,12 @@
 												      </tr>
 												    </thead>
 												    <tbody>
-												      <tr>
-												          
-												        <td >Blood</td>
-												        <td>T1</td>
+												      <tr ng-repeat="record in test"> 
+												        <td >{{record.generic_sample_name}}</td>
+												        <td>{{record.test_amount}}</td>
 												        <td><input type="checkbox" > </td>
 												        <td><input type="checkbox"> </td>
 
-												      </tr>
-												      <tr >
-												        <td >urine</td>
-												        <td>T2</td>
-												        <td><input type="checkbox" > </td>
-												         <td><input type="checkbox"> </td>
-												      </tr>
-								 				      <tr >
-												        <td >serum</td>
-												        <td>T3</td>
-												        <td><input type="checkbox" > </td>
-												        <td><input type="checkbox"></td>
 												      </tr>
 												       <tr>
 												       <td class="info"><label>test amount</label>:700</td>
