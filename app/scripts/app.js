@@ -23,7 +23,8 @@ angular.module('pmsApp', [
   'ui.grid.rowEdit',
   'ui.grid.cellNav',
   'ui.grid.pagination',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'LocalStorageModule'
 ])
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
@@ -43,11 +44,6 @@ angular.module('pmsApp', [
       templateUrl: 'views/dashboard.html',
       controller: 'MainCtrl'
     })
-    /*.state('login', {
-      url: '/login',
-      templateUrl: 'views/login.html',
-      controller: 'LoginCtrl'
-    }) */
     .state('genric', {
       url: '/genric',
       templateUrl: 'views/genric.html',
@@ -249,5 +245,8 @@ angular.module('pmsApp', [
     // $resourceProvider.defaults.stripTrailingSlashes = false;
     $resourceProvider.defaults.useXDomain = true;
     $resourceProvider.defaults.withCredentials = true;
+}])
+.config(['localStorageServiceProvider', function(localStorageServiceProvider){
+  localStorageServiceProvider.setPrefix('ls');
 }])
 .constant('API_BASE_URI','http://localhost/PMS-1/services/index.php/');

@@ -7,7 +7,8 @@
  * # FlagMasterCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('flagMasterCtrl', ['$scope', 'flagService', function ($scope, flagService) {
+angular.module('pmsApp').controller('flagMasterCtrl', ['$scope', 'flagService', 'localStorageService', '$rootScope', '$location', 
+  function ($scope, flagService, localStorageService, $rootScope, $location) {
     $scope.myData = {
       "columnDefs": [
         {"name": "name"},
@@ -16,12 +17,18 @@ angular.module('pmsApp').controller('flagMasterCtrl', ['$scope', 'flagService', 
       ]
     };
     function init() {
-      flagService.query(function(flagResponce) {
-        var gridData = {
-          data: flagResponce.data
-        };
-        $scope.myData = gridData;
-      });
+      $rootScope.isLogin = localStorageService.get('isLogin');
+      if($rootScope.isLogin) {
+        flagService.query(function(flagResponce) {
+          var gridData = {
+            data: flagResponce.data
+          };
+          $scope.myData = gridData;
+        });
+      }else {
+        $location.path('login');
+        return false;
+      }
     }
     $scope.addFlag = function() {
         var data = {

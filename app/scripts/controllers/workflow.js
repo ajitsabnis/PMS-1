@@ -7,19 +7,28 @@
  * # workflowCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', function ($scope, testdetail) {
+angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$location', 'localStorageService', '$rootScope',
+ function ($scope, testdetail, $location, localStorageService, $rootScope) {
 
-  $scope.testList = [];
-  testdetail.getTest.get(function(responce) {
-    $scope.testList = responce.list;
-    console.log($scope.testList);
-  });
-  
-  $scope.items= [
-    {id:'1',area:'cash'},
-    {id:'2',area:'cheque'},
-    {id:'3',area:'card'},
-  ];
+  function init() {
+    $rootScope.isLogin = localStorageService.get('isLogin');
+    if($rootScope.isLogin) {
+      $scope.testList = [];
+      testdetail.getTest.get(function(responce) {
+        $scope.testList = responce.list;
+        console.log($scope.testList);
+      });
+      
+      $scope.items= [
+        {id:'1',area:'cash'},
+        {id:'2',area:'cheque'},
+        {id:'3',area:'card'},
+      ];
+    }else {
+      $location.path('login');
+      return false;
+    }
+  }
   
   $scope.showHideDiv = function () {
     if ($scope.chkStatus1) {
@@ -99,10 +108,10 @@ angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', fun
   };
 
   $scope.selectTest = function() {
-    var test = [];
     console.log($scope.content);
     testdetail.selectTest.get({test_type_ID:$scope.content}, function(responce) {
       $scope.test = responce.list.testTypeDetails;
     });
   };
+  init();
 }]);

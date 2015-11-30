@@ -8,20 +8,26 @@
  * Controller of the pmsApp
  */
  
-angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericService', 
-                                      function ($scope, generic, genericService) {
+angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic', 'genericService', '$rootScope', 'localStorageService', '$location',
+          function ($scope, generic, genericService, $rootScope, localStorageService, $location) {
 
     $scope.metadata = {
       genericData: "",
       gname: ""
     };
     function init() {
-      generic.get(function (argument) {
-        $scope.metadata.genericData = argument.data;
-      }); 
+      $rootScope.isLogin = localStorageService.get('isLogin');
+      if($rootScope.isLogin) {
+        generic.get({}, function (argument) {
+          $scope.metadata.genericData = argument.data;
+        }); 
+      }else {
+        $location.path('login');
+        return false;
+      }
     }
 
-    $scope.add = function(){
+    $scope.add = function() {
 
       $scope.alerts = [];
       var postData = {
@@ -42,7 +48,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
         }
         $scope.metadata.gname = "";
       });
-  };
+    };
 
   $scope.getSelectedCategoryData = function() {
     genericService.category.get({id: $scope.selectedItem.id}, function (valu) {
@@ -116,24 +122,16 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic','genericS
     genericService.update.save(angular.toJson(rowEntity), function(responce) {
       $scope.gridOptions = responce.data[0];
     });
-    
   };
  
   $scope.gridOptions.onRegisterApi = function(gridApi){
-    //set gridApi on scope
     $scope.gridApi = gridApi;
     gridApi.rowEdit.on.saveRow($scope, $scope.saveRow);
   };
 
-  $scope.closeAlert = function(index) {
+  $scope.closeAlert = function() {
     $scope.alerts = [];
     $scope.loader = false;
-  }
+  };
   init();
-  $scope.showCreateModal=function(){
-    $scope.modalTitle="Create groups";
-    //true indiactes "add" operation perform
-    $scope.currOperation=true;
-    $('#myModal').modal('show');
-  }
 }]); 
