@@ -7,19 +7,28 @@
  * # workflowCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', function ($scope, testdetail) {
+angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$location', 'localStorageService', '$rootScope', '$http', 'limitToFilter', 'workflowService', 
+ function ($scope, testdetail, $location, localStorageService, $rootScope, $http, limitToFilter, workflowService) {
 
-  $scope.testList = [];
-  testdetail.getTest.get(function(responce) {
-    $scope.testList = responce.list;
-    console.log($scope.testList);
-  });
-  
-  $scope.items= [
-    {id:'1',area:'cash'},
-    {id:'2',area:'cheque'},
-    {id:'3',area:'card'},
-  ];
+  function init() {
+    $rootScope.isLogin = localStorageService.get('isLogin');
+    if($rootScope.isLogin) {
+      $scope.testList = [];
+      testdetail.getTest.get(function(responce) {
+        $scope.testList = responce.list;
+        console.log($scope.testList);
+      });
+      
+      $scope.items= [
+        {id:'1',area:'cash'},
+        {id:'2',area:'cheque'},
+        {id:'3',area:'card'},
+      ];
+    }else {
+      $location.path('login');
+      return false;
+    }
+  }
   
   $scope.showHideDiv = function () {
     if ($scope.chkStatus1) {
@@ -86,7 +95,23 @@ angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', fun
     }
   };
 
-  $scope.checkPatient = function() {
+  $scope.cities = function(cityName) {
+    /*workflowService.get({'searchString': cityName}, function (response) {
+      var searchData = [];
+      angular.forEach(response.list, function(value, key) {
+        searchData.push(value.patient_name + ',' + value.patient_mobile);
+      });
+      $scope.cities = limitToFilter(searchData, 15);
+      console.log($scope.cities);
+      return $scope.cities;
+    });*/
+    /*return $http.jsonp("http://gd.geobytes.com/AutoCompleteCity?callback=JSON_CALLBACK &filter=US&q="+cityName).then(function(response){*/
+    /*return $http.jsonp("http://localhost/PMS-1/services/index.php/common/searchPatient?searchString="+cityName).then(function(response){
+      return limitToFilter(response.data, 15);
+    });*/
+  };
+
+  /*$scope.checkPatient = function() {
     var check_patient = $scope.check_patient;
     console.log(check_patient.length);
     if (check_patient.length >= 3) {
@@ -96,13 +121,13 @@ angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', fun
     }else {
       console.log("minimum 3 charactors required for search");
     }
-  };
+  };*/
 
   $scope.selectTest = function() {
-    var test = [];
     console.log($scope.content);
     testdetail.selectTest.get({test_type_ID:$scope.content}, function(responce) {
       $scope.test = responce.list.testTypeDetails;
     });
   };
+  init();
 }]);

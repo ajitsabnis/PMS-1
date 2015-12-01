@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- build:remove -->
-     <link id="apiRoot" href="http://localhost:81/PMS-1/"/>
+     <link id="apiRoot" href="http://localhost/PMS-1/"/>
     <!-- endbuild -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -56,13 +56,13 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       /*!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+       ga('send', 'pageview');*/
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -84,6 +84,8 @@
     <script src="bower_components/vfs_fonts/index.js"></script>
     <script src="bower_components/CSV-JS/csv.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -135,6 +137,7 @@
          <script src="scripts/directives/navigationdir.js"></script>
          <script src="scripts/directives/leftnavigationdir.js"></script>
         <script src="scripts/directives/footerdir.js"></script>
+        <script src="scripts/directives/autocompdir.js"></script>
 
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/services/addtest-dropdown.js"></script>
@@ -144,8 +147,9 @@
         <script src="scripts/services/patient-master.js"></script>
         <script src="scripts/services/testdetail.js"></script>
         <script src="scripts/services/loginservice.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
-        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+        <script src="scripts/services/workflowService.js"></script>
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script> -->
+        <!-- <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script> -->
         <!-- endbuild -->
   </body>
 </html>

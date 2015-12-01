@@ -7,8 +7,8 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log',  
-							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log', '$location', '$rootScope', 'localStorageService', 
+							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log, $location, $rootScope, localStorageService) {
 
     
     $scope.myData = {
@@ -27,12 +27,16 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
     	]
     };
     function init() {
-      addtestDropdown.addtst.get({}, function (record) {
-        
+      $rootScope.isLogin = localStorageService.get('isLogin');
+      if($rootScope.isLogin) {
+        addtestDropdown.addtst.get({}, function (record) {
           $scope.testData = record.list.testTypeDetails;
           $scope.myData.data = record.list.testTypeDetails;
-          
-      });  
+        });
+      }else {
+        $location.path('login');
+        return false;
+      }
     }
     
     
@@ -118,6 +122,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
   $scope.open = function (size) {
 
     angular.forEach($scope.testData, function(key, value) {
+      console.log(value);
       if(key.id === size.id){
         $scope.test = key;
       }

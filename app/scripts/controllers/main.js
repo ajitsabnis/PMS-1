@@ -8,10 +8,17 @@
  * Controller of the pmsApp
  */
 angular.module('pmsApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['localStorageService', '$rootScope', '$location', 
+  	function (localStorageService, $rootScope, $location) {
+    
+    function init() {
+    	$rootScope.isLogin = localStorageService.get('isLogin');
+		if($rootScope.isLogin) {
+    		$rootScope.isLogin = localStorageService.get('isLogin');
+		}else {
+			$location.path('login');
+	    	return false;
+		}
+    }
+    init();
+  }]);

@@ -7,11 +7,18 @@
  * # TestCalculatorCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp')
-  .controller('TestCalculatorCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('pmsApp').controller('TestCalculatorCtrl', ['$scope', 'localStorageService', '$location', '$rootScope', 
+	function ($scope, localStorageService, $location, $rootScope) {
+    
+	$scope.users = [];
+	function init() {
+		$rootScope.isLogin = localStorageService.get('isLogin');
+		if($rootScope.isLogin) {
+	    	console.log('About Controller');
+	    }else {
+	    	$location.path('login');
+	    	return false;
+	  	}
+	}
+	init();
+}]);
