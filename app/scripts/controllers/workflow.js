@@ -7,8 +7,8 @@
  * # workflowCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$location', 'localStorageService', '$rootScope',
- function ($scope, testdetail, $location, localStorageService, $rootScope) {
+angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$location', 'localStorageService', '$rootScope', '$http', 'limitToFilter', 'workflowService', 
+ function ($scope, testdetail, $location, localStorageService, $rootScope, $http, limitToFilter, workflowService) {
 
   function init() {
     $rootScope.isLogin = localStorageService.get('isLogin');
@@ -95,7 +95,23 @@ angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$l
     }
   };
 
-  $scope.checkPatient = function() {
+  $scope.cities = function(cityName) {
+    /*workflowService.get({'searchString': cityName}, function (response) {
+      var searchData = [];
+      angular.forEach(response.list, function(value, key) {
+        searchData.push(value.patient_name + ',' + value.patient_mobile);
+      });
+      $scope.cities = limitToFilter(searchData, 15);
+      console.log($scope.cities);
+      return $scope.cities;
+    });*/
+    /*return $http.jsonp("http://gd.geobytes.com/AutoCompleteCity?callback=JSON_CALLBACK &filter=US&q="+cityName).then(function(response){*/
+    /*return $http.jsonp("http://localhost/PMS-1/services/index.php/common/searchPatient?searchString="+cityName).then(function(response){
+      return limitToFilter(response.data, 15);
+    });*/
+  };
+
+  /*$scope.checkPatient = function() {
     var check_patient = $scope.check_patient;
     console.log(check_patient.length);
     if (check_patient.length >= 3) {
@@ -105,7 +121,7 @@ angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$l
     }else {
       console.log("minimum 3 charactors required for search");
     }
-  };
+  };*/
 
   $scope.selectTest = function() {
     console.log($scope.content);

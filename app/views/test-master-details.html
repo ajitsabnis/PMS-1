@@ -30,7 +30,9 @@ form.form-search:before {
 			  <div class="panel-heading">
 			  		<form class="form-search form-inline">
 				        <div class="input-append">
-				            <input type="text" class="form-control search-query"  ng-keyup="checkPatient()" ng-model="check_patient" id="srch" placeholder="Search..." />
+				            <!-- <input type="text" ng-model="result" class="form-control search-query" uib-typeahead="suggestion for suggestion in cities($viewValue)" id="srch" placeholder="Search..." /> -->
+				            <!-- <input type="text" ng-model="selected" class="form-control search-query" auto-complete ui-items="names" id="srch" placeholder="Search..." /> -->
+				            <input auto-complete ui-items="names" ng-model="selected">
 				            <button type="submit" class="btn btn-primary">Search</button>
 				        </div>
 				    </form>
