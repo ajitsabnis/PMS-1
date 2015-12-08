@@ -29,7 +29,8 @@ class testmasterdetail extends CosRestController
 				'sample_id' => $this->post('sample_id'),
 				'instrument_id' => $this->post('instrument_id'),
 				'testIsOutsourced' => $this->post('testIsOutsourced'),
-				'testIsOutsourcedLab'=>$this->post('testIsOutsourcedLab')
+				'testIsOutsourcedLab'=>$this->post('testIsOutsourcedLab'),
+				'is_deleted'=> 0
 			);
 			$productDetails=$this->post('productDetails');
         
@@ -43,18 +44,18 @@ class testmasterdetail extends CosRestController
 					for ($i=0; $i < count($productDetails); $i++) {
 						$user = array(
 							'test_id' => $totalCount,
-							'test_exam_type' => $productDetails[$i]['examtype'],
-							'test_details' => $productDetails[$i]['testdetails'],
-							'test_unit' => $productDetails[$i]['tunit'],
+							'test_details' => $productDetails[$i]['parameters'],
+							'test_min_ref' => $productDetails[$i]['refbelow'],
+							'test_max_ref' => $productDetails[$i]['refabove'],
+							'patient_min_age' => $productDetails[$i]['agebelow'],
+							'patient_max_age' => $productDetails[$i]['ageabove'],
+							'patient_gender' => $productDetails[$i]['gender'],
+							'test_exam_type' => $productDetails[$i]['examination'],
+							'test_unit' => $productDetails[$i]['unit'],
 							'test_display_order' => $productDetails[$i]['order'],
-							'test_min_ref' => $productDetails[$i]['minref'],
-							'test_max_ref' => $productDetails[$i]['maxref'],
-							'patient_min_age' => $productDetails[$i]['minage'],
-							'patient_max_age' => $productDetails[$i]['maxage'],
-							'patient_gender' => $productDetails[$i]['gender']['name'],
-							'test_ref_range' => $productDetails[$i]['refRange']
+							'test_ref_range' => $productDetails[$i]['normalrange'],
+							'is_deleted'=> 0
 						);
-						print_r($user);exit();
 						$this->db->insert('test_detail_master', $user);
 					}
 					if($this->db->affected_rows() > 0){
