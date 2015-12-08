@@ -1,5 +1,239 @@
+***********************************************************************************************
+
+getTestDetails
+==============
+URL -->  http://localhost/PMS-1/services/index.php/common/getTestDetails?test_id=1
+* method = get
+* test_id = test_id
+
+Response:
+
+{
+    "status": "success",
+    "messege": "ok",
+    "list": {
+        "test_id": "1",
+        "test_name": "T3 ",
+        "test_heading": "",
+        "test_short_name": "T3 ",
+        "test_amount": "100.00",
+        "test_remark": "This is T3 Test",
+        "flag_id": "1",
+        "flag_name": "AA",
+        "percent": "10.00",
+        "amount": "0.00",
+        "generic_method_id": "1",
+        "generic_method_name": "ELISA",
+        "generic_sample_id": "1",
+        "generic_sample_name": "Serum",
+        "generic_instrument_id": "1",
+        "generic_instrument_name": "instrument-1",
+        "productDetails": [
+            {
+                "generic_exam_type_id": "1",
+                "generic_exam_type_name": "Physical",
+                "test_detail_id": "1",
+                "test_details": "test detail",
+                "test_unit": "testunit",
+                "test_display_order": "1",
+                "test_min_ref": "10.00",
+                "test_max_ref": "20.00",
+                "patient_min_age": "20",
+                "patient_max_age": "50"
+            }
+        ]
+    }
+}
 
 ***********************************************************************************************
+getAllData
+==============
+URL -->  http://localhost/PMS-1/services/index.php/common/getAllData
+* method = get
+
+Response:
+
+{
+    "status": "success",
+    "messege": "ok",
+    "list": {
+        "group": [
+            {
+                "generic_group_id": "1",
+                "generic_group_name": "AB",
+                "generic_category_id": "4",
+                "is_delete": "0"
+            },
+            {
+                "generic_group_id": "2",
+                "generic_group_name": "AB",
+                "generic_category_id": "4",
+                "is_delete": "0"
+            },
+            {
+                "generic_group_id": "3",
+                "generic_group_name": "ABC",
+                "generic_category_id": "4",
+                "is_delete": "0"
+            }
+        ],
+        "instrument": [
+            {
+                "generic_instrument_id": "1",
+                "generic_instrument_name": "instrument-1",
+                "generic_category_id": "1",
+                "is_delete": "1"
+            },
+            {
+                "generic_instrument_id": "2",
+                "generic_instrument_name": "Instrument-2",
+                "generic_category_id": "1",
+                "is_delete": "0"
+            },
+            {
+                "generic_instrument_id": "4",
+                "generic_instrument_name": "Instrument-3",
+                "generic_category_id": "1",
+                "is_delete": "0"
+            },
+            {
+                "generic_instrument_id": "5",
+                "generic_instrument_name": "Instrument-4",
+                "generic_category_id": "1",
+                "is_delete": "0"
+            },
+            {
+                "generic_instrument_id": "6",
+                "generic_instrument_name": "test",
+                "generic_category_id": "1",
+                "is_delete": "1"
+            },
+            {
+                "generic_instrument_id": "7",
+                "generic_instrument_name": "demo test",
+                "generic_category_id": "1",
+                "is_delete": "0"
+            },
+            {
+                "generic_instrument_id": "8",
+                "generic_instrument_name": "test instrument",
+                "generic_category_id": "1",
+                "is_delete": "0"
+            }
+        ],
+        "method": [
+            {
+                "generic_method_id": "1",
+                "generic_method_name": "ELISA",
+                "generic_category_id": "5",
+                "is_delete": "0"
+            },
+            {
+                "generic_method_id": "2",
+                "generic_method_name": "CLIA",
+                "generic_category_id": "5",
+                "is_delete": "0"
+            },
+            {
+                "generic_method_id": "3",
+                "generic_method_name": "GODPOD",
+                "generic_category_id": "5",
+                "is_delete": "0"
+            }
+        ],
+        "sample": [
+            {
+                "generic_sample_id": "1",
+                "generic_sample_name": "Serum",
+                "generic_category_id": "6",
+                "is_delete": "0"
+            },
+            {
+                "generic_sample_id": "2",
+                "generic_sample_name": "Plasma",
+                "generic_category_id": "6",
+                "is_delete": "0"
+            }
+        ],
+        "flag": [
+            {
+                "flag_id": "1",
+                "flag_name": "AA",
+                "percent": "10.00",
+                "amount": "0.00"
+            },
+            {
+                "flag_id": "2",
+                "flag_name": "BB",
+                "percent": "0.00",
+                "amount": "100.00"
+            },
+            {
+                "flag_id": "3",
+                "flag_name": "CC",
+                "percent": "0.00",
+                "amount": "50.00"
+            },
+            {
+                "flag_id": "4",
+                "flag_name": "DD",
+                "percent": "5.00",
+                "amount": "0.00"
+            },
+            {
+                "flag_id": "5",
+                "flag_name": "EE",
+                "percent": "0.00",
+                "amount": "63.00"
+            },
+            {
+                "flag_id": "7",
+                "flag_name": "FF",
+                "percent": "0.00",
+                "amount": "50.00"
+            }
+        ]
+    }
+}
+
+
+
+
+***********************************************************************************************
+
+searchTest
+==============
+URL -->  http://localhost/PMS-1/services/index.php/common/searchTest?searchString=t
+* method = get
+* searchString = searchString
+
+Response:
+
+{
+    "status": "success",
+    "messege": "ok",
+    "list": [
+        {
+            "test_id": "1",
+            "test_name": "T3 ",
+            "test_heading": ""
+        },
+        {
+            "test_id": "2",
+            "test_name": "uddtest_name",
+            "test_heading": "Utest_heading"
+        },
+        {
+            "test_id": "6",
+            "test_name": "T1 ",
+            "test_heading": ""
+        }
+    ]
+}
+
+***********************************************************************************************
+
+
 
 todaysPatientTest
 ==============

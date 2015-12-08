@@ -6,19 +6,6 @@ class Common_model extends CI_Model
 	    parent:: __construct();
 	}
 	
-	
-	function getProductDetails($id)
-	{
-	 
-		$sql="SELECT getm.`generic_exam_type_id`, getm.`generic_exam_type_name`,tdm.`test_detail_id`, tdm.`test_details`, tdm.`test_unit`, tdm.`test_display_order`, tdm.`test_min_ref`
-		, tdm.`test_max_ref`,tdm.`patient_min_age`, tdm.`patient_max_age`
-		FROM  `test_detail_master` as tdm left join `generic_exam_type_master` as getm on (getm.`generic_exam_type_id`= tdm.`test_exam_type`) 
-		WHERE tdm.`test_id`='".$id."' group by tdm.`test_id` order by tdm.`test_detail_id` desc
-		";
-		$query=$this->db->query($sql);
-		return $query->result();
-	}
-	
 	function getTestDetails($id)
 	{
 	
@@ -32,8 +19,6 @@ where tm.`test_id`='".$id."' ";
 		$query = $this->db->query($sql);
 		return $query->row();
 	}
-	
-		
 	
 	
 	

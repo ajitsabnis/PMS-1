@@ -12,56 +12,32 @@ class Common extends CosRestController
    }
    
    
-   	 public function getAllData_get() 
-	 {
-	 	$result['group'] = array();
-		$result['instrument'] = array();
-		$result['method'] = array();
-		$result['sample'] = array();
-		$result['flag'] = array();
+   
+   public function getTestDetails_get() {
+
+	 $test_id =$this->get('test_id');
+	$resultRow=$this->Common_model->getTestDetails($test_id);
+	
+	$listArr=array();
+	if(!empty($resultRow))
+	{
+	
 		
-		$tblName='generic_group_master';
-		$result['group'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='generic_instrument_master';
-		$result['instrument'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='generic_method_master';
-		$result['method'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='generic_sample_master';
-		$result['sample'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='flag_master';
-		$result['flag'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		
-		$response=array("status" => "success","messege" => "ok","list" => $result);
-		 
+		$listArr=$resultRow;
+	
+	$response=array("status" => "success","messege" => "ok","list" => $listArr);
+	}
+	else
+	{
+$response=array("status" => "error","messege" => "No record Founds");
+	} 
 	    $this->response($response);
 	}
    
    
    
-   public function getTestDetails_get() 
-   {
-	 	$test_id =$this->get('test_id');
-		$resultRow=$this->Common_model->getTestDetails($test_id);
-	
-		$listArr=array();
-		if(!empty($resultRow))
-		{
-			$listArr=$resultRow;
-			// productDetails
-			$listArr->productDetails=$this->Common_model->getProductDetails($test_id);
-			$response=array("status" => "success","messege" => "ok","list" => $listArr);
-		}
-		else
-		{
-			$response=array("status" => "error","messege" => "No record Founds");
-		} 
-	    	$this->response($response);
-	}
+   
+   
    
    
    	public function searchTest_get() {

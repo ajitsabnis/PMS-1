@@ -8,77 +8,8 @@ class Common extends CosRestController
  public function __construct() {
         parent::__construct();
           $this->load->database();
-        $this->load->model('Common_model');
+        $this->load->model('common_model');
    }
-   
-   
-   	 public function getAllData_get() 
-	 {
-	 	$result['group'] = array();
-		$result['instrument'] = array();
-		$result['method'] = array();
-		$result['sample'] = array();
-		$result['flag'] = array();
-		
-		$tblName='generic_group_master';
-		$result['group'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='generic_instrument_master';
-		$result['instrument'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='generic_method_master';
-		$result['method'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='generic_sample_master';
-		$result['sample'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		$tblName='flag_master';
-		$result['flag'] = $this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
-		
-		
-		$response=array("status" => "success","messege" => "ok","list" => $result);
-		 
-	    $this->response($response);
-	}
-   
-   
-   
-   public function getTestDetails_get() 
-   {
-	 	$test_id =$this->get('test_id');
-		$resultRow=$this->Common_model->getTestDetails($test_id);
-	
-		$listArr=array();
-		if(!empty($resultRow))
-		{
-			$listArr=$resultRow;
-			// productDetails
-			$listArr->productDetails=$this->Common_model->getProductDetails($test_id);
-			$response=array("status" => "success","messege" => "ok","list" => $listArr);
-		}
-		else
-		{
-			$response=array("status" => "error","messege" => "No record Founds");
-		} 
-	    	$this->response($response);
-	}
-   
-   
-   	public function searchTest_get() {
-
-	 $searchString =$this->get('searchString');
-	$result=array();
-	$result=$this->Common_model->searchTest($searchString);
-	if(!empty($result))
-	{
-	$response=array("status" => "success","messege" => "ok","list" => $result);
-	}
-	else
-	{
-$response=array("status" => "success","messege" => "ok","list" => $result);
-	} 
-	    $this->response($response);
-	}
 
     
 	
@@ -88,7 +19,7 @@ $response=array("status" => "success","messege" => "ok","list" => $result);
 
 	$tblName='test_type';
 	$result=array();
-	$result=$this->Common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
+	$result=$this->common_model->getTableAllData($tblName,$optColumnName='',$optColumnVal='');
 	if(!empty($result))
 	{
 	$response=array("status" => "success","messege" => "ok","list" => $result);
@@ -109,7 +40,7 @@ $response=array("status" => "success","messege" => "ok","list" => $result);
 	$tblName='test_type';
 	$columnName='test_type_ID';
 	$columnVal=$test_type_ID;
-	$resultRow=$this->Common_model->getTableRowData($tblName,$columnName,$columnVal);
+	$resultRow=$this->common_model->getTableRowData($tblName,$columnName,$columnVal);
 	if(!empty($resultRow))
 	{
 	
@@ -117,7 +48,7 @@ $response=array("status" => "success","messege" => "ok","list" => $result);
 		$testTypeDetailsArr=array();
 		$row['test_type']= trim($resultRow->test_type);
 		
-		$resultDet= $this->Common_model->getTestTypeDetails($test_type_ID);
+		$resultDet= $this->common_model->getTestTypeDetails($test_type_ID);
 		foreach($resultDet as $rowDet)
 		{
 		 $testTypeDetailsArr[]= $rowDet;
@@ -149,7 +80,7 @@ $response=array("status" => "success","messege" => "ok","list" => $result);
 		$whereArr=array("generic_instrument_id" => $id);
 	    $tblName='generic_instrument_master';
 		}
-		$this->Common_model->updateData($tblName,$dataArr,$whereArr);
+		$this->common_model->updateData($tblName,$dataArr,$whereArr);
 		
 	
 	$response=array("status" => "success","messege" => "ok");
@@ -166,7 +97,7 @@ $response=array("status" => "error","messege" => "Insufficiant Parameter");
 
 	 $searchString =$this->get('searchString');
 	$result=array();
-	$result=$this->Common_model->searchPatient($searchString);
+	$result=$this->common_model->searchPatient($searchString);
 	if(!empty($result))
 	{
 	$response=array("status" => "success","messege" => "ok","list" => $result);
@@ -184,7 +115,7 @@ $response=array("status" => "success","messege" => "ok","list" => $result);
 $tblName='patient_master';
 	$columnName='patient_id';
 	$columnVal=$patient_id;
-	$resultRow=$this->Common_model->getTableRowData($tblName,$columnName,$columnVal);
+	$resultRow=$this->common_model->getTableRowData($tblName,$columnName,$columnVal);
 	
 	$listArr=array();
 	if(!empty($resultRow))
@@ -237,7 +168,7 @@ $response=array("status" => "error","messege" => "No record Founds");
 		$whereArr=array("test_id" => $test_id);
 	    $tblName='test_master';
 		
-		$this->Common_model->updateData($tblName,$dataArr,$whereArr);
+		$this->common_model->updateData($tblName,$dataArr,$whereArr);
 		
 	
 	$response=array("status" => "success","messege" => "ok");
