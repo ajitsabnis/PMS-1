@@ -7,11 +7,11 @@
  * # TestMasterDetailsCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','Addtest', 'addtestDropdown', '$uibModal', '$log', '$location', '$rootScope', 'localStorageService', 
-							function ($scope, $http, Addtest, addtestDropdown, $uibModal, $log, $location, $rootScope, localStorageService) {
+angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootScope', 'localStorageService', 'addtestDropdown', '$location', 
+							function ($scope, $rootScope, localStorageService, addtestDropdown, $location) {
 
     
-    $scope.myData = {
+    /*$scope.myData = {
     	columnDefs: [
     		{name: 'test_name'},
     		{name: 'test_heading'},
@@ -25,24 +25,128 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         { name: 'Action', enableCellEdit: false, cellTemplate:'<button class="btn primary" ng-click="grid.appScope.open(row.entity)"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn primary" ng-click="grid.appScope.deleteRecord(row.entity)"><span class="glyphicon glyphicon-trash"></span></button>'}
         
     	]
+    };*/
+    
+    $scope.genders = [
+      {name:'Male', value:'M'},
+      {name:'Female', value:'F'},
+      {name:'Universal', value:'U'}
+    ];
+    $scope.detail = {};
+    $scope.showDetails = [];
+    $scope.test = {};
+    function getDropDownData() {
+      addtestDropdown.getAll.get({}, function (data) {
+        if(data.status === 'success') {
+          console.log(data);
+          $scope.flags = [];
+          $scope.groups = [];
+          $scope.methods = [];
+          $scope.specimans = [];
+          $scope.instruments = [];
+          angular.forEach(data.list, function (value,key) {
+            switch (key) {
+              case "group":
+                angular.forEach(value, function (val, key) {
+                  $scope.groups.push({'gname': val.generic_group_name, 'id': val.generic_group_id});
+                });
+                break;
+              case "instrument":
+                angular.forEach(value, function (val, key) {
+                  $scope.instruments.push({'iname': val.generic_instrument_name, 'id': val.generic_instrument_id});
+                });
+                break;
+              case "method":
+                angular.forEach(value, function (val, key) {
+                  $scope.methods.push({'mname': val.generic_method_name, 'id': val.generic_method_id});
+                });
+                break;
+              case "sample":
+                angular.forEach(value, function (val, key) {
+                  $scope.specimans.push({'sname': val.generic_sample_name, 'id': val.generic_sample_id});
+                });
+                break;
+              case "flag":
+                angular.forEach(value, function (val, key) {
+                  $scope.flags.push({'fname': val.flag_name, 'id': val.flag_id});
+                });
+                break;
+              default:
+                alert('No data');
+            }
+          })
+        }
+      });
     };
+
     function init() {
       $rootScope.isLogin = localStorageService.get('isLogin');
       if($rootScope.isLogin) {
-        addtestDropdown.addtst.get({}, function (record) {
-          $scope.testData = record.list.testTypeDetails;
-          $scope.myData.data = record.list.testTypeDetails;
+        addtestDropdown.getTest.get({'test_type_ID': '2'}, function (record) {
+          if(record.status === 'success') {
+            $scope.testData = record.list.testTypeDetails;
+            getDropDownData();
+          }
         });
       }else {
         $location.path('login');
         return false;
       }
+    };
+    
+    $scope.filterTest = function(text) {
+      if(text !== undefined) {
+        addtestDropdown.getFilter.get({'searchString':text}, function (data) {
+          if(data.status === 'success') {
+            $scope.testData = {};
+            $scope.testData = data.list;
+          }
+        });
+      }
+    };
+
+    $scope.getTestData = function (id) {
+      if(id !== undefined) {
+        addtestDropdown.getTestDataAll.get({'test_id':id}, function (data) {
+
+        });
+      }
+    };
+
+    $scope.addDetails = function () {
+      console.log($scope.detail);
+      $scope.showDetails.push($scope.detail);
+      $scope.detail = {};
+    };
+
+    $scope.saveTest = function () {
+      console.log($scope.test);
+      var testDataUI = $scope.test;
+      var testDetail = $scope.showDetails;
+      var testInputs = {};
+      testInputs = {
+        "test_name": testDataUI.testName,
+        "test_heading": testDataUI.heading,
+        "test_short_code": testDataUI.code,
+        "test_group": testDataUI.group.id,
+        "test_charge": testDataUI.testCharges,
+        "test_remark": testDataUI.remark,
+        "flag_id": testDataUI.flag.id,
+        "method_id": testDataUI.method.id,
+        "sample_id": testDataUI.sample.id,
+        "instrument_id": testDataUI.instrument.id,
+        "testIsOutsourced": '1',
+        "testIsOutsourcedLab": '1',
+        "productDetails": testDetail
+      }
+      console.log(angular.toJson(testInputs));
+      addtestDropdown.addTestPost.save(angular.toJson(testInputs), function (data) {
+        console.log(data);
+      });
     }
-    
-    
     init();  
 
-    $scope.add = function() {
+    /*$scope.add = function() {
 
       var data = {
         name:  $scope.tstname,
@@ -60,9 +164,9 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       Addtest.save(angular.toJson(data), function(responce) {
         console.log(responce);
       });
-    };
+    };*/
 
-     $scope.update = function() {
+     /*$scope.update = function() {
 
       var data = {
         id:$scope.test.test_id,
@@ -81,10 +185,10 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       Addtest.save(angular.toJson(data), function(responce) {
         console.log(responce);
       });
-    };
+    };*/
 
 
-    addtestDropdown.instrument.get({}, function (record){
+    /*addtestDropdown.instrument.get({}, function (record){
       $scope.instrument = record.data;
     });
 
@@ -102,9 +206,9 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
 
     addtestDropdown.flag.get({}, function (record){
       $scope.flag = record.data;
-    });
+    });*/
 
-    $scope.deleteRecord = function(deleteData){
+    /*$scope.deleteRecord = function(deleteData){
       var removeData = {
         removeData: deleteData
       };
@@ -112,14 +216,14 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       Addtest.remove(angular.toJson(removeData), function(responce) {
         console.log(responce);
       });
-    };
+    };*/
 
   
-   $scope.animationsEnabled = true;
+   //$scope.animationsEnabled = true;
    /*$scope.items = ['item1', 'item2', 'item3'];*/
 
 
-  $scope.open = function (size) {
+  /*$scope.open = function (size) {
 
     angular.forEach($scope.testData, function(key, value) {
       console.log(value);
@@ -137,7 +241,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         /*items: function () {
           return $scope.items;
         },*/
-        tests: function () {
+        /*tests: function () {
           return $scope.test;
         }
       }
@@ -149,9 +253,9 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
       $log.info('Modal dismissed at: ' + new Date());
     });
 
-  };
+  };*/
 
-  $scope.toggleAnimation = function () {
+  /*$scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
@@ -172,11 +276,11 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$http','
         $scope.alerts.push({msg: 'Record deleted successfully', type:'success'});
       }
     });
-  };
+  };*/
 
 }]);
 
-angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'tests', 'addtestDropdown', function ($scope, $uibModalInstance, tests, addtestDropdown) {
+/*angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalInstance', 'tests', 'addtestDropdown', function ($scope, $uibModalInstance, tests, addtestDropdown) {
 
   $scope.test = tests;
   $scope.selected = {
@@ -212,4 +316,4 @@ angular.module('pmsApp').controller('ModalInstanceCtrl',['$scope', '$uibModalIns
         console.log(responce);
       });
     };
-}]);
+}]);*/

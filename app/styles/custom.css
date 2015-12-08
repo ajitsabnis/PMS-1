@@ -122,3 +122,58 @@
 .login-view {
   padding-top: 4%;
 }
+/*Test Master*/
+.test-list {
+  min-height: 800px;
+}
+.left-sidebar {
+  width: 200px;
+}
+.add-test .add-test-fields {
+  border-bottom: 2px solid gray;
+  padding: 10px 10px;
+}
+.test-details-title .title {
+  margin-left: 0;
+  margin-right: 0;
+  border-bottom: 1px solid;
+  padding: 0;
+}
+.add-test-details {
+  padding: 10px 10px;
+  border-bottom: 2px solid gray;
+}
+.table-header {
+  background-color: #495b79;
+  color: #fff;
+}
+.show-test {
+  width: 100%;
+  height: 485px;
+  background-color: #fff;
+  border: 1px solid;
+  border-radius: 2px;
+  margin-top: 5%;
+  overflow-y: auto;
+}
+.test-name {
+  border-bottom: 1px solid gray;
+  padding: 5px 0px 5px 25px;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+.test-name:hover {
+  background-color: #5798B4;
+  color: #fff;
+  font-size: 16px;
+}
+.select2 > .select2-choice.ui-select-match {
+    height: 29px;
+}
+.selectize-control > .selectize-dropdown {
+    top: 36px;
+}
+.selectize-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}

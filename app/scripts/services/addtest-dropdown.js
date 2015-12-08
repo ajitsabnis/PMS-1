@@ -11,6 +11,11 @@
 angular.module('pmsApp').factory('addtestDropdown', ['$resource', 'apiUrl', function ($resource, apiUrl) {
       //return $resource( apiUrl.getGenericData, {} );
       return {
+          getTest:$resource(apiUrl.getTestData, {}),
+          getAll:$resource(apiUrl.getAllData, {}),
+          getFilter:$resource(apiUrl.getFilterTest, {}),
+          addTestPost:$resource(apiUrl.saveTestRecord, {}),
+
           addtst:$resource(apiUrl.Addtest, {}),
           instrument:$resource(apiUrl.instrument, {}),
           sample:$resource(apiUrl.sample, {}),

@@ -41,6 +41,10 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
+      'bower_components/ui-select/dist/select.js',
+      'bower_components/sifter/sifter.js',
+      'bower_components/microplugin/src/microplugin.js',
+      'bower_components/selectize/dist/js/selectize.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

@@ -24,7 +24,8 @@ angular.module('pmsApp', [
   'ui.grid.cellNav',
   'ui.grid.pagination',
   'ui.bootstrap',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'ui.select'
 ])
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");

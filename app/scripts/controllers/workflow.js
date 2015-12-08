@@ -7,8 +7,8 @@
  * # workflowCtrl
  * Controller of the pmsApp
  */
-angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$location', 'localStorageService', '$rootScope', '$http', 'limitToFilter', 'workflowService', 
- function ($scope, testdetail, $location, localStorageService, $rootScope, $http, limitToFilter, workflowService) {
+angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$location', 'localStorageService', '$rootScope',  
+ function ($scope, testdetail, $location, localStorageService, $rootScope) {
 
   function init() {
     $rootScope.isLogin = localStorageService.get('isLogin');
@@ -95,7 +95,7 @@ angular.module('pmsApp').controller('workflowCtrl', ['$scope', 'testdetail', '$l
     }
   };
 
-  $scope.cities = function(cityName) {
+  $scope.cities = function() {
     /*workflowService.get({'searchString': cityName}, function (response) {
       var searchData = [];
       angular.forEach(response.list, function(value, key) {
