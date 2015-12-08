@@ -32,9 +32,35 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
       {name:'Female', value:'F'},
       {name:'Universal', value:'U'}
     ];
-    $scope.detail = {};
+    function makeEmpty() {
+      $scope.detail = {
+        "parameters": "",
+        "refbelow": "",
+        "refabove": "",
+        "agebelow": "",
+        "ageabove": "",
+        "gender": "",
+        "examination": "",
+        "unit": "",
+        "order": "",
+        "normalrange": ""
+      };
+      $scope.test = {
+        "testName": "",
+        "heading": "",
+        "code": "",
+        "testCharges": "",
+        "group": "",
+        "flag": "",
+        "method": "",
+        "speciman": "",
+        "instrument": "",
+        "remark": "",
+        "testIsOutsourced": "",
+        "testIsOutsourcedLab": ""
+      };
+    }
     $scope.showDetails = [];
-    $scope.test = {};
     function getDropDownData() {
       addtestDropdown.getAll.get({}, function (data) {
         if(data.status === 'success') {
@@ -80,6 +106,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
     };
 
     function init() {
+      makeEmpty();
       $rootScope.isLogin = localStorageService.get('isLogin');
       if($rootScope.isLogin) {
         addtestDropdown.getTest.get({'test_type_ID': '2'}, function (record) {
@@ -98,7 +125,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
       if(text !== undefined) {
         addtestDropdown.getFilter.get({'searchString':text}, function (data) {
           if(data.status === 'success') {
-            $scope.testData = {};
+            $scope.testData = [];
             $scope.testData = data.list;
           }
         });
@@ -114,7 +141,6 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
     };
 
     $scope.addDetails = function () {
-      console.log($scope.detail);
       $scope.showDetails.push($scope.detail);
       $scope.detail = {};
     };
@@ -123,6 +149,9 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
       console.log($scope.test);
       var testDataUI = $scope.test;
       var testDetail = $scope.showDetails;
+      angular.forEach($scope.showDetails, function (val, key) {
+        testDetail[key].gender = val.gender.name;
+      });
       var testInputs = {};
       testInputs = {
         "test_name": testDataUI.testName,
@@ -133,7 +162,7 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
         "test_remark": testDataUI.remark,
         "flag_id": testDataUI.flag.id,
         "method_id": testDataUI.method.id,
-        "sample_id": testDataUI.sample.id,
+        "sample_id": testDataUI.speciman.id,
         "instrument_id": testDataUI.instrument.id,
         "testIsOutsourced": '1',
         "testIsOutsourcedLab": '1',
@@ -141,7 +170,8 @@ angular.module('pmsApp').controller('TestMasterDetailsCtrl',['$scope', '$rootSco
       }
       console.log(angular.toJson(testInputs));
       addtestDropdown.addTestPost.save(angular.toJson(testInputs), function (data) {
-        console.log(data);
+        makeEmpty();
+        $scope.filterTest('');
       });
     }
     init();  
