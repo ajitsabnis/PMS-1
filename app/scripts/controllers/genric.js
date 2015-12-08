@@ -15,6 +15,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic', 'generic
       genericData: "",
       gname: ""
     };
+
     function init() {
       $rootScope.isLogin = localStorageService.get('isLogin');
       if($rootScope.isLogin) {
@@ -92,9 +93,8 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic', 'generic
     ]
   };
   
-  $scope.filter = function() {
-    console.log($scope.filterValue);
-    console.log("in filter function");
+  $scope.filter = function(search) {
+    console.log(search);
     $scope.gridApi.grid.refresh();
   };
 
@@ -108,6 +108,7 @@ angular.module('pmsApp').controller('GenricCtrl', ['$scope', 'generic', 'generic
       if(responce.data.message === 'Row deleted successfully') {
         angular.forEach($scope.categoryData, function(value, key) {
           if(value.row_id === deleteData.row_id) {
+            console.log($scope.categoryData);
             $scope.categoryData.splice(key);    
           }
         });

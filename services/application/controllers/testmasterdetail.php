@@ -12,35 +12,83 @@ class testmasterdetail extends CosRestController
     $this->response(array("data" => $this->db->get('test_detail_master')->result()));  //cosUsers
   }
 
-
   public function index_post()
   {
-    
-    /*try {*/
-         $data = array(
-             'test_detail_id' => $this->post('tid'),
-             'test_id' => $this->post('id'),
-             'test_exam_type' => $this->post('examtype'),
-             'test_details' => $this->post('testdetail'),
-             'test_unit' => $this->post('tunit'),
-             ' test_display_order' => $this->post('order'),
-             'test_min_ref' => $this->post('minref'),
-             'test_max_ref' => $this->post('maxref'),
-             'patient_min_age' => $this->post('minage'),
-             'patient_max_age' => $this->post('maxage'),
-             'patient_gender' => $this->post('gender')
-         );
-        $this->load->database();
-        $this->load->helper('array');
-        $this->db->insert('test_detail_master', $data);
-        $this->response(array("data" => array(
-           "message" => "User added succefully."
-        )));
-       /*} catch(Exception $e) {
+    $this->load->database();
+    $this->load->helper('array');
+    try {
+			$data = array(
+				'test_name' => $this->post('test_name'),
+				'test_heading' => $this->post('test_heading'),
+				'test_short_name' => $this->post('test_short_code'),
+				'group_id' => $this->post('test_group'),
+				'test_amount' => $this->post('test_charge'),
+				'test_remark' => $this->post('test_remark'),
+				'flag_id' => $this->post('flag_id'),
+				'method_id' => $this->post('method_id'),
+				'sample_id' => $this->post('sample_id'),
+				'instrument_id' => $this->post('instrument_id'),
+				'testIsOutsourced' => $this->post('testIsOutsourced'),
+				'testIsOutsourcedLab'=>$this->post('testIsOutsourcedLab')
+			);
+			$productDetails=$this->post('productDetails');
+        
+			$this->db->where('test_name', element('test_name', $data));
+			$query = $this->db->get('test_master');
+			$count = $query->num_rows();
+			if( $count === 0 ) {
+				$this->db->insert('test_master', $data);
+				if($this->db->affected_rows() > 0){
+					$totalCount = $this->db->insert_id();			// get last inserted record Id
+					for ($i=0; $i < count($productDetails); $i++) {
+						$user = array(
+							'test_id' => $totalCount,
+							'test_exam_type' => $productDetails[$i]['examtype'],
+							'test_details' => $productDetails[$i]['testdetails'],
+							'test_unit' => $productDetails[$i]['tunit'],
+							'test_display_order' => $productDetails[$i]['order'],
+							'test_min_ref' => $productDetails[$i]['minref'],
+							'test_max_ref' => $productDetails[$i]['maxref'],
+							'patient_min_age' => $productDetails[$i]['minage'],
+							'patient_max_age' => $productDetails[$i]['maxage'],
+							'patient_gender' => $productDetails[$i]['gender']['name'],
+							'test_ref_range' => $productDetails[$i]['refRange']
+						);
+						print_r($user);exit();
+						$this->db->insert('test_detail_master', $user);
+					}
+					if($this->db->affected_rows() > 0){
+						$this->response(array("data" => array(
+							"status" => 201,
+							"id" => element( 'test_name', $data ),
+							"message" => "Test and Test Details added succefully"
+						)));
+					} else {
+						$this->response(array("data" => array(
+							"status" => 301,
+							"message" => "This test details allready exists.",
+							"query" => $this->db->last_query()
+						)));
+					}
+				}else{
+					$this->response(array("data" => array(
+						"status" => 301,
+						"message" => "Something went wrong please contact admin.",
+						"query" => $this->db->last_query()
+					)));
+				}
+			} else {
+				$this->response(array("data" => array(
+				  "status" => 301,
+				  "message" => "This test allready exists.",
+				  "query" => $this->db->last_query()
+				)));
+			}
+		} catch(Exception $e) {
            $this->response(array("data" => array(
-           "message" => "Some error occured. Please contact admin."
-       )));
-       }*/
-  }
+				"message" => "Some error occured. Please contact admin."
+			)));
+		}
+	}
 }
 ?>

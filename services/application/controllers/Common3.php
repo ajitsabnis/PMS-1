@@ -43,25 +43,30 @@ class Common extends CosRestController
    
    
    
-   public function getTestDetails_get() 
-   {
-	 	$test_id =$this->get('test_id');
-		$resultRow=$this->Common_model->getTestDetails($test_id);
+   public function getTestDetails_get() {
+
+	 $test_id =$this->get('test_id');
+	$resultRow=$this->Common_model->getTestDetails($test_id);
 	
-		$listArr=array();
-		if(!empty($resultRow))
-		{
-			$listArr=$resultRow;
-			// productDetails
-			$listArr->productDetails=$this->Common_model->getProductDetails($test_id);
-			$response=array("status" => "success","messege" => "ok","list" => $listArr);
-		}
-		else
-		{
-			$response=array("status" => "error","messege" => "No record Founds");
-		} 
-	    	$this->response($response);
+	$listArr=array();
+	if(!empty($resultRow))
+	{
+		
+		$listArr=$resultRow;
+	
+	$response=array("status" => "success","messege" => "ok","list" => $listArr);
 	}
+	else
+	{
+$response=array("status" => "error","messege" => "No record Founds");
+	} 
+	    $this->response($response);
+	}
+   
+   
+   
+   
+   
    
    
    	public function searchTest_get() {
